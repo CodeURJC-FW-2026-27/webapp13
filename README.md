@@ -12,16 +12,17 @@
 - Principal/Zona de caza
     - Nombre
     - Descripcion
-    - Listado Criaturas que habitan
+    - Dificultad
+    - Tipologia
 
 - Criaturas Monstruosas
-    - Titulo
-    - Clase de criatura
-    - Elementos
-    - Debilidad
-    - Resistencia
-    - Habitat
-    - Tamaño
+    - Nombre
+    - Clase de criatura (poner los tipos de clases que hay)
+    - Elementos (que tipos de elementos puede tener) (texto, no array, solo un valor, por ahroa)
+    - Debilidad (que tipos de elementos puede tener) (texto, no array, solo un valor, por ahora)
+    - Resistencia (que tipos de elementos puede tener) (texto, no array, solo un valor, por ahora)
+    - Habitat (que tipos de elementos puede tener)
+    - Tamaño (valor numerico de tipo float) (+posibles valores)
     - Informacion en forma de texto- Estilo de combate(opcional)
 ### **Imagenes**
  Zona de caza 
@@ -32,4 +33,4 @@
 
 ### **Buscador, Filtrado  o categorización**
 - Buscador: El usuario podra buscar una zona de caza en especifico por su nombre
-- Filtrado o Categorización: El usuario podra filtrar las criaturas de una zona por elemento, por resistencia, el tipo de dragon, etc
+- Filtrado o Categorización: El usuario podra filtrar las ZONAS por dificultad o algo, luego podemos hacer para los dragones
