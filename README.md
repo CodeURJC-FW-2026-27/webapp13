@@ -34,5 +34,4 @@
 
 ### **Buscador, Filtrado  o categorización**
 - Buscador: El usuario podra buscar una zona de caza en especifico por su nombre
-- Filtrado: El usuario podra filtrar las criaturas de una zona por elemento, por resistencia
-- Categorización: que tipo de criatura es Dragon, Wyvern terrestre, Wyvern volador, etc…
+- Filtrado o Categorización: El usuario podra filtrar las criaturas de una zona por elemento, por resistencia, el tipo de dragon, etc
