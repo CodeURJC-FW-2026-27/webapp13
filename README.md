@@ -7,8 +7,6 @@
 |João Paulo Ortega | jp.ortega.2025@alumnos.urjc.es | OrtegaJp|
 | Carlos Abraham Velasco Carmona | ca.velasco.2025@alumnos.urjc.es | veeelasco |
 
-## **Herramientas de comunicación**
-- Whatsapp
 ## **Funcionalidad**
 ### **Entidades**
 - Principal/Zona de caza
