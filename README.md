@@ -13,16 +13,18 @@
     - Nombre
     - Descripcion
     - Dificultad
-    - Tipologia
+    - Tipologia (zona con volcanes, zona con pantano, montañosa)
+    - Temperatura (si necesita pociones para la temperatura)
 
 - Criaturas Monstruosas
     - Nombre
-    - Clase de criatura (poner los tipos de clases que hay)
-    - Elementos (que tipos de elementos puede tener) (texto, no array, solo un valor, por ahroa)
-    - Debilidad (que tipos de elementos puede tener) (texto, no array, solo un valor, por ahora)
-    - Resistencia (que tipos de elementos puede tener) (texto, no array, solo un valor, por ahora)
-    - Habitat (que tipos de elementos puede tener)
-    - Tamaño (valor numerico de tipo float) (+posibles valores)
+    - Especie de criatura (Bird Wyvern  |  Brute Wyverns  |  Fanged Beasts  |  Fanged Wyverns  |  Flying Wyverns  |  Piscine Wyverns  |  Elder Dragons)
+    - Elementos (Fire  |  Water  |  Thunder  |  Ice  |  Dragon) (texto, no array, solo un valor, por ahora)
+    - Efectos inflingidos (Poison  |  Stun  |  Paralysis  |  Sleep  |  Blastblight)
+    - Debilidad (Fire  |  Water  |  Thunder  |  Ice  |  Dragon) (texto, no array, solo un valor, por ahora)
+    - Resistencia (Fire  |  Water  |  Thunder  |  Ice  |  Dragon) (texto, no array, solo un valor, por ahora)
+    - Habitat (Cualquier habitat, solo 1)
+    - Tamaño (Float, ej: 1846.50  ~ 2622.88) (+posibles valores)
     - Informacion en forma de texto- Estilo de combate(opcional)
 ### **Imagenes**
  Zona de caza 
