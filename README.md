@@ -13,7 +13,7 @@
     - Nombre
     - Descripcion
     - Dificultad
-    - Tipologia (zona con volcanes, zona con pantano, montañosa)
+    - Entorno (zona con volcanes, zona con pantano, montañosa)
     - Temperatura (si necesita pociones para la temperatura)
 
 - Criaturas Monstruosas
