@@ -1,0 +1,17 @@
+LINKS
+
+https://startbootstrap.com/previews/blog-home
+-enlace al template de bootstrap
+
+https://bootswatch.com/solar/
+-enlace al template de los botones
+
+https://docs.google.com/document/d/1z4nnosipjfSxFccN3oHMDpUZwh6gp9ONpShF_5L1dgw/edit?usp=sharing
+-enlace google docs, ahi esta toda la info
+
+
+CARPETAS
+-images tendra 2 carpetas, monsters y zones, con cada archivo, 
+se escribiran como el nombre del monstruo en snake_case (<-asi) 
+y se guardaran en formato webp (no necesariamente pero se pueden transformar)
+
