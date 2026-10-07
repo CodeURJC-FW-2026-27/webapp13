@@ -9,6 +9,8 @@ https://bootswatch.com/solar/
 https://docs.google.com/document/d/1z4nnosipjfSxFccN3oHMDpUZwh6gp9ONpShF_5L1dgw/edit?usp=sharing
 -enlace google docs, ahi esta toda la info
 
+https://github.com/CodeURJC-FW-2026-27/webapp13
+-enlace al github
 
 CARPETAS
 -images tendra 2 carpetas, monsters y zones, con cada archivo, 
