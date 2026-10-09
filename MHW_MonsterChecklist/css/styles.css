@@ -2860,6 +2860,13 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #7b5204;
 }
 
+.btn-zona{
+color:white;
+}
+
+.white-ref, .white-ref:hover,.white-ref:focus,.white-ref:active{
+  color:white
+}
 .btn-secondary {
   --bs-btn-color: #fff;
   --bs-btn-bg: #6c757d;
