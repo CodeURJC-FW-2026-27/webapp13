@@ -10,7 +10,6 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
-        <link href="css/deatils.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -20,7 +19,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="./index.html">Volver</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./main.html">Volver a la pagina principal</a></li>
                     </ul>
                 </div>
             </div>
@@ -38,73 +37,75 @@
         <div class="container">
             <div class="row">
                 <!-- Habitat entries-->
-                <div class="col-lg-8">
-                    <!-- habitat principal-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="images/Monsters/MHW-Yermo_de_Agujas.webp" alt="..." /></a>
-                        <div class="card-body"></div>
-                            <h2 class="card-title">Yermo de Agujas (Wildspire Waste) </h2>
-                            <p class="card-text">El Yermo de Agujas es una zona de Monster World caracterizada por su paisaje árido y hostil, donde predominan las formaciones rocosas puntiagudas y un terreno difícil de atravesar. Su entorno desolado contrasta con la presencia de criaturas que han logrado adaptarse a las duras condiciones del lugar, convirtiéndolo en un territorio lleno de peligros y desafíos para los aventureros.</p>
-                            <div class="atributes">
-                                <table class="table">
-                                    <tr>
-                                        <td>Dificultad:</td>
-                                        <td>⭐⭐ </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Categorias</td>
-                                        <td>LR-Low Rank</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Entorno</td>
-                                        <td>Zona arida y montañosa</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Temperatura</td>
-                                        <td>Calor extremo y vientos aridos</td>
-                                    </tr>
-                                </table>
+                 <div class="col-lg-4">
+                        <!-- Search widget-->
+                        <div class="card mb-4">
+                            <div class="card-header">Busqueda</div>
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                    <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                    <!-- Search widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Search</div>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                        <!-- Categories widget-->
+                        <div class="card mb-4">
+                            <div class="card-header">Categorias</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled mb-0">
+                                            <li><a href="#!">Dificultad</a></li>
+                                            <li><a href="#!">Entorno</a></li>
+                                            <li><a href="#!">Temperatura</a></li>
+                                        </ul>
+                                    </div>                            
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Categories widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Categories</div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">Dificultad</a></li>
-                                        <li><a href="#!">Entorno</a></li>
-                                        <li><a href="#!">Temperatura</a></li>
-                                    </ul>
-                                </div>                            
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Side widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Dificultad: Media</div>    
-                        <div class="card-body">El Yermo de Agujas presenta una dificultad moderada, siendo una zona que exige cierta preparación y atención por parte del jugador. Sus enemigos pueden suponer un desafío para quienes no cuenten con el equipo o nivel adecuados, mientras que el terreno y las condiciones del entorno pueden complicar la exploración. Es recomendable avanzar con precaución y estar preparado para enfrentamientos que requieren algo más que fuerza bruta.</div>
-                    </div>
+                </div>
+                <div class="col-lg-8">                    
+                        <!-- habitat principal-->
+                        <div class="card mb-4">
+                            <img class="card-img-top" src="images/Monsters/MHW-Yermo_de_Agujas.webp" alt="..." />
+                            <div class="card-body">
+                                <h2 class="card-title">Yermo de Agujas (Wildspire Waste) </h2>
+                                <div class="atributes">
+                                    <table class="table">
+                                        <tr>
+                                            <td>Dificultad</td>
+                                            <td>⭐⭐ </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Categorias</td>
+                                            <td>LR-Low Rank</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Entorno</td>
+                                            <td>Dunas de arena desérticas, zonas rocosas áridas y ciénagas de barro</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Temperatura</td>
+                                            <td>Calor extremo y vientos aridos</td>
+                                        </tr>
+                                    </table>
+                                    
+                                </div>
+                                <p class="card-text">
+                                El Yermo de Agujas es una zona de Monster World caracterizada por su paisaje árido y hostil, donde predominan 
+                                las formaciones rocosas puntiagudas y un terreno difícil de atravesar. Su entorno desolado contrasta con la presencia de criaturas
+                                 que han logrado adaptarse a las duras condiciones del lugar, convirtiéndolo en un territorio lleno de peligros y desafíos para los aventureros.
+                                </p>
+                                <a class="btn btn-primary" href="#!">Borrar</a>
+                                <a class="btn btn-primary" href="#!">Editar</a>    
+                            </div>                            
+                        </div>                    
                 </div>
                     <!-- Nested row for Creaturess-->
-                    <div class="cointainer" id="test">
-                        
-                            <!-- Creatures-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="images/Monsters/kulu_ya_ku.jpg" alt="..." /></a>
+                    <div class="row">                        
+                        <!-- Creatures-->
+                            <div class="card col-12 col-sm-6 col-lg-6">
+                                <img class="card-img-top" src="images/Monsters/kulu_ya_ku.jpg" alt="..." />
                                 <div class="card-body">
 
                                     <h2 class="card-title h4">Kulu-Ya-Ku</h2>
@@ -115,8 +116,8 @@
                                                 <td>⭐⭐</td>
                                             </tr>
                                             <tr>
-                                                <td>Categorias</td>
-                                                <td>LR:Low rank</td>
+                                                <td>Categoria</td>
+                                                <td>Low rank</td>
                                             </tr>
                                             <tr>
                                                 <td>Especie</td>
@@ -153,13 +154,13 @@
                                         objetos de su entorno como rocas, pedruscos, nuezes para atacar y defenderse, asi como, en la jerarquia de las criaturas monstruosas esta en lo más bajo
                                         aunque lo compensa con su alta velocidad e ingenuidad para sobrevivir de los cazadores                            
                                     </p>
+                                    <a class="btn btn-primary" href="#!">Borrar</a>
                                     <a class="btn btn-primary" href="#!">Editar</a>
-                                    <a class="btn btn-primary" href="#!">Eliminar</a>
                                 </div>
                             </div>
                             <!-- Creatures-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="images/Monsters/barroth.png" alt="..." /></a>
+                            <div class="card col-12 col-sm-6 col-lg-6">
+                               <img class="card-img-top" src="images/Monsters/barroth.png" alt="..." />
                                 <div class="card-body">
 
                                     <h2 class="card-title h4">Barroth</h2>
@@ -170,8 +171,8 @@
                                                 <td>⭐⭐⭐</td>
                                             </tr>
                                             <tr>
-                                                <td>Categorias</td>
-                                                <td>LR:Low rank</td>
+                                                <td>Categoria</td>
+                                                <td>Low rank</td>
                                             </tr>
                                             <tr>
                                                 <td>Especie</td>
@@ -208,14 +209,14 @@
                                         les encanta marcar su territorio con barro y a ellos mismos tambien por lo que supone un gran desafio para los cazadores
                                         afrontar su pseudo-armadura de lodo como sus ataques con lodo.
                                     </p>
+                                    <a class="btn btn-primary" href="#!">Borrar</a>
                                     <a class="btn btn-primary" href="#!">Editar</a>
-                                    <a class="btn btn-primary" href="#!">Eliminar</a>
                                 </div>
                             </div>
                         
                             <!-- Creatures-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="images/Monsters/Mhw-jyuratodus_render.avif" alt="..." /></a>
+                            <div class="card col-12 col-sm-6 col-lg-6">
+                                <img class="card-img-top" src="images/Monsters/Mhw-jyuratodus_render.avif" alt="..." />
                                 <div class="card-body">
 
                                     <h2 class="card-title h4">Jyuratodus</h2>
@@ -226,8 +227,8 @@
                                                 <td>⭐⭐</td>
                                             </tr>
                                             <tr>
-                                                <td>Categorias</td>
-                                                <td>HR:High rank</td>
+                                                <td>Categoria</td>
+                                                <td>High rank</td>
                                             </tr>
                                             <tr>
                                                 <td>Especie</td>
@@ -251,7 +252,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Habitat</td>
-                                                <td>Yermo de Agujas</td>
+                                                <td>Wildspire Waste</td>
                                             </tr>
                                             <tr>
                                                 <td>Tamaño(en cm)</td>
@@ -265,13 +266,13 @@
                                         sera esencial la estrategia y la paciencia.
 
                                     </p>
+                                    <a class="btn btn-primary" href="#!">Borrar</a>
                                     <a class="btn btn-primary" href="#!">Editar</a>
-                                    <a class="btn btn-primary" href="#!">Eliminar</a>
                                 </div>
                             </div>
                             <!-- Creatures-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="images/Monsters/diablos_black.png" alt="..." /></a>
+                            <div class="card col-12 col-sm-6 col-lg-6">
+                                <img class="card-img-top" src="images/Monsters/diablos_black.png" alt="..." />
                                 <div class="card-body">
 
                                     <h2 class="card-title h4">Black Diablos</h2>
@@ -283,7 +284,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Categorias</td>
-                                                <td>HR:High rank</td>
+                                                <td>High rank</td>
                                             </tr>
                                             <tr>
                                                 <td>Especie</td>
@@ -306,7 +307,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Habitat</td>
-                                                <td>Yermo de Agujas</td>
+                                                <td>Wildspire Waste</td>
                                             </tr>
                                             <tr>
                                                 <td>Tamaño(en cm)</td>
@@ -319,13 +320,13 @@
                                         hose cruzar sus dominios, particularmente durante su fase de apareamiento sus hostilidad aumenta todavia más, es importante mencionar 
                                         que esta criatura es capaz de sumergirse en la arena para luego emerger y caer encima de sus presas.
                                     </p>
+                                    <a class="btn btn-primary" href="#!">Borrar</a>
                                     <a class="btn btn-primary" href="#!">Editar</a>
-                                    <a class="btn btn-primary" href="#!">Eliminar</a>
                                 </div>
                             </div>
                             <!-- Creatures-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="images/Monsters/Mhwi-glavenus_render_001.avif" alt="..." /></a>
+                            <div class="card col-12 col-sm-6 col-lg-6">
+                                <img class="card-img-top" src="images/Monsters/Mhwi-glavenus_render_001.avif" alt="..." />
                                 <div class="card-body">
 
                                     <h2 class="card-title h4">Glavenus</h2>
@@ -337,7 +338,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Categorias</td>
-                                                <td>LR:M rank</td>
+                                                <td>Master rank</td>
                                             </tr>
                                             <tr>
                                                 <td>Especie</td>
@@ -374,8 +375,8 @@
                                         con tajos y estocadas, además es capaz de acumular magma en su boca para despues escupir proyectiles 
                                         de fuego explosivo.
                                     </p>
+                                    <a class="btn btn-primary" href="#!">Borrar</a>
                                     <a class="btn btn-primary" href="#!">Editar</a>
-                                    <a class="btn btn-primary" href="#!">Eliminar</a>
                                 </div>
                             </div>
                         
