@@ -1,18 +1,11 @@
-.formIndexDiv{
-    padding-bottom: 12px;
+.formIndexDiv {
+  padding-bottom: 12px;
 }
 
-.formIndexDificultadButtonLabel{
-    text-wrap: wrap;
+.formIndexButtonLabel {
+  margin-bottom: 0px;
 }
-
-#formIndexDificultadContainer{
-    display: flex;
-    flex-direction: row;
-    /*flex-wrap:wrap;*/
-    padding: 0px;
-}
-
-.formIndexDificultadContainerItem{
-    margin-left: 5px;
+.formIndexContainerItem {
+  text-wrap: nowrap;
+  display: inline-block;
 }

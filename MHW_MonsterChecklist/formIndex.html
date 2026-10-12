@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="main.html">Home</a>
+              <a class="nav-link" href="index.html">Home</a>
             </li>
           </ul>
         </div>
@@ -69,87 +69,93 @@
             </div>
 
             <div class="form-group formIndexDiv">
-              <p id="IndexFormDificultadButtonLabel">Dificultad</p>
-              <div class="container" id="formIndexDificultadContainer">
-                
-                <div class="formIndexDificultadContainerItem">
+              <p class="formIndexButtonLabel">Dificultad</p>
+
+              <div class="row row-cols-lg-5 row-cols-md-2 row-cols-1">
+                <div class="formIndexContainerItem col">
                   <input
                     type="radio"
                     name="formIndexDificultadButton"
                     value="1"
                     id="formIndexDificultadButton1"
                   />
-                  <label
-                    for="formIndexDificultadButton1"
-                    class="formIndexDificultadButtonLabel"
-                    >⭐</label
-                  >
+                  <label for="formIndexDificultadButton1">⭐</label>
                 </div>
 
-                <div class="formIndexDificultadContainerItem">
+                <div class="formIndexContainerItem col">
                   <input
                     type="radio"
                     name="formIndexDificultadButton"
                     value="2"
                     id="formIndexDificultadButton2"
                   />
-                  <label
-                    for="formIndexDificultadButton2"
-                    class="formIndexDificultadButtonLabel"
-                    >⭐ ⭐</label
-                  >
+                  <label for="formIndexDificultadButton2">⭐⭐</label>
                 </div>
 
-                <div class="formIndexDificultadContainerItem">
+                <div class="formIndexContainerItem col">
                   <input
                     type="radio"
                     name="formIndexDificultadButton"
                     value="3"
                     id="formIndexDificultadButton3"
                   />
-                  <label
-                    for="formIndexDificultadButton3"
-                    class="formIndexDificultadButtonLabel"
-                    >⭐ ⭐ ⭐</label
-                  >
+                  <label for="formIndexDificultadButton3">⭐⭐⭐</label>
                 </div>
-                <div class="formIndexDificultadContainerItem">
+
+                <div class="formIndexContainerItem col">
                   <input
                     type="radio"
                     name="formIndexDificultadButton"
                     value="4"
                     id="formIndexDificultadButton4"
                   />
-                  <label
-                    for="formIndexDificultadButton4"
-                    class="formIndexDificultadButtonLabel"
-                    >⭐ ⭐ ⭐ ⭐</label
-                  >
+                  <label for="formIndexDificultadButton4">⭐⭐⭐⭐</label>
                 </div>
-                <div class="formIndexDificultadContainerItem">
+
+                <div class="formIndexContainerItem col">
                   <input
                     type="radio"
                     name="formIndexDificultadButton"
                     value="5"
                     id="formIndexDificultadButton5"
                   />
-                  <label
-                    for="formIndexDificultadButton5"
-                    class="formIndexDificultadButtonLabel"
-                    >⭐ ⭐ ⭐ ⭐ ⭐</label
-                  >
+                  <label for="formIndexDificultadButton5">⭐⭐⭐⭐⭐</label>
                 </div>
               </div>
             </div>
 
             <div class="form-group formIndexDiv">
-              <label for="formIndexCategorias">Categorias</label>
-              <input
-                type="text"
-                class="form-control"
-                id="formIndexCategorias"
-                placeholder="Introduce las categorías de la zona (LR - low rank, HR - high rank, MR - master rank)"
-              />
+              <p>Categorias</p>
+
+              <div class="formIndexContainerItem">
+                <input
+                  type="checkbox"
+                  id="formIndexCategorias1"
+                  name="formIndexCategorias1"
+                  value="LR"
+                />
+                <label for="formIndexCategorias1">LR</label>
+              </div>
+
+              <div class="formIndexContainerItem">
+                <input
+                  type="checkbox"
+                  id="formIndexCategorias2"
+                  name="formIndexCategorias2"
+                  value="HR"
+                />
+                <label for="formIndexCategorias2">HR</label>
+              </div>
+
+              <div class="formIndexContainerItem">
+                <input
+                  type="checkbox"
+                  id="formIndexCategorias3"
+                  name="formIndexCategorias3"
+                  value="MR"
+                />
+                <label for="formIndexCategorias3">MR</label>
+              </div>
             </div>
 
             <div class="form-group formIndexDiv">
@@ -173,16 +179,43 @@
             </div>
 
             <div class="form-group formIndexDiv">
-              <label for="formIndexTemperatura">Temperatura</label>
-              <input
-                type="text"
-                class="form-control"
-                id="formIndexTemperatura"
-                placeholder="Introduce el tipo de temperatura de la zona (Frostbite , Temperate climate, Scorching.)"
-              />
+              <p class="formIndexButtonLabel">Temperatura</p>
+
+              <div class="formIndexContainerItem">
+                <input
+                  type="radio"
+                  id="formIndexTemperatura1"
+                  name="formIndexTemperatura"
+                  value="Frostbite"
+                />
+                <label for="formIndexTemperatura1">Frostbite</label>
+              </div>
+
+              <div class="formIndexContainerItem">
+                <input
+                  type="radio"
+                  id="formIndexTemperatura2"
+                  name="formIndexTemperatura"
+                  value="Temperate climate"
+                />
+                <label for="formIndexTemperatura2">Temperate climate</label>
+              </div>
+
+              <div class="formIndexContainerItem">
+                <input
+                  type="radio"
+                  id="formIndexTemperatura3"
+                  name="formIndexTemperatura"
+                  value="Scorching"
+                />
+                <label for="formIndexTemperatura3">Scorching</label>
+              </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" id="">Submit</button>
+            <button type="submit" class="btn btn-primary" id="">Guardar</button>
+            <button type="submit" class="btn btn-primary" id="">
+              Cancelar
+            </button>
           </form>
         </div>
         <div class="col-md-4">
@@ -193,7 +226,9 @@
               alt="Preview"
             />
 
-            Pequeño preview de como seria
+            Pequeño preview de como seria usando Javascript para cambiar la
+            imagen y el nombre de la zona en tiempo real, pero no se ha
+            implementado aun.
           </div>
         </div>
       </div>
@@ -202,7 +237,7 @@
     <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">
-          Copyright &copy; Your Website 2023
+          Copyright &copy; Bestiario MHW 2026
         </p>
       </div>
     </footer>
