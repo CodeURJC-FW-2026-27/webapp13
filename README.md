@@ -12,12 +12,12 @@
 ### **Entidades**
 | Principal/Zona de caza | Valores | Explicacion |
 |------------------------|---------|-------------|
-| Nombre | Ancient Forest, Coral Highlands, Wildspire Waste, Rotten Vale, Elder's Recess, Hoarfrost Reach, Origin Isle | Todas las posibles zonas del juego |
+| Nombre | Ancient Forest, Coral Highlands, Wildspire Waste, Rotten Vale, Elder's Recess, Hoarfrost Reach, Origin Isle, Confluence of Fates, Caverns of El Dorado, Costle Schrade | Todas las posibles zonas del juego |
 | Dificultad | ⭐-⭐⭐⭐⭐⭐ | se evaluara usando estrellitas, de 1 a 5 estrellas, 1 siendo el mas facil y 5 el mas dificil. un sistema simple de dificultad dependiendo de los monstruos que habitan la zona y de como es la zona en si |
 | Categorias | LR - low rank, HR - high rank, MR - master rank | categorias de dificultad disponibles para cada zona, la dificultad original del juego |
 | Imagen | url de la imagen | una imagen general de la zona |
 | Descripcion | un string (en ingles) |una descripcion simple de la zona |
-| Entorno | zona con volcanes, zona con pantano, zona montañosa, zona con mucho desnivel, zona muy apretada, etc (en ingles) | alguna informacion importante  que podria ayudar al jugador |
+| Entorno | zona con volcanes, zona con pantano, zona montañosa, zona rocosa, zona con mucho desnivel, zona muy apretada, etc (en ingles) | alguna informacion importante  que podria ayudar al jugador |
 | Temperatura | Frostbite , Temperate climate, Scorching | equivalente a necesitar pocion de calor, no pocion, pocion de frio |
 ##
 | Secundaria/Criaturas Monstruosas | Valores | Explicacion |
@@ -28,7 +28,7 @@
 | Imagen | url de la imagen | imagen del monstruo |
 | Especie de criatura | Bird Wyvern, Brute Wyverns, Fanged Beasts, Fanged, Wyverns, Flying Wyverns, Piscine Wyverns, Elder Dragons | especie de la bestia |
 | Elementos | Fire, Water, Thunder, Ice, Dragon, None | un string con uno/multiples valores, es el "tipo" de monstruo |
-| Efectos inflingidos | Poison, Stun, Paralysis, Sleep, Blastblight | un string con uno/multiples valores |
+| Efectos inflingidos | Poison, Stun, Paralysis, Sleep, Blastblight, Bleeding, Waterblight | un string con uno/multiples valores |
 | Debilidades | Fire, Water, Thunder, Ice, Dragon, None | un string con uno/multiples valores |
 | Resistencias | Fire, Water, Thunder, Ice, Dragon, None | un string con uno/multiples valores |
 | Habitat | Cualquier habitat, solo 1 | un string con un valor/multiples  |
