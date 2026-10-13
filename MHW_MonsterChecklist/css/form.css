@@ -1,11 +1,11 @@
-.formIndexDiv {
+.formDiv {
   padding-bottom: 20px;
 }
 
-.formIndexButtonLabel {
+.formButtonLabel {
   margin-bottom: 0px;
 }
-.formIndexContainerItem {
+.formContainerItem {
   text-wrap: nowrap;
   display: inline-block;
 }
