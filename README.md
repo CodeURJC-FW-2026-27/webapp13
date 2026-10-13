@@ -50,3 +50,23 @@
 
  ##### **Opcional**
     *- Cada monstruo tendra una cajita con 3 checkboxes para marcar: 1- si ha sido derrotado, 2- si se ha derrotado a la criatura en su tamaño mas pequeño, 3- si se ha derrotado a la criatura en su tamaño mas grande*
+
+## Practica 1
+   ### Capturas de pantalla de las paginas
+
+
+
+   ### Participación de miembros
+   - Carlos
+      - Descripcion:  Crear la primera iteracion del Readme.md y mantenerlo actualizado, implementar las entidades secundarias con sus datos en la pagina de detalle,esquematizacion de la pagina web con paint
+      - Commits mas importantes:
+         1. README actualizado fase de preparación
+            Miembros del equipo y funcionalidades de la web -- 59edaf9
+
+         2. Titulo: añadidos atributos de entidades secundarias en details.html -- 7410e03
+
+         3. modificado botones y disposicion de elementos y nav en details.html, borrado detail.css -- aa876ee
+         
+         4. redireccion formIndex->main, Readme actualizado, links y search bar eliminados de detail -- 7726625
+
+         5.  
