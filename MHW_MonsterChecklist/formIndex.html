@@ -60,17 +60,17 @@
         <div class="col-md-8">
           <form>
             <div class="form-group formDiv">
-              <label for="formIndexNombre">Nombre</label>
+              <label for="formDetailsName">Name</label>
               <input
                 type="text"
                 class="form-control"
-                id="formIndexNombre"
+                id="formDetailsName"
                 placeholder="Introduce el nombre de la zona"
               />
             </div>
 
             <div class="form-group formDiv">
-                <!-- A single choice selection to represent the difficulty of the zone,
+              <!-- A single choice selection to represent the difficulty of the zone,
                 which will be saved as a number from 0 to 4, and then displayed as
                 1 star, 2 stars, 3 stars, 4 stars or 5 stars in the list of hunting zones.
               -->
@@ -83,51 +83,51 @@
                 <div class="formContainerItem col">
                   <input
                     type="radio"
-                    name="formIndexDificultadButton"
+                    name="formDetailsDificultadButton"
                     value="0"
-                    id="formIndexDificultadButton1"
+                    id="formDetailsDificultadButton0"
                   />
-                  <label for="formIndexDificultadButton1">⭐</label>
+                  <label for="formDetailsDificultadButton0">⭐</label>
                 </div>
 
                 <div class="formContainerItem col">
                   <input
                     type="radio"
-                    name="formIndexDificultadButton"
+                    name="formDetailsDificultadButton"
                     value="1"
-                    id="formIndexDificultadButton2"
+                    id="formDetailsDificultadButton2"
                   />
-                  <label for="formIndexDificultadButton2">⭐⭐</label>
+                  <label for="formDetailsDificultadButton2">⭐⭐</label>
                 </div>
 
                 <div class="formContainerItem col">
                   <input
                     type="radio"
-                    name="formIndexDificultadButton"
+                    name="formDetailsDificultadButton"
                     value="2"
-                    id="formIndexDificultadButton3"
+                    id="formDetailsDificultadButton2"
                   />
-                  <label for="formIndexDificultadButton3">⭐⭐⭐</label>
+                  <label for="formDetailsDificultadButton2">⭐⭐⭐</label>
                 </div>
 
                 <div class="formContainerItem col">
                   <input
                     type="radio"
-                    name="formIndexDificultadButton"
+                    name="formDetailsDificultadButton"
                     value="3"
-                    id="formIndexDificultadButton4"
+                    id="formDetailsDificultadButton3"
                   />
-                  <label for="formIndexDificultadButton4">⭐⭐⭐⭐</label>
+                  <label for="formDetailsDificultadButton3">⭐⭐⭐⭐</label>
                 </div>
 
                 <div class="formContainerItem col">
                   <input
                     type="radio"
-                    name="formIndexDificultadButton"
+                    name="formDetailsDificultadButton"
                     value="4"
-                    id="formIndexDificultadButton5"
+                    id="formDetailsDificultadButton4"
                   />
-                  <label for="formIndexDificultadButton5">⭐⭐⭐⭐⭐</label>
+                  <label for="formDetailsDificultadButton4">⭐⭐⭐⭐⭐</label>
                 </div>
               </div>
             </div>
@@ -139,49 +139,49 @@
               <div class="formContainerItem">
                 <input
                   type="checkbox"
-                  id="formIndexCategorias1"
-                  name="formIndexCategorias1"
+                  id="formDetailsCategorias1"
+                  name="formDetailsCategorias1"
                   value="0"
                 />
-                <label for="formIndexCategorias1">Low Rank</label>
+                <label for="formDetailsCategorias1">Low Rank</label>
               </div>
 
               <div class="formContainerItem">
                 <input
                   type="checkbox"
-                  id="formIndexCategorias2"
-                  name="formIndexCategorias2"
+                  id="formDetailsCategorias2"
+                  name="formDetailsCategorias2"
                   value="1"
                 />
-                <label for="formIndexCategorias2">High Rank</label>
+                <label for="formDetailsCategorias2">High Rank</label>
               </div>
 
               <div class="formContainerItem">
                 <input
                   type="checkbox"
-                  id="formIndexCategorias3"
-                  name="formIndexCategorias3"
+                  id="formDetailsCategorias3"
+                  name="formDetailsCategorias3"
                   value="2"
                 />
-                <label for="formIndexCategorias3">Master Rank</label>
+                <label for="formDetailsCategorias3">Master Rank</label>
               </div>
             </div>
 
-            <div class="form-group formDiv">                         
-              <div class="form-group formDiv">
-              <label for="formIndexImage formButtonLabel">Imagen de la zona</label>
-              <input type="file" class="form-control" id="formIndexImage" />
-            </div>
+            <div class="form-group formDiv">
+              <label for="formDetailsImage formButtonLabel"
+                >Imagen de la zona</label
+              >
+              <input type="file" class="form-control" id="formDetailsImage" />
             </div>
 
             <div class="form-group formDiv">
               <!-- A simple descriptive text for the environment and geographic zone
               -->
-              <label for="formIndexEntorno">Entorno</label>
+              <label for="formDetailsEntorno">Entorno</label>
               <input
                 type="text"
                 class="form-control"
-                id="formIndexEntorno"
+                id="formDetailsEntorno"
                 placeholder="Introduce el tipo de entorno de la zona (zona con volcanes, zona con pantano, zona montañosa, etc.)"
               />
             </div>
@@ -194,36 +194,42 @@
               <div class="formContainerItem">
                 <input
                   type="radio"
-                  id="formIndexTemperatura1"
-                  name="formIndexTemperatura"
+                  id="formDetailsTemperatura1"
+                  name="formDetailsTemperatura"
                   value="0"
                 />
-                <label for="formIndexTemperatura1">Frostbite</label>
+                <label for="formDetailsTemperatura1">Frostbite</label>
               </div>
 
               <div class="formContainerItem">
                 <input
                   type="radio"
-                  id="formIndexTemperatura2"
-                  name="formIndexTemperatura"
+                  id="formDetailsTemperatura2"
+                  name="formDetailsTemperatura"
                   value="1"
                 />
-                <label for="formIndexTemperatura2">Temperate climate</label>
+                <label for="formDetailsTemperatura2">Temperate climate</label>
               </div>
 
               <div class="formContainerItem">
                 <input
                   type="radio"
-                  id="formIndexTemperatura3"
-                  name="formIndexTemperatura"
+                  id="formDetailsTemperatura3"
+                  name="formDetailsTemperatura"
                   value="2"
                 />
-                <label for="formIndexTemperatura3">Scorching</label>
+                <label for="formDetailsTemperatura3">Scorching</label>
               </div>
             </div>
             <div class="form-group formDiv">
-               <label for="formIndexDescription" class="formButtonLabel">Descripcion del Entorno</label>
-              <textarea class="form-control" id="formIndexDescription" placeholder="Una breve descripcion del entorno que has diseñado"></textarea>
+              <label for="formDetailsDescription" class="formButtonLabel"
+                >Descripcion del Entorno</label
+              >
+              <textarea
+                class="form-control"
+                id="formDetailsDescription"
+                placeholder="Una breve descripcion del entorno que has diseñado"
+              ></textarea>
             </div>
 
             <div class="form-group formDiv">
@@ -237,7 +243,7 @@
 
         <div class="col-md-4">
           <!-- Preview box for the image and attributes of the hunting zone -->
-          <div id="forumIndexPreviewBox">
+          <div id="forumDetailsPreviewBox">
             <img
               src="https://picsum.photos/600/800"
               style="

@@ -13,7 +13,7 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-     <link href="css/index.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -53,281 +53,295 @@
     <div class="container">
       <div class="row">
         <!-- Habitat entries-->
-          
-          <!-- Categories-->
-          <div class="col-lg-4">
-            <div class="card mb-4">
-              <div class="card-header">Filtros</div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-7" class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dificultad                                              
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a href="#!">⭐</a></li>
-                        <li><a href="#!">⭐⭐</a></li>
-                        <li><a href="#!">⭐⭐⭐</a></li>
-                        <li><a href="#!">⭐⭐⭐⭐</a></li>
-                        <li><a href="#!">⭐⭐⭐⭐⭐</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-7" class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Rank                                              
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a href="#!">Low Rank</a></li>
-                      <li><a href="#!">High Rank</a></li>
-                      <li><a href="#!">Master Rank</a></li>                        
-                    </ul>
-                  </div>
-                  <div class="col-sm-7" class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Temperatura                                              
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a href="#!">Schorching</a></li>
-                      <li><a href="#!">Temperate Climate</a></li>  
-                      <li><a href="#!">Frostbite</a></li>                    
-                    </ul>
-                  </div>                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          
 
-          <!-- Search widget-->
-          <div class="col-lg-4">
-            
-            <div class="card mb-4">
-              <div class="card-header">Search</div>
-              <div class="card-body">
-                <div class="input-group">
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Enter search term..."
-                    aria-label="Enter search term..."
-                    aria-describedby="button-search"
-                  />
-                  <button
-                    class="btn btn-primary"
-                    id="button-search"
-                    type="button"
-                  >
-                    Busca!
-                  </button>
-                </div>
+        <!-- Categories-->
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-header">Filtros</div>
+            <div class="card-body cardFlex">
+              <div class="dropdown inlineB">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dificultad
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a href="#!">⭐</a></li>
+                  <li><a href="#!">⭐⭐</a></li>
+                  <li><a href="#!">⭐⭐⭐</a></li>
+                  <li><a href="#!">⭐⭐⭐⭐</a></li>
+                  <li><a href="#!">⭐⭐⭐⭐⭐</a></li>
+                </ul>
+              </div>
+
+              <div class="dropdown inlineB">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Rank
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a href="#!">Low Rank</a></li>
+                  <li><a href="#!">High Rank</a></li>
+                  <li><a href="#!">Master Rank</a></li>
+                </ul>
+              </div>
+
+              <div class="dropdown inlineB">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Temperatura
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a href="#!">Schorching</a></li>
+                  <li><a href="#!">Temperate Climate</a></li>
+                  <li><a href="#!">Frostbite</a></li>
+                </ul>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- New Area button-->
-          <div class="col-lg-2">
-            <div class="card text-center">
-              <div class="card-header">Nueva Zona de Caza</div>
-              <div class="card-body">
-                <a class="btn btn-primary" href="formIndex.html">Nueva Zona</a>
+        <!-- Search widget-->
+        <div class="col-lg-6">
+          <div class="card mb-4">
+            <div class="card-header">Search</div>
+            <div class="card-body">
+              <div class="input-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Enter search term..."
+                  aria-label="Enter search term..."
+                  aria-describedby="button-search"
+                />
+                <button
+                  class="btn btn-primary"
+                  id="button-search"
+                  type="button"
+                >
+                  Busca!
+                </button>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Nested row for Areas-->
-          <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
-            <!-- Areas-->
-
-            <div class="col IndexCol">
-              <div class="card">
-                <a href="details.html"
-                  ><img
-                    class="card-img-top"
-                    src="images/Zones/MHW-Yermo_de_Agujas.webp"
-                    alt="..."
-                /></a>
-                <div class="card-body">
-                  <h2 class="card-title h4">YERMO DE AGUJAS</h2>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Reiciendis aliquid atque, nulla.
-                  </p>
-                  <a class="btn btn-primary" href="details.html">Read more →</a>
-                </div>
-              </div>
+        <!-- New Area button-->
+        <div class="col-lg-2">
+          <div class="card text-center">
+            <div class="card-header">Nueva Zona</div>
+            <div class="card-body">
+              <a class="btn btn-primary" href="formIndex.html">Crear Zona</a>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div class="col IndexCol">
-              <div class="card">
-                <a href="details.html"
-                  ><img
-                    class="card-img-top"
-                    src="images/Zones/MHW-Yermo_de_Agujas.webp"
-                    alt="..."
-                /></a>
-                <div class="card-body">
-                  <h2 class="card-title h4">YERMO DE AGUJAS</h2>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Reiciendis aliquid atque, nulla.
-                  </p>
-                  <a class="btn btn-primary" href="details.html">Read more →</a>
-                </div>
-              </div>
-            </div>
+      <!-- Nested row for Areas-->
+      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
+        <!-- Areas-->
 
-            <div class="col IndexCol">
-              <div class="card">
-                <a href="details.html"
-                  ><img
-                    class="card-img-top"
-                    src="images/Zones/MHW-Yermo_de_Agujas.webp"
-                    alt="..."
-                /></a>
-                <div class="card-body">
-                  <h2 class="card-title h4">YERMO DE AGUJAS</h2>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Reiciendis aliquid atque, nulla.
-                  </p>
-                  <a class="btn btn-primary" href="details.html">Read more →</a>
-                </div>
-              </div>
+        <div class="col IndexCol">
+          <div class="card">
+            <a href="details.html"
+              ><img
+                class="card-img-top"
+                src="images/Zones/MHW-Yermo_de_Agujas.webp"
+                alt="..."
+            /></a>
+            <div class="card-body">
+              <h2 class="card-title h4">YERMO DE AGUJAS</h2>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reiciendis aliquid atque, nulla.
+              </p>
+              <a class="btn btn-primary" href="details.html">Read more →</a>
             </div>
+          </div>
+        </div>
 
-            <div class="col IndexCol">
-              <div class="card">
-                <a href="details.html"
-                  ><img
-                    class="card-img-top"
-                    src="images/Zones/MHW-Yermo_de_Agujas.webp"
-                    alt="..."
-                /></a>
-                <div class="card-body">
-                  <h2 class="card-title h4">YERMO DE AGUJAS</h2>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Reiciendis aliquid atque, nulla.
-                  </p>
-                  <a class="btn btn-primary" href="details.html">Read more →</a>
-                </div>
-              </div>
+        <div class="col IndexCol">
+          <div class="card">
+            <a href="details.html"
+              ><img
+                class="card-img-top"
+                src="images/Zones/MHW-Yermo_de_Agujas.webp"
+                alt="..."
+            /></a>
+            <div class="card-body">
+              <h2 class="card-title h4">YERMO DE AGUJAS</h2>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reiciendis aliquid atque, nulla.
+              </p>
+              <a class="btn btn-primary" href="details.html">Read more →</a>
             </div>
+          </div>
+        </div>
 
-            <div class="col IndexCol">
-              <div class="card">
-                <a href="details.html"
-                  ><img
-                    class="card-img-top"
-                    src="images/Zones/MHW-Yermo_de_Agujas.webp"
-                    alt="..."
-                /></a>
-                <div class="card-body">
-                  <h2 class="card-title h4">YERMO DE AGUJAS</h2>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Reiciendis aliquid atque, nulla.
-                  </p>
-                  <a class="btn btn-primary" href="details.html">Read more →</a>
-                </div>
-              </div>
+        <div class="col IndexCol">
+          <div class="card">
+            <a href="details.html"
+              ><img
+                class="card-img-top"
+                src="images/Zones/MHW-Yermo_de_Agujas.webp"
+                alt="..."
+            /></a>
+            <div class="card-body">
+              <h2 class="card-title h4">YERMO DE AGUJAS</h2>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reiciendis aliquid atque, nulla.
+              </p>
+              <a class="btn btn-primary" href="details.html">Read more →</a>
             </div>
+          </div>
+        </div>
 
-            <div class="col IndexCol">
-              <div class="card">
-                <a href="details.html"
-                  ><img
-                    class="card-img-top"
-                    src="images/Zones/MHW-Yermo_de_Agujas.webp"
-                    alt="..."
-                /></a>
-                <div class="card-body">
-                  <h2 class="card-title h4">YERMO DE AGUJAS</h2>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Reiciendis aliquid atque, nulla.
-                  </p>
-                  <a class="btn btn-primary" href="details.html">Read more →</a>
-                </div>
-              </div>
+        <div class="col IndexCol">
+          <div class="card">
+            <a href="details.html"
+              ><img
+                class="card-img-top"
+                src="images/Zones/MHW-Yermo_de_Agujas.webp"
+                alt="..."
+            /></a>
+            <div class="card-body">
+              <h2 class="card-title h4">YERMO DE AGUJAS</h2>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reiciendis aliquid atque, nulla.
+              </p>
+              <a class="btn btn-primary" href="details.html">Read more →</a>
             </div>
+          </div>
+        </div>
 
-            <div class="col IndexCol">
-              <div class="card">
-                <a href="details.html"
-                  ><img
-                    class="card-img-top"
-                    src="images/Zones/MHW-Yermo_de_Agujas.webp"
-                    alt="..."
-                /></a>
-                <div class="card-body">
-                  <h2 class="card-title h4">YERMO DE AGUJAS</h2>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Reiciendis aliquid atque, nulla.
-                  </p>
-                  <a class="btn btn-primary" href="details.html">Read more →</a>
-                </div>
-              </div>
+        <div class="col IndexCol">
+          <div class="card">
+            <a href="details.html"
+              ><img
+                class="card-img-top"
+                src="images/Zones/MHW-Yermo_de_Agujas.webp"
+                alt="..."
+            /></a>
+            <div class="card-body">
+              <h2 class="card-title h4">YERMO DE AGUJAS</h2>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reiciendis aliquid atque, nulla.
+              </p>
+              <a class="btn btn-primary" href="details.html">Read more →</a>
             </div>
+          </div>
+        </div>
 
-            <div class="col IndexCol">
-              <div class="card">
-                <a href="details.html"
-                  ><img
-                    class="card-img-top"
-                    src="images/Zones/MHW-Yermo_de_Agujas.webp"
-                    alt="..."
-                /></a>
-                <div class="card-body">
-                  <h2 class="card-title h4">YERMO DE AGUJAS</h2>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Reiciendis aliquid atque, nulla.
-                  </p>
-                  <a class="btn btn-primary" href="details.html">Read more →</a>
-                </div>
-              </div>
+        <div class="col IndexCol">
+          <div class="card">
+            <a href="details.html"
+              ><img
+                class="card-img-top"
+                src="images/Zones/MHW-Yermo_de_Agujas.webp"
+                alt="..."
+            /></a>
+            <div class="card-body">
+              <h2 class="card-title h4">YERMO DE AGUJAS</h2>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reiciendis aliquid atque, nulla.
+              </p>
+              <a class="btn btn-primary" href="details.html">Read more →</a>
             </div>
+          </div>
+        </div>
 
-            <div class="col IndexCol">
-              <div class="card">
-                <a href="details.html"
-                  ><img
-                    class="card-img-top"
-                    src="images/Zones/MHW-Yermo_de_Agujas.webp"
-                    alt="..."
-                /></a>
-                <div class="card-body">
-                  <h2 class="card-title h4">YERMO DE AGUJAS</h2>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Reiciendis aliquid atque, nulla.
-                  </p>
-                  <a class="btn btn-primary" href="details.html">Read more →</a>
-                </div>
-              </div>
+        <div class="col IndexCol">
+          <div class="card">
+            <a href="details.html"
+              ><img
+                class="card-img-top"
+                src="images/Zones/MHW-Yermo_de_Agujas.webp"
+                alt="..."
+            /></a>
+            <div class="card-body">
+              <h2 class="card-title h4">YERMO DE AGUJAS</h2>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reiciendis aliquid atque, nulla.
+              </p>
+              <a class="btn btn-primary" href="details.html">Read more →</a>
             </div>
+          </div>
+        </div>
 
-            <div class="col IndexCol">
-              <div class="card">
-                <a href="details.html"
-                  ><img
-                    class="card-img-top"
-                    src="images/Zones/MHW-Yermo_de_Agujas.webp"
-                    alt="..."
-                /></a>
-                <div class="card-body">
-                  <h2 class="card-title h4">YERMO DE AGUJAS</h2>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Reiciendis aliquid atque, nulla.
-                  </p>
-                  <a class="btn btn-primary" href="details.html">Read more →</a>
-                </div>
-              </div>
+        <div class="col IndexCol">
+          <div class="card">
+            <a href="details.html"
+              ><img
+                class="card-img-top"
+                src="images/Zones/MHW-Yermo_de_Agujas.webp"
+                alt="..."
+            /></a>
+            <div class="card-body">
+              <h2 class="card-title h4">YERMO DE AGUJAS</h2>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reiciendis aliquid atque, nulla.
+              </p>
+              <a class="btn btn-primary" href="details.html">Read more →</a>
             </div>
-            
+          </div>
+        </div>
+
+        <div class="col IndexCol">
+          <div class="card">
+            <a href="details.html"
+              ><img
+                class="card-img-top"
+                src="images/Zones/MHW-Yermo_de_Agujas.webp"
+                alt="..."
+            /></a>
+            <div class="card-body">
+              <h2 class="card-title h4">YERMO DE AGUJAS</h2>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reiciendis aliquid atque, nulla.
+              </p>
+              <a class="btn btn-primary" href="details.html">Read more →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col IndexCol">
+          <div class="card">
+            <a href="details.html"
+              ><img
+                class="card-img-top"
+                src="images/Zones/MHW-Yermo_de_Agujas.webp"
+                alt="..."
+            /></a>
+            <div class="card-body">
+              <h2 class="card-title h4">YERMO DE AGUJAS</h2>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reiciendis aliquid atque, nulla.
+              </p>
+              <a class="btn btn-primary" href="details.html">Read more →</a>
+            </div>
           </div>
         </div>
       </div>
