@@ -167,14 +167,11 @@
               </div>
             </div>
 
-            <div class="form-group formDiv">
-              <label for="formIndexImage">Imagen</label>
-              <input
-                type="text"
-                class="form-control"
-                id="formIndexImage"
-                placeholder="Introduce la URL de la imagen de la zona (puede ser una url o un nombre de archivo)"
-              />
+            <div class="form-group formDiv">                         
+              <div class="form-group formDiv">
+              <label for="formIndexImage formButtonLabel">Imagen de la zona</label>
+              <input type="file" class="form-control" id="formIndexImage" />
+            </div>
             </div>
 
             <div class="form-group formDiv">
@@ -223,6 +220,10 @@
                 />
                 <label for="formIndexTemperatura3">Scorching</label>
               </div>
+            </div>
+            <div class="form-group formDiv">
+               <label for="formIndexDescription" class="formButtonLabel">Descripcion del Entorno</label>
+              <textarea class="form-control" id="formIndexDescription" placeholder="Una breve descripcion del entorno que has diseñado"></textarea>
             </div>
 
             <div class="form-group formDiv">
