@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Monster Hunter World Checklist</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+
+  <link href="css/formIndex.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Responsive navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Bestiario Monster Hunter World</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page header with logo and tagline-->
+  <header class="py-1 bg-light border-bottom mb-4">
+    <div class="container">
+      <div class="text-center">
+        <h1 class="fw-bolder">Formulario para añadir <i>Criaturas</i></h1>
+        <!-- <p class="lead mb-0">Dunas de arena desérticas, zonas rocosas áridas y ciénagas de barro</p>-->
+      </div>
+    </div>
+  </header>
+
+  <!-- Page content-->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <form>
+          <div class="form-group formIndexDiv">
+            <label for="formIndexNombre">Nombre</label>
+            <input type="text" class="form-control" id="formIndexNombre"
+              placeholder="Introduce el nombre de la criatura" />
+          </div>
+
+          <div class="form-group formIndexDiv">
+            <p class="formIndexButtonLabel">Dificultad</p>
+
+            <div class="row row-cols-lg-5 row-cols-md-2 row-cols-1">
+              <div class="formIndexContainerItem col">
+                <input type="radio" name="formIndexDificultadButton" value="1" id="formIndexDificultadButton1" />
+                <label for="formIndexDificultadButton1">⭐</label>
+              </div>
+
+              <div class="formIndexContainerItem col">
+                <input type="radio" name="formIndexDificultadButton" value="2" id="formIndexDificultadButton2" />
+                <label for="formIndexDificultadButton2">⭐⭐</label>
+              </div>
+
+              <div class="formIndexContainerItem col">
+                <input type="radio" name="formIndexDificultadButton" value="3" id="formIndexDificultadButton3" />
+                <label for="formIndexDificultadButton3">⭐⭐⭐</label>
+              </div>
+
+              <div class="formIndexContainerItem col">
+                <input type="radio" name="formIndexDificultadButton" value="4" id="formIndexDificultadButton4" />
+                <label for="formIndexDificultadButton4">⭐⭐⭐⭐</label>
+              </div>
+
+              <div class="formIndexContainerItem col">
+                <input type="radio" name="formIndexDificultadButton" value="5" id="formIndexDificultadButton5" />
+                <label for="formIndexDificultadButton5">⭐⭐⭐⭐⭐</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group formIndexDiv">
+            <p>Categorias</p>
+
+            <div class="formIndexContainerItem">
+              <input type="checkbox" id="formIndexCategorias1" name="formIndexCategorias1" value="LR" />
+              <label for="formIndexCategorias1">LR</label>
+            </div>
+
+            <div class="formIndexContainerItem">
+              <input type="checkbox" id="formIndexCategorias2" name="formIndexCategorias2" value="HR" />
+              <label for="formIndexCategorias2">HR</label>
+            </div>
+
+            <div class="formIndexContainerItem">
+              <input type="checkbox" id="formIndexCategorias3" name="formIndexCategorias3" value="MR" />
+              <label for="formIndexCategorias3">MR</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Especie
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Bird Wyvern</a></li>
+                <li><a class="dropdown-item" href="#">Brute Wyverns</a></li>
+                <li><a class="dropdown-item" href="#">Fanged Beasts</a></li>
+                <li><a class="dropdown-item" href="#">Fanged</a></li>
+                <li><a class="dropdown-item" href="#">Wyverns</a></li>
+                <li><a class="dropdown-item" href="#">Flying Wyverns</a></li>
+                <li><a class="dropdown-item" href="#">Piscine Wyverns</a></li>
+                <li><a class="dropdown-item" href="#">Elder Dragons</a></li>
+              </ul>
+            </div>
+
+            <div class="col dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Efecto infligido
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Poison</a></li>
+                <li><a class="dropdown-item" href="#">Stun</a></li>
+                <li><a class="dropdown-item" href="#">Paralysis</a></li>
+                <li><a class="dropdown-item" href="#">Sleep</a></li>
+                <li><a class="dropdown-item" href="#">Blastblight</a></li>
+                <li><a class="dropdown-item" href="#">Bleeding</a></li>
+                <li><a class="dropdown-item" href="#">Waterblight</a></li>
+              </ul>
+            </div>
+
+            <div class="col dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Elemento
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Fire</a></li>
+                <li><a class="dropdown-item" href="#">Water</a></li>
+                <li><a class="dropdown-item" href="#">Thunder</a></li>
+                <li><a class="dropdown-item" href="#">Dragon</a></li>
+                <li><a class="dropdown-item" href="#">Ice</a></li>
+                <li><a class="dropdown-item" href="#">None</a></li>
+              </ul>
+            </div>
+
+            <div class="col dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Debilidad
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Fire</a></li>
+                <li><a class="dropdown-item" href="#">Water</a></li>
+                <li><a class="dropdown-item" href="#">Thunder</a></li>
+                <li><a class="dropdown-item" href="#">Dragon</a></li>
+                <li><a class="dropdown-item" href="#">Ice</a></li>
+                <li><a class="dropdown-item" href="#">None</a></li>
+              </ul>
+            </div>
+
+            <div class="col dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Resistencia
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Fire</a></li>
+                <li><a class="dropdown-item" href="#">Water</a></li>
+                <li><a class="dropdown-item" href="#">Thunder</a></li>
+                <li><a class="dropdown-item" href="#">Dragon</a></li>
+                <li><a class="dropdown-item" href="#">Ice</a></li>
+                <li><a class="dropdown-item" href="#">None</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="form-group formIndexDiv">
+            <label for="formIndexImagen">Imagen</label>
+            <input type="text" class="form-control" id="formIndexImagen"
+              placeholder="Introduce la URL de la imagen de la criatura (puede ser una url o un nombre de archivo)" />
+          </div>
+
+          <div class="form-group formIndexDiv">
+            <label for="formIndexEntorno">Info</label>
+            <input type="text" class="form-control" id="formIndexEntorno"
+              placeholder="Introduce informacion acerca de la criatura" />
+          </div>
+
+          <div class="form-group formIndexDiv">
+            <label for="formIndexEntorno">Habitat</label>
+            <input type="text" class="form-control" id="formIndexEntorno"
+              placeholder="Introduce el habitat de la criatura" />
+          </div>
+
+          <div class="form-group formIndexDiv">
+            <label for="formIndexEntorno">Tamaño</label>
+            <input type="text" class="form-control" id="formIndexEntorno"
+              placeholder="Introduce el tamaño de la criatura" />
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="">Guardar</button>
+          <a class="btn btn-primary" href="details.html">Cancelar</a>
+        </form>
+      </div>
+      <div class="col-md-4">
+        <div id="forumIndexPreviewBox">
+          <img src="https://picsum.photos/300/400" style="display: block; justify-content: end" alt="Preview" />
+
+          Pequeño preview de como seria usando Javascript para cambiar la
+          imagen y el nombre de la zona en tiempo real, pero no se ha
+          implementado aun.
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer-->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">
+        Copyright &copy; Bestiario MHW 2026
+      </p>
+    </div>
+  </footer>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>
