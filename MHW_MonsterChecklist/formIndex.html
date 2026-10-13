@@ -23,6 +23,7 @@
         <a class="navbar-brand" href="index.html"
           >Bestiario Monster Hunter World</a
         >
+
         <button
           class="navbar-toggler"
           type="button"
@@ -34,6 +35,7 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -48,7 +50,6 @@
       <div class="container">
         <div class="text-center">
           <h1 class="fw-bolder">Formulario para añadir <i>Zonas de caza</i></h1>
-          <!-- <p class="lead mb-0">Dunas de arena desérticas, zonas rocosas áridas y ciénagas de barro</p>-->
         </div>
       </div>
     </header>
@@ -69,14 +70,21 @@
             </div>
 
             <div class="form-group formIndexDiv">
+              <!-- Una seleccion de una unica opcion para representar la dificultad de la zona,
+                que se guardara como un numero del 0 al 4, y luego se mostrara como 
+                1 estrella, 2 estrellas, 3 estrellas, 4 estrellas o 5 estrellas en la lista de zonas de caza.
+              -->
               <p class="formIndexButtonLabel">Dificultad</p>
 
-              <div class="row row-cols-lg-5 row-cols-md-2 row-cols-1">
+              <div
+                class="row row-cols-lg-5 row-cols-md-2 row-cols-1"
+                style="width: fit-content"
+              >
                 <div class="formIndexContainerItem col">
                   <input
                     type="radio"
                     name="formIndexDificultadButton"
-                    value="1"
+                    value="0"
                     id="formIndexDificultadButton1"
                   />
                   <label for="formIndexDificultadButton1">⭐</label>
@@ -86,7 +94,7 @@
                   <input
                     type="radio"
                     name="formIndexDificultadButton"
-                    value="2"
+                    value="1"
                     id="formIndexDificultadButton2"
                   />
                   <label for="formIndexDificultadButton2">⭐⭐</label>
@@ -96,7 +104,7 @@
                   <input
                     type="radio"
                     name="formIndexDificultadButton"
-                    value="3"
+                    value="2"
                     id="formIndexDificultadButton3"
                   />
                   <label for="formIndexDificultadButton3">⭐⭐⭐</label>
@@ -106,7 +114,7 @@
                   <input
                     type="radio"
                     name="formIndexDificultadButton"
-                    value="4"
+                    value="3"
                     id="formIndexDificultadButton4"
                   />
                   <label for="formIndexDificultadButton4">⭐⭐⭐⭐</label>
@@ -116,7 +124,7 @@
                   <input
                     type="radio"
                     name="formIndexDificultadButton"
-                    value="5"
+                    value="4"
                     id="formIndexDificultadButton5"
                   />
                   <label for="formIndexDificultadButton5">⭐⭐⭐⭐⭐</label>
@@ -125,6 +133,7 @@
             </div>
 
             <div class="form-group formIndexDiv">
+              <!-- Una eleccion de multiples opciones (obligatoriamente minimo 1)-->
               <p>Categorias</p>
 
               <div class="formIndexContainerItem">
@@ -132,7 +141,7 @@
                   type="checkbox"
                   id="formIndexCategorias1"
                   name="formIndexCategorias1"
-                  value="LR"
+                  value="0"
                 />
                 <label for="formIndexCategorias1">LR</label>
               </div>
@@ -142,7 +151,7 @@
                   type="checkbox"
                   id="formIndexCategorias2"
                   name="formIndexCategorias2"
-                  value="HR"
+                  value="1"
                 />
                 <label for="formIndexCategorias2">HR</label>
               </div>
@@ -152,7 +161,7 @@
                   type="checkbox"
                   id="formIndexCategorias3"
                   name="formIndexCategorias3"
-                  value="MR"
+                  value="2"
                 />
                 <label for="formIndexCategorias3">MR</label>
               </div>
@@ -169,6 +178,8 @@
             </div>
 
             <div class="form-group formIndexDiv">
+              <!-- Un simple texto descriptivo del entorno y la zona geografica
+              -->
               <label for="formIndexEntorno">Entorno</label>
               <input
                 type="text"
@@ -180,13 +191,15 @@
 
             <div class="form-group formIndexDiv">
               <p class="formIndexButtonLabel">Temperatura</p>
-
+              <!-- Los valores de la temperatura se guardaran como 0,1,2 
+               y luego se mostraran como Frostbite, Temperate climate y Scorching en la lista de zonas de caza.
+              -->
               <div class="formIndexContainerItem">
                 <input
                   type="radio"
                   id="formIndexTemperatura1"
                   name="formIndexTemperatura"
-                  value="Frostbite"
+                  value="0"
                 />
                 <label for="formIndexTemperatura1">Frostbite</label>
               </div>
@@ -196,7 +209,7 @@
                   type="radio"
                   id="formIndexTemperatura2"
                   name="formIndexTemperatura"
-                  value="Temperate climate"
+                  value="1"
                 />
                 <label for="formIndexTemperatura2">Temperate climate</label>
               </div>
@@ -206,33 +219,39 @@
                   type="radio"
                   id="formIndexTemperatura3"
                   name="formIndexTemperatura"
-                  value="Scorching"
+                  value="2"
                 />
                 <label for="formIndexTemperatura3">Scorching</label>
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" id="">Guardar</button>
-            <button type="submit" class="btn btn-primary" id="">
-              Cancelar
-            </button>
+            <div class="form-group formIndexDiv">
+              <button type="submit" class="btn btn-primary" id="">
+                Guardar
+              </button>
+              <button type="submit" class="btn btn-primary" id="">
+                Cancelar
+              </button>
+            </div>
           </form>
         </div>
         <div class="col-md-4">
           <div id="forumIndexPreviewBox">
             <img
-              src="https://picsum.photos/300/400"
-              style="display: block; justify-content: end"
+              src="https://picsum.photos/600/800"
+              style="display: block; justify-content: end; width: 100%; height: auto"
               alt="Preview"
             />
 
             Pequeño preview de como seria usando Javascript para cambiar la
-            imagen y el nombre de la zona en tiempo real, pero no se ha
-            implementado aun.
+            imagen y los atributos, pero no se ha
+            implementado aun. Por ahora es solo un placeholder para ver como quedaria el diseño.
+            Tendra una relacion de aspecto de 3x4
           </div>
         </div>
       </div>
     </div>
+
     <!-- Footer-->
     <footer class="py-5 bg-dark">
       <div class="container">
