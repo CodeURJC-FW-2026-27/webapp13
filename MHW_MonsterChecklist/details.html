@@ -13,6 +13,7 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/form.css" rel="stylesheet" />
   </head>
   <body>
     <!-- Responsive navbar-->
@@ -97,7 +98,9 @@
                 convirtiéndolo en un territorio lleno de peligros y desafíos
                 para los aventureros.
               </p>
-              <a class="btn btn-primary" href="formIndexcreature.html">Nueva criatura</a>
+              <a class="btn btn-primary" href="formDetailscreature.html"
+                >Nueva criatura</a
+              >
             </div>
           </div>
         </div>
@@ -168,7 +171,6 @@
             </div>
           </div>
 
-          
           <div class="card">
             <img
               class="card-img-top"
@@ -229,7 +231,6 @@
             </div>
           </div>
 
-          
           <div class="card">
             <img
               class="card-img-top"
@@ -289,7 +290,7 @@
               <a class="btn btn-primary" href="#!">Editar</a>
             </div>
           </div>
-          
+
           <div class="card">
             <img
               class="card-img-top"
@@ -350,7 +351,7 @@
               <a class="btn btn-primary" href="#!">Editar</a>
             </div>
           </div>
-          
+
           <div class="card">
             <img
               class="card-img-top"
@@ -411,6 +412,224 @@
               <a class="btn btn-primary" href="#!">Editar</a>
             </div>
           </div>
+        </div>
+
+
+        <div class="row">
+          <form>
+            <div class="form-group formDiv">
+                <!-- A single choice selection to represent the difficulty of the zone,
+                which will be saved as a number from 0 to 4, and then displayed as
+                1 star, 2 stars, 3 stars, 4 stars or 5 stars in the list of hunting zones.
+              -->
+              <p class="formButtonLabel">Dificultad</p>
+
+              <div
+                class="row row-cols-lg-5 row-cols-md-2 row-cols-1"
+                style="width: fit-content"
+              >
+                <div class="formContainerItem col">
+                  <input
+                    type="radio"
+                    name="formDetailsDificultadButton"
+                    value="0"
+                    id="formDetailsDificultadButton1"
+                  />
+                  <label for="formDetailsDificultadButton1">⭐</label>
+                </div>
+
+                <div class="formContainerItem col">
+                  <input
+                    type="radio"
+                    name="formDetailsDificultadButton"
+                    value="1"
+                    id="formDetailsDificultadButton2"
+                  />
+                  <label for="formDetailsDificultadButton2">⭐⭐</label>
+                </div>
+
+                <div class="formContainerItem col">
+                  <input
+                    type="radio"
+                    name="formDetailsDificultadButton"
+                    value="2"
+                    id="formDetailsDificultadButton3"
+                  />
+                  <label for="formDetailsDificultadButton3">⭐⭐⭐</label>
+                </div>
+
+                <div class="formContainerItem col">
+                  <input
+                    type="radio"
+                    name="formDetailsDificultadButton"
+                    value="3"
+                    id="formDetailsDificultadButton4"
+                  />
+                  <label for="formDetailsDificultadButton4">⭐⭐⭐⭐</label>
+                </div>
+
+                <div class="formContainerItem col">
+                  <input
+                    type="radio"
+                    name="formDetailsDificultadButton"
+                    value="4"
+                    id="formDetailsDificultadButton5"
+                  />
+                  <label for="formDetailsDificultadButton5">⭐⭐⭐⭐⭐</label>
+                </div>
+              </div>
+            </div>
+
+             <div class="form-group formDiv">
+              <!-- Multiple choice selection (minimun 1)-->
+              <p class="formButtonLabel">Categorias</p>
+
+              <div class="formContainerItem">
+                <input
+                  type="checkbox"
+                  id="formIndexCategorias1"
+                  name="formIndexCategorias1"
+                  value="0"
+                />
+                <label for="formIndexCategorias1">Low Rank</label>
+              </div>
+
+              <div class="formContainerItem">
+                <input
+                  type="checkbox"
+                  id="formIndexCategorias2"
+                  name="formIndexCategorias2"
+                  value="1"
+                />
+                <label for="formIndexCategorias2">High Rank</label>
+              </div>
+
+              <div class="formContainerItem">
+                <input
+                  type="checkbox"
+                  id="formIndexCategorias3"
+                  name="formIndexCategorias3"
+                  value="2"
+                />
+                <label for="formIndexCategorias3">Master Rank</label>
+              </div>
+            </div>
+            
+            <div class="form-group formDiv">
+              <label for="formDetailsMonsterImage formButtonLabel">Imagen de la criatura</label>
+              <input type="file" class="form-control" id="formDetailsMonsterImage" />
+            </div>
+            
+
+            <div class="form-group formDiv">
+              <label for="formDetailsMonsterCategory" class="formButtonLabel">Especie del monstruo</label>
+              <select
+                class="form-select"
+                id="formDetailsMonsterCategory"
+                aria-label="Default select example"
+              >
+                <option value="Bird_Wyvern">Bird-Wyvern</option>
+                <option value="Brute_Wyvern">Brute-Wyvern</option>
+                <option value="Fanged_Beast">Fanged-Beast</option>
+                <option value="Fanged">Fanged</option>
+                <option value="Wyvern">Wyvern</option>
+                <option value="Flying_Wyvern">Flying-Wyvern</option>
+                <option value="Piscine_Wyvern">Piscine-Wyvern</option>
+                <option value="Elder_Dragon">Elder Dragon</option>
+              </select>
+            </div>
+
+            <div class="form-group formDiv">
+              <label for="formDetailsMonsterElement" class="formButtonLabel">Elemento del Monstruo</label>
+              <select class="form-select" id="formDetailsMonsterElement">
+                <option value="fire">Fire</option>
+                <option value="water">Water</option>
+                <option value="thunder">Thunder</option>
+                <option value="ice">Ice</option>
+                <option value="dragon">Dragon</option>
+                <option value="none">None</option>
+              </select>
+            </div>
+
+            <div class="form-group formDiv">
+              <label for="formDetailsMonsterStatus" class="formButtonLabel">Efectos inflingidos</label>
+              <select class="form-select" id="formDetailsMonsterStatus">
+                <option value="poison">Poison</option>
+                <option value="stun">Stun</option>
+                <option value="paralysis">Paralysis</option>
+                <option value="sleep">Sleep</option>
+                <option value="blastblight">Blastblight</option>
+                <option value="bleeding">Bleeding</option>
+                <option value="waterblight">Waterblight</option>
+                <option value="none">None</option>
+              </select>
+            </div>
+
+           <div class="form-group formDiv">
+              <label for="formDetailsMonsterWeaknesses" class="formButtonLabel">Debilidades del monstruo</label>
+              <select class="form-select" id="formDetailsMonsterWeaknesses">
+                <option value="fire">Fire</option>
+                <option value="water">Water</option>
+                <option value="thunder">Thunder</option>
+                <option value="ice">Ice</option>
+                <option value="dragon">Dragon</option>
+                <option value="none">None</option>
+              </select>
+            </div>
+
+            <div class="form-group formDiv">
+              <label for="formDetailsMonsterResistance" class="formButtonLabel">Resistencia del monstruo</label>
+              <select class="form-select" id="formDetailsMonsterResistance">
+                <option value="fire">Fire</option>
+                <option value="water">Water</option>
+                <option value="thunder">Thunder</option>
+                <option value="ice">Ice</option>
+                <option value="dragon">Dragon</option>
+                <option value="none">None</option>
+              </select>
+            </div>
+
+            <div class="form-group formDiv">
+              <label for="formDetailsMonsterHabitat" class="formButtonLabel">Habitat</label>
+              <select class="form-select" id="formDetailsMonsterHabitat">
+                <option value="wildspire_waste">Wildspire Waste</option>
+                <option value="ancient_forest">Ancient Forest</option>
+                <option value="coral_highlands">Coral Highlands</option>
+                <option value="rotten_vale">Rotten Vale</option>
+                <option value="elders_Recess">Elder's Recess</option>
+                <option value="hoarsfrost_reach">Hoarsfrost Reach</option>
+                <option value="origin_isle">Origin Isle</option>
+                <option value="confluence_of_fates">Confluence of Fates</option>
+                <option value="caverns_of_el_dorado">
+                  Caverns of El Dorado
+                </option>
+                <option value="castle_schrade">Castle Schrade</option>
+              </select>
+            </div>
+
+            <div class="form-group formDiv">
+              <div class="row">
+                <label for="formMonsterSizeMin" class="formButtonLabel">Tamaño monstruo(en cm)</label>
+                <div class="col">
+                   <label for="formMonsterSizeMin" class="formButtonLabel">Minimo</label>
+                  <input type="number" class="form-control" id="formMonsterSizeMin" />
+                </div>
+                <div class="col">
+                   <label for="formMonsterSizeMax" class="formButtonLabel">Maximo</label>
+                  <input type="number" class="form-control" id="formMonsterSizeMax" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group formDiv">
+               <label for="formMonsterDescription" class="formButtonLabel">Descripcion del monstruo</label>
+              <textarea class="form-control" id="formMonsterDescription"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Crear</button>
+
+
+          </form>
         </div>
       </div>
 
