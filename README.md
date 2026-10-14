@@ -69,4 +69,9 @@
          
          4. redireccion formIndex->main, Readme actualizado, links y search bar eliminados de detail -- 7726625
 
-         5.  
+    - Joao Ortega
+       - Aportaciones 
+       1.	Adaptación inicial del template de hábitats: partió de la plantilla base y realizó cambios en la estructura visual, el sidebar, los estilos y algunos recursos gráficos para ajustarla al proyecto ( bc31cda ,  ab831b3 ).
+	      2.	Organización de la página principal: reorganizó la estructura del  index , separando mejor los elementos en columnas para mejorar la distribución del contenido y la navegación entre páginas ( e9fc446 ).
+	      3.	Reorganización de cards y botón de nueva zona: ajustó los espacios entre tarjetas e incorporó el botón de “nueva zona de caza”, mejorando la distribución de los elementos de filtro, buscador y creación de entidades principales ( edee422 ).
+	      4. Creación del formulario de nuevas criaturas: adaptó el formulario para permitir el alta de criaturas e incorporó los botones de acción, como “cancelar” y “nueva criatura” ( 85863fb ).
