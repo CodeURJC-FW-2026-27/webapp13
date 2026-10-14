@@ -62,19 +62,43 @@
       - Commits mas importantes:
          1. README actualizado fase de preparación
             Miembros del equipo y funcionalidades de la web -- 59edaf9
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/59edaf9566725680057cad569b751106d1777dc5
 
-         2. Titulo: añadidos atributos de entidades secundarias en details.html -- 7410e03
+         2. añadidos atributos de entidades secundarias en details.html -- 7410e03
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/7410e03231330a01199e8c6732159cc5cf01e4bb
 
          3. modificado botones y disposicion de elementos y nav en details.html, borrado detail.css -- aa876ee
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/aa876eef02d33c338221f792abef9d6c9df74d01
          
-         4. redireccion formIndex->main, Readme actualizado, links y search bar eliminados de detail -- 7726625.-
- 	- Joao Ortega
-       - Aportaciones:
-         
-          1.	Adaptación inicial del template de hábitats: partió de la plantilla base y realizó cambios en la estructura visual, el sidebar, los estilos y algunos recursos gráficos para ajustarla al proyecto -- bc31cda ,  ab831b3 .
-	      2.	Organización de la página principal: reorganizó la estructura del  index , separando mejor los elementos en columnas para mejorar la distribución del contenido y la navegación entre páginas -- e9fc446 .
-	      3.	Reorganización de cards y botón de nueva zona: ajustó los espacios entre tarjetas e incorporó el botón de “nueva zona de caza”, mejorando la distribución de los elementos de filtro, buscador y creación de entidades principales -- edee422 .
-	      4. Creación del formulario de nuevas criaturas: adaptó el formulario para permitir el alta de criaturas e incorporó los botones de acción, como “cancelar” y “nueva criatura” -- 85863fb.
-            
+         4. redireccion formIndex->main, Readme actualizado, links y search bar eliminados de detail -- 7726625
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/7726625c1d6bdd98b19d52e4b22d165d683044a1
 
-    
+         5. botones desplegables filtros en index.html, actualizacion form en formIndex --  b306deb
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/b306debaf8301cae997aed4a3298380deaaf90f6
+
+      - Ficheros en los que más he participado:
+         1. detail.html https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/details.html
+         2. Readme.md https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/README.md
+         3. index.hmtl https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/index.html
+         4. formIndex.html https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/formIndex.html
+          
+   - Joao Ortega
+      - Aportaciones:
+         
+         1. Adaptación inicial del template de hábitats: partió de la plantilla base y realizó cambios en la estructura visual, el sidebar, los estilos y algunos recursos gráficos para ajustarla al proyecto -- bc31cda ,  ab831b3 .
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/bc31cda662de8e28c97022fafab40a9adc97bca3
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/ab831b3c3f4eedd6b6cc98c77f5a5e1ef0dafd43
+
+         2.	Organización de la página principal: reorganizó la estructura del  index , separando mejor los elementos en columnas para mejorar la distribución del contenido y la navegación entre páginas -- e9fc446 .
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/e9fc446be8f9c75c9cc2524e622bcefa14b505de
+         3.	Reorganización de cards y botón de nueva zona: ajustó los espacios entre tarjetas e incorporó el botón de “nueva zona de caza”, mejorando la distribución de los elementos de filtro, buscador y creación de entidades principales -- edee422 .
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/edee42212edc506fc292956f0794e468af46f5c9
+         4. Creación del formulario de nuevas criaturas: adaptó el formulario para permitir el alta de criaturas e incorporó los botones de acción, como “cancelar” y “nueva criatura” -- 85863fb.
+         link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/85863fbcd98af72d3a6b04884b247c90ffd53f14
+         
+      - Fichero en los que mas he participado
+         1. index.hmtl https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/index.html
+         2. formIndex.html https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/formIndex.html          
+         3. styles.css https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/css/styles.css
+         4. 
+         5. 
