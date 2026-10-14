@@ -55,7 +55,7 @@
    ### Capturas de pantalla de las paginas
 
    Pagina principal
-   ![alt text](formIndex.png)
+   ![alt text](index.png)
 
    Pagina details (secundaria)
    ![alt text](details.png)
