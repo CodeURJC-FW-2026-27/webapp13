@@ -54,11 +54,19 @@
 ## Practica 1
    ### Capturas de pantalla de las paginas
 
+   Pagina principal
+   ![alt text](index.png)
+
+   Pagina details (secundaria)
+   ![alt text](details.png)
+
+   Pagina del form para entidades principales
+   ![alt text](formIndex.png)
 
 
    ### Participación de miembros
    - Carlos
-      - Descripcion:  Crear la primera iteracion del Readme.md y mantenerlo actualizado, implementar las entidades secundarias con sus datos en la pagina de detalle,esquematizacion de la pagina web con paint
+      - Descripcion:  Crear la primera iteracion del Readme.md y mantenerlo actualizado, implementar las entidades secundarias con sus datos en la pagina de detalle, esquematizacion de la pagina web con paint
       - Commits mas importantes:
          1. README actualizado fase de preparación
             Miembros del equipo y funcionalidades de la web -- 59edaf9
@@ -77,11 +85,12 @@
             link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/b306debaf8301cae997aed4a3298380deaaf90f6
 
       - Ficheros en los que más he participado:
-         1. detail.html https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/details.html
+         1. details.html https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/details.html
          2. Readme.md https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/README.md
          3. index.hmtl https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/index.html
          4. formIndex.html https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/formIndex.html
           
+
    - Joao Ortega
       - Aportaciones:
          
@@ -102,3 +111,36 @@
          3. styles.css https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/css/styles.css
          4. 
          5. 
+
+
+   - Nicolas
+      - Descripcion:  Al principio tuvimos un commit grupal en mi cuenta (usamos una extension para escribir codigo en mi portatil).
+         Tuve gran influencia en el tema, el contenido y datos de la pagina (especificados en el README) y un poco el formato de index html y details.
+         Me ocupe principalmente de los form, de el archivo formindex.html y el form de details.html y a estructura de las columnas y el grid.
+         Estandarizacion de codigo y forms y contenido de entidades principales y secundarias
+
+      - Commits mas importantes:
+         1. Primer prototipo de README, entidades principales y secundarias y todos los detalles de la pagina
+         https://github.com/CodeURJC-FW-2026-27/webapp13/commit/60518ca20aa1d4d73ca30b357e03e2d8b585f559
+
+         2. Primer commit realmente importante (aportacion de todos, escribimos codigo en mi portatil en clase)
+         Definicion de las bases de la pagina y primer prototipo
+         https://github.com/CodeURJC-FW-2026-27/webapp13/commit/8428e9bb0780df67f7a0ff4771fc7e09107fe3f2
+
+         3. Homogenizacion de los forms y forma final. Cambio de los rows y columnas y algun que otro retoque
+         https://github.com/CodeURJC-FW-2026-27/webapp13/commit/dfff6b27f25e209a226cca624c8aa4ee00e8e32b
+
+         4. Cambio en las columnas y la estructura de la pagina con el grid de bootstrap
+         https://github.com/CodeURJC-FW-2026-27/webapp13/commit/8e3fa08db1997dc02cecbb7f8df5a4f7327087b2
+
+         5. Añadido del form en la pagina de details y un poco de homogenizacion con el otro form
+         https://github.com/CodeURJC-FW-2026-27/webapp13/commit/19a40d312f6a666c5aa99df801455708e8511a5b
+
+      - Fichero en los que mas he participado
+         2. Readme.md https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/README.md
+         1. formIndex.html https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/formIndex.html
+         3. index.hmtl https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/index.html
+         4. details.html https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/details.html
+         5. los form.css e index.css 
+            https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/css/form.css
+            https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/css/index.css
