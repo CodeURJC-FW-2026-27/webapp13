@@ -5,7 +5,7 @@ export default router;
 
 router.get('/', (req, res) => {
     
-    res.render('index', {
+    res.render('index.html', {
         
     });
 
@@ -14,14 +14,14 @@ router.get('/', (req, res) => {
 
 router.get('/details', (req,res)=>{
     
-    res.render('details',{
+    res.render('details.html',{
         
     });
 });
 
 router.get('/form_index', (req,res)=>{
     
-    res.render('formIndex',{
+    res.render('formIndex.html',{
         
     });
 });
@@ -29,7 +29,7 @@ router.get('/form_index', (req,res)=>{
 //Function to create Monsters
 router.get('/create_monster', (req,res)=>{
     
-    res.render('details',{
+    res.render('details.html',{
         
     });
 });
