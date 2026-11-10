@@ -33,7 +33,7 @@
 | Debilidades | Fire, Water, Thunder, Ice, Dragon, None (procesado, 3 bits, de 0 a 5) | un string con uno/multiples valores |
 | Resistencias | Fire, Water, Thunder, Ice, Dragon, None (procesado, 3 bits, de 0 a 5) | un string con uno/multiples valores |
 | Habitat | Cualquier habitat, solo 1 | un string con un valor/multiples  |
-| Tamaño | Float, min 482.63cm  ~ Max 257 000.0 cm | cada criatura puede tomar un valor entre un min y max especificado |
+| Tamaño | Decimal, min 482.63cm  ~ Max 257 000.0 cm | cada criatura puede tomar un valor entre un min y max especificado |
 | Informacion en forma de texto | un string | informacion adicional sobre el monstruo y algun detalle |
  
 ### **Buscador, Filtrado  o categorización**

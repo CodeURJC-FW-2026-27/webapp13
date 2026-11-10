@@ -6,7 +6,7 @@ export default router;
 router.get('/', (req, res) => {
     
     res.render('index.html', {
-        
+        headerTitle:"Bestiario Monster Hunter"       
     });
 
 });
@@ -15,7 +15,8 @@ router.get('/', (req, res) => {
 router.get('/details', (req,res)=>{
     
     res.render('details.html',{
-        
+        //Hardcodeado, usaremos Params
+        headerTitle:"Yermo Agujas"        
     });
 });
 
