@@ -1,0 +1,171 @@
+[
+  {
+    "name": "Ancient Forest",
+    "difficulty": 1,
+    "ranks": [
+      true,
+      true,
+      true
+    ],
+    "image": "MHW-Ancient_Forest.jpg",
+    "environments": "Dense forest, Giant trees, Multi-level terrain, Underground caves, Vines and climbing paths, Streams, Mossy rocks, Rich wildlife",
+    "temperature": 1,
+    "description": "El Bosque Ancestral es una densa región boscosa dominada por árboles gigantescos y una vegetación exuberante que apenas deja pasar la luz en algunas zonas. Su terreno de varios niveles, con cuevas, raíces, enredaderas y arroyos, alberga una gran variedad de fauna y flora. Es el primer destino de los cazadores en el Nuevo Mundo y un entorno ideal para familiarizarse con la exploración y la caza."
+  },
+  {
+    "name": "Wildspire Waste",
+    "difficulty": 2,
+    "ranks": [
+      true,
+      true,
+      true
+    ],
+    "image": "MHW-Wildspire_Waste.jpg",
+    "environments": "Desert terrain, Savanna plains, Swamps, Underground caves, Rocky terrain, Open areas, Elevated ledges, Waterholes",
+    "temperature": 1,
+    "description": "El Yermo Hoja Afilada, o Yermo Aguzado, es una extensa región que combina zonas desérticas, sabanas, pantanos y cuevas subterráneas. Su gran variedad de ecosistemas permite la convivencia de numerosas especies, desde pequeñas criaturas hasta poderosos depredadores. Sus amplios espacios abiertos y sus distintos niveles de terreno la convierten en una localización muy versátil para la caza."
+  },
+  {
+    "name": "Coral Highlands",
+    "difficulty": 3,
+    "ranks": [
+      true,
+      true,
+      true
+    ],
+    "image": "MHW-Coral_Highlands.jpg",
+    "environments": "Coral formations, Mountainous terrain, Rocky terrain, Steep cliffs, High elevation differences, Vertical exploration, Lower underground passages, Elevated platforms",
+    "temperature": 1,
+    "description": "Los Altiplanos Coralinos son una región extraordinaria caracterizada por enormes formaciones de coral que crean un paisaje montañoso lleno de acantilados, plataformas y estructuras naturales. Su ecosistema presenta una gran variedad de criaturas y especies que habitan tanto en sus zonas inferiores como en las elevadas mesetas. La disposición vertical del terreno y sus numerosos desniveles convierten esta localización en un entorno especialmente interesante para la exploración y la caza."
+  },
+  {
+    "name": "Rotten Vale",
+    "difficulty": 4,
+    "ranks": [
+      true,
+      true,
+      true
+    ],
+    "image": "MHW-Rotten_Vale.jpg",
+    "environments": "Underground terrain, Humid environment, Rotting ecosystem, Toxic effluvium, Bone formations, Narrow passages, Rocky terrain, Vertical drops",
+    "temperature": 1,
+    "description": "El Valle Putrefacto es una enorme región subterránea formada por los restos óseos de criaturas que han habitado el Nuevo Mundo durante generaciones. Su ecosistema se caracteriza por la acumulación de cadáveres, la descomposición y la presencia de gases tóxicos conocidos como efluvios. Es un entorno peligroso donde la visibilidad y la supervivencia pueden verse comprometidas por las condiciones ambientales."
+  },
+  {
+    "name": "Elder's Recess",
+    "difficulty": 4,
+    "ranks": [
+      false,
+      true,
+      true
+    ],
+    "image": "MHW-Elders_Recess.jpg",
+    "environments": "Volcanic terrain, Magma formations, Crystal formations, Rocky terrain, Mountainous terrain, High temperatures, Steep slopes, Underground passages",
+    "temperature": 2,
+    "description": "El Lecho de los Ancianos es una región montañosa caracterizada por una intensa actividad volcánica y una enorme concentración de bioenergía. Sus terrenos presentan grandes formaciones cristalinas, zonas de magma y estructuras rocosas que albergan a algunas de las criaturas más poderosas del Nuevo Mundo. Las elevadas temperaturas y la peligrosidad de sus habitantes convierten esta región en un desafío considerable para los cazadores."
+  },
+  {
+    "name": "Hoarfrost Reach",
+    "difficulty": 4,
+    "ranks": [
+      false,
+      false,
+      true
+    ],
+    "image": "MHWI-Hoarfrost_Reach.jpg",
+    "environments": "Frozen terrain, Snow-covered mountains, Glacial formations, Frozen forests, Ice caves, Deep snow, Rocky terrain, Underground passages",
+    "temperature": 0,
+    "description": "El Arroyo de Escarcha es una extensa región helada descubierta durante los acontecimientos de Iceborne. Se caracteriza por sus enormes extensiones nevadas, montañas cubiertas de hielo, cuevas y bosques congelados. Sus condiciones climáticas extremas dificultan la exploración y obligan a los cazadores a prepararse adecuadamente contra las bajas temperaturas. A pesar de su aparente hostilidad, alberga una gran variedad de criaturas adaptadas a este ecosistema."
+  },
+  {
+    "name": "The Guiding Lands",
+    "difficulty": 5,
+    "ranks": [
+      false,
+      false,
+      true
+    ],
+    "image": "MHWI-Guiding_Lands.jpg",
+    "environments": "Multiple biomes, Forest terrain, Desert terrain, Coral formations, Rotting ecosystem, Volcanic terrain, Frozen terrain, Mountainous terrain, Variable elevation, High bioenergy concentration",
+    "temperature": 1,
+    "description": "Las Tierras Destino son una misteriosa región descubierta tras los acontecimientos principales de Iceborne. Se trata de un territorio extraordinario que reúne diferentes ecosistemas del Nuevo Mundo en una misma localización. Sus biomas presentan características propias de bosques, desiertos, regiones coralinas, zonas putrefactas, áreas volcánicas y regiones heladas. La abundante bioenergía permite la aparición de monstruos especialmente poderosos, convirtiendo esta región en uno de los mayores desafíos para los cazadores."
+  },
+  {
+    "name": "Caverns of El Dorado",
+    "difficulty": 5,
+    "ranks": [
+      false,
+      true,
+      true
+    ],
+    "image": "MHW-Caverns_of_El_Dorado.jpg",
+    "environments": "Underground terrain, Golden mineral formations, Rocky terrain, Volcanic environment, High temperatures, Large caverns, Narrow passages, Mineral deposits",
+    "temperature": 2,
+    "description": "Las Cavernas de El Dorado son una enorme red de galerías subterráneas caracterizadas por sus formaciones minerales y grandes depósitos de oro. Esta localización sirve como territorio de Kulve Taroth, un poderoso monstruo que recubre su cuerpo con materiales preciosos. Sus enormes cámaras, túneles y estructuras rocosas forman un escenario especialmente peligroso para los cazadores."
+  },
+  {
+    "name": "Castle Schrade",
+    "difficulty": 5,
+    "ranks": [
+      false,
+      false,
+      true
+    ],
+    "image": "MHWI-Castle_Schrade.jpg",
+    "environments": "Ancient ruins, Castle structures, Destroyed buildings, Rocky terrain, Stone walls, Defensive fortifications, Open combat areas, Environmental obstacles",
+    "temperature": 1,
+    "description": "El Castillo Schrade es una antigua fortaleza perteneciente a un reino desaparecido que fue destruido por Fatalis. Sus ruinas conservan restos de antiguas construcciones, murallas y estructuras defensivas que reflejan la magnitud de su destrucción. En esta localización tiene lugar uno de los enfrentamientos más peligrosos de Iceborne, donde los cazadores deben enfrentarse a Fatalis en un escenario repleto de obstáculos y mecanismos defensivos."
+  },
+  {
+    "name": "Origin Isle",
+    "difficulty": 5,
+    "ranks": [
+      false,
+      true,
+      false
+    ],
+    "image": "MHWI-Origin_Isle.jpg",
+    "environments": "Isolated environment, Rocky terrain, Crystal formations, High bioenergy concentration, Underground structures, Open combat areas",
+    "temperature": 1,
+    "description": "La Isla Origen es una localización especial vinculada a uno de los acontecimientos más importantes de Monster Hunter: World. Se trata de un entorno aislado caracterizado por sus formaciones rocosas y una intensa concentración de bioenergía. Esta localización está asociada al enfrentamiento contra Xeno'jiiva, una criatura extraordinaria relacionada con el flujo de energía del Nuevo Mundo."
+  },
+  {
+    "name": "Confluence of Fates",
+    "difficulty": 5,
+    "ranks": [
+      true,
+      true,
+      false
+    ],
+    "image": "MHW-Confluence_of_Fates.jpg",
+    "environments": "Volcanic terrain, Rocky formations, Magma formations, High temperatures, Geothermal activity, Large open areas, Environmental hazards",
+    "temperature": 2,
+    "description": "La Confluencia de Destinos es una localización especial relacionada con los acontecimientos que involucran a Zorah Magdaros. Este escenario presenta un entorno rocoso y volcánico donde se desarrollan enfrentamientos de gran escala. Sus formaciones naturales y su intensa actividad geotérmica convierten la zona en un lugar peligroso para los cazadores, especialmente durante las operaciones destinadas a contener a criaturas de enormes dimensiones."
+  },
+  {
+    "name": "Everstream",
+    "difficulty": 2,
+    "ranks": [
+      true,
+      false,
+      false
+    ],
+    "image": "MHW-Everstream.jpg",
+    "environments": "Open combat area, Rocky terrain, Defensive structures, Artillery positions, Large open areas",
+    "temperature": 1,
+    "description": "El Cauce Eterno es la localización especial a la que se dirige Zorah Magdaros en su avance hacia el Nuevo Mundo. Se trata de un escenario amplio y abierto, preparado con estructuras defensivas y artillería para el enfrentamiento final contra el gigantesco Dragón Anciano."
+  },
+  {
+    "name": "Secluded Valley",
+    "difficulty": 5,
+    "ranks": [
+      false,
+      false,
+      true
+    ],
+    "image": "MHWI-Secluded_Valley.jpg",
+    "environments": "Lifeless terrain, Multi-layered area, Rocky terrain, Shed Xeno'jiiva hide, High bioenergy concentration, Open combat areas",
+    "temperature": 1,
+    "description": "El Valle Recóndito es una zona de varios niveles situada en lo más profundo de las Tierras Destino, completamente desprovista de vida. Es el nido de Safi'jiiva y en él abundan los restos de piel mudada de Xeno'jiiva, en un escenario aislado y cargado de bioenergía."
+  }
+]
