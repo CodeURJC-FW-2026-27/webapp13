@@ -18,42 +18,44 @@
     <!-- Responsive navbar-->
     <!-- Page header with logo and tagline-->
     {{>header}}
+
     <!-- Page content-->
     <div class="container">
       <div class="row">
         <!-- habitat principal-->
+        {{#zone}}
         <div class="card mb-4">
           <img
             class="card-img-top"
-            src="/image?filename={{zone.image}}"
+            src="/image?filename={{image}}"
             alt="..."
           />
           <div class="card-body">
-            <h2 class="card-title">{{zone.name}}</h2>
+            <h2 class="card-title">{{name}}</h2>
             <div class="atributes">
               <table class="table">
                 <tr>
                   <td>Dificultad</td>
-                  <td>{{zoneDifficulty}}</td>
+                  <td>{{getDifficulty}}</td>
                 </tr>
                 <tr>
                   <td>Categoria</td>
-                  <td>{{zoneRanks}}</td>
+                  <td>{{getRanks}}</td>
                 </tr>
                 <tr>
                   <td>Entorno</td>
                   <td>
-                    {{zone.environments}}
+                    {{environments}}
                   </td>
                 </tr>
                 <tr>
                   <td>Temperatura</td>
-                  <td>{{zoneRemperature}}</td>
+                  <td>{{getTemperature}}</td>
                 </tr>
               </table>
             </div>
             <p class="card-text">
-              {{zone.description}}
+              {{description}}
             </p>
             <a class="btn btn-primary" href="#detailsFormDiv">Nueva criatura</a>
             <a class="btn btn-primary" href="#!">Borrar</a>
@@ -64,6 +66,7 @@
           </div>
         </div>
       </div>
+      {{/zone}}
       <!-- Nested row for Creaturess-->
 
       <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
@@ -83,14 +86,14 @@
               <tbody>
                 <tr>
                   <td>Dificultad</td>
-                  <td>{{monstersDifficulty}}</td>
+                  <td>{{getDifficulty}}</td>
                 </tr>
                 <tr>
                   <td>Categorias</td>
                   
                   
                   <td>
-                    {{monstersRanks}}
+                    {{getRanks}}
                   </td>
 
                 </tr>
@@ -120,7 +123,7 @@
                 </tr>
                 <tr>
                   <td>Tamaño(en cm)</td>
-                  <td>{{minSize}} - {{maxSize}}</td>
+                  <td>{{getMinSize}} - {{getMaxSize}}</td>
                 </tr>
               </tbody>
             </table>
@@ -135,7 +138,6 @@
           <p>No monsters found.</p>
         {{/monsters}}
 
-         {{elements}}
       </div>
 
       <div class="row" id="detailsFormDiv">

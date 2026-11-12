@@ -26,53 +26,44 @@ router.get("/details", async (req, res) => {
     console.log(`The zone with the id ${id} doesn't exist`);
     res.sendStatus(404);
   } else {
-
-    const difficultyToStars = (param) => {
-      return "⭐".repeat(param.difficulty);
-    };
-
-    const ranksToString = (param) => {
-      let s = "" + param.ranks[0] ? "LR " : "";
-      s += param.ranks[1] ? "HR " : "";
-      s += param.ranks[2] ? "MR" : "";
-
-      return s;
-    };
-
-    const temperatureToString = (param) => {
-      let s = "";
-      switch (param.temperature) {
-        case 0:
-          s = "Frostbite";
-          break;
-        case 1:
-          s = "Temperate climate";
-          break;
-        case 2:
-          s = "Scorching";
-          break;
-      }
-
-      return s;
-    };
-
     res.render("details.html", {
       headerTitle: zone.name,
       zone: zone,
       monsters: zone.monsters,
-      zoneDifficulty: difficultyToStars(zone),
-      zoneRanks: ranksToString(zone),
-      zoneRemperature: temperatureToString(zone),
-      monstersDifficulty: function () {
+      getDifficulty: function () {
         return "⭐".repeat(this.difficulty);
       },
-      monstersRanks: function () {
+      getRanks: function () {
         let s = "" + this.ranks[0] ? "LR " : "";
         s += this.ranks[1] ? "HR " : "";
         s += this.ranks[2] ? "MR" : "";
 
         return s;
       },
+      getTemperature: function () {
+        let s = "";
+        switch (this.temperature) {
+          case 0:
+            s = "Frostbite";
+            break;
+          case 1:
+            s = "Temperate climate";
+            break;
+          case 2:
+            s = "Scorching";
+            break;
+        }
+
+        return s;
+      },
+      getMinSize: function (){
+        if (this.minSize)
+          return this.minSize.toString();
+      },
+      getMaxSize: function (){
+        if (this.maxSize)
+          return this.maxSize.toString();
+      }
     });
   }
 });
