@@ -25,11 +25,7 @@
         <!-- habitat principal-->
         {{#zone}}
         <div class="card mb-4">
-          <img
-            class="card-img-top"
-            src="/image?filename={{image}}"
-            alt="..."
-          />
+          <img class="card-img-top" src="/image?filename={{image}}" alt="..." />
           <div class="card-body">
             <h2 class="card-title">{{name}}</h2>
             <div class="atributes">
@@ -44,9 +40,7 @@
                 </tr>
                 <tr>
                   <td>Entorno</td>
-                  <td>
-                    {{environments}}
-                  </td>
+                  <td>{{zone.environment}}</td>
                 </tr>
                 <tr>
                   <td>Temperatura</td>
@@ -54,11 +48,9 @@
                 </tr>
               </table>
             </div>
-            <p class="card-text">
-              {{description}}
-            </p>
+            <p class="card-text">{{description}}</p>
             <a class="btn btn-primary" href="#detailsFormDiv">Nueva criatura</a>
-            <a class="btn btn-primary" href="#!">Borrar</a>
+            <a class="btn btn-primary" href="/deletePost?id={{_id}}">Borrar</a>
             <a class="btn btn-primary" href="#!">Editar</a>
             <a class="btn btn-primary" href="./"
               >Volver a la pagina principal</a
@@ -74,11 +66,7 @@
 
         {{#monsters}}
         <div class="card">
-          <img
-            class="card-img-top"
-            src="/image?filename={{image}}"
-            alt="..."
-          />
+          <img class="card-img-top" src="/image?filename={{image}}" alt="..." />
           <!-- PONER IMAGER-->
           <div class="card-body">
             <h2 class="card-title h4">{{name}}</h2>
@@ -90,12 +78,8 @@
                 </tr>
                 <tr>
                   <td>Categorias</td>
-                  
-                  
-                  <td>
-                    {{getRanks}}
-                  </td>
 
+                  <td>{{getRanks}}</td>
                 </tr>
                 <tr>
                   <td>Especie</td>
@@ -132,17 +116,24 @@
             <a class="btn btn-primary" href="#!">Editar</a>
           </div>
         </div>
+        {{/monsters}} {{^monsters}}
+        <p>No monsters found.</p>
         {{/monsters}}
-
-        {{^monsters}}
-          <p>No monsters found.</p>
-        {{/monsters}}
-
       </div>
 
       <div class="row" id="detailsFormDiv">
         <!---New creature form-->
         <form>
+          <div class="form-group formDiv">
+            <label for="formDetailsName">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="formDetailsName"
+              placeholder="Introduce el nombre del monstruo"
+            />
+          </div>
+
           <!--Dificulty-->
           <div class="form-group formDiv">
             <!-- A single choice selection to represent the difficulty of the zone,
@@ -158,51 +149,51 @@
               <div class="formContainerItem col">
                 <input
                   type="radio"
-                  name="formIndexDificultadButton"
+                  name="formDetailsDificultadButton"
                   value="0"
-                  id="formIndexDificultadButton1"
+                  id="formDetailsDificultadButton1"
                 />
-                <label for="formIndexDificultadButton1">⭐</label>
+                <label for="formDetailsDificultadButton1">⭐</label>
               </div>
 
               <div class="formContainerItem col">
                 <input
                   type="radio"
-                  name="formIndexDificultadButton"
+                  name="formDetailsDificultadButton"
                   value="1"
-                  id="formIndexDificultadButton2"
+                  id="formDetailsDificultadButton2"
                 />
-                <label for="formIndexDificultadButton2">⭐⭐</label>
+                <label for="formDetailsDificultadButton2">⭐⭐</label>
               </div>
 
               <div class="formContainerItem col">
                 <input
                   type="radio"
-                  name="formIndexDificultadButton"
+                  name="formDetailsDificultadButton"
                   value="2"
-                  id="formIndexDificultadButton3"
+                  id="formDetailsDificultadButton3"
                 />
-                <label for="formIndexDificultadButton3">⭐⭐⭐</label>
+                <label for="formDetailsDificultadButton3">⭐⭐⭐</label>
               </div>
 
               <div class="formContainerItem col">
                 <input
                   type="radio"
-                  name="formIndexDificultadButton"
+                  name="formDetailsDificultadButton"
                   value="3"
-                  id="formIndexDificultadButton4"
+                  id="formDetailsDificultadButton4"
                 />
-                <label for="formIndexDificultadButton4">⭐⭐⭐⭐</label>
+                <label for="formDetailsDificultadButton4">⭐⭐⭐⭐</label>
               </div>
 
               <div class="formContainerItem col">
                 <input
                   type="radio"
-                  name="formIndexDificultadButton"
+                  name="formDetailsDificultadButton"
                   value="4"
-                  id="formIndexDificultadButton5"
+                  id="formDetailsDificultadButton5"
                 />
-                <label for="formIndexDificultadButton5">⭐⭐⭐⭐⭐</label>
+                <label for="formDetailsDificultadButton5">⭐⭐⭐⭐⭐</label>
               </div>
             </div>
           </div>
@@ -215,54 +206,54 @@
             <div class="formContainerItem">
               <input
                 type="checkbox"
-                id="formIndexCategorias1"
-                name="formIndexCategorias1"
+                id="formDetailsCategorias1"
+                name="formDetailsCategorias1"
                 value="0"
               />
-              <label for="formIndexCategorias1">Low Rank</label>
+              <label for="formDetailsCategorias1">Low Rank</label>
             </div>
 
             <div class="formContainerItem">
               <input
                 type="checkbox"
-                id="formIndexCategorias2"
-                name="formIndexCategorias2"
+                id="formDetailsCategorias2"
+                name="formDetailsCategorias2"
                 value="1"
               />
-              <label for="formIndexCategorias2">High Rank</label>
+              <label for="formDetailsCategorias2">High Rank</label>
             </div>
 
             <div class="formContainerItem">
               <input
                 type="checkbox"
-                id="formIndexCategorias3"
-                name="formIndexCategorias3"
+                id="formDetailsCategorias3"
+                name="formDetailsCategorias3"
                 value="2"
               />
-              <label for="formIndexCategorias3">Master Rank</label>
+              <label for="formDetailsCategorias3">Master Rank</label>
             </div>
           </div>
 
           <!--Image-->
           <div class="form-group formDiv">
-            <label for="formIndexMonsterImage" class="formButtonLabel"
+            <label for="formDetailsMonsterImage" class="formButtonLabel"
               >Imagen de la criatura</label
             >
             <input
               type="file"
               class="form-control"
-              id="formIndexMonsterImage"
+              id="formDetailsMonsterImage"
             />
           </div>
 
           <!--Species-->
           <div class="form-group formDiv">
-            <label for="formIndexMonsterCategory" class="formButtonLabel"
+            <label for="formDetailsMonsterCategory" class="formButtonLabel"
               >Especie del monstruo</label
             >
             <select
               class="form-select"
-              id="formIndexMonsterCategory"
+              id="formDetailsMonsterCategory"
               aria-label="Default select example"
             >
               <option value="Bird_Wyvern">Bird-Wyvern</option>
@@ -278,10 +269,10 @@
 
           <!--Monster Element-->
           <div class="form-group formDiv">
-            <label for="formIndexMonsterElement" class="formButtonLabel"
+            <label for="formDetailsMonsterElement" class="formButtonLabel"
               >Elemento del Monstruo</label
             >
-            <select class="form-select" id="formIndexMonsterElement">
+            <select class="form-select" id="formDetailsMonsterElement">
               <option value="fire">Fire</option>
               <option value="water">Water</option>
               <option value="thunder">Thunder</option>
@@ -293,10 +284,10 @@
 
           <!--Monster Status-->
           <div class="form-group formDiv">
-            <label for="formIndexMonsterStatus" class="formButtonLabel"
+            <label for="formDetailsMonsterStatus" class="formButtonLabel"
               >Efectos inflingidos</label
             >
-            <select class="form-select" id="formIndexMonsterStatus">
+            <select class="form-select" id="formDetailsMonsterStatus">
               <option value="poison">Poison</option>
               <option value="stun">Stun</option>
               <option value="paralysis">Paralysis</option>
@@ -310,10 +301,10 @@
 
           <!--Monster Weaknesses-->
           <div class="form-group formDiv">
-            <label for="formIndexMonsterWeaknesses" class="formButtonLabel"
+            <label for="formDetailsMonsterWeaknesses" class="formButtonLabel"
               >Debilidades del monstruo</label
             >
-            <select class="form-select" id="formIndexMonsterWeaknesses">
+            <select class="form-select" id="formDetailsMonsterWeaknesses">
               <option value="fire">Fire</option>
               <option value="water">Water</option>
               <option value="thunder">Thunder</option>
@@ -325,10 +316,10 @@
 
           <!--Monster Resistance-->
           <div class="form-group formDiv">
-            <label for="formIndexMonsterResistance" class="formButtonLabel"
+            <label for="formDetailsMonsterResistance" class="formButtonLabel"
               >Resistencia del monstruo</label
             >
-            <select class="form-select" id="formIndexMonsterResistance">
+            <select class="form-select" id="formDetailsMonsterResistance">
               <option value="fire">Fire</option>
               <option value="water">Water</option>
               <option value="thunder">Thunder</option>
@@ -340,10 +331,10 @@
 
           <!--Monster Habitat-->
           <div class="form-group formDiv">
-            <label for="formIndexMonsterHabitat" class="formButtonLabel"
+            <label for="formDetailsMonsterHabitat" class="formButtonLabel"
               >Habitat</label
             >
-            <select class="form-select" id="formIndexMonsterHabitat">
+            <select class="form-select" id="formDetailsMonsterHabitat">
               <option value="wildspire_waste">Wildspire Waste</option>
               <option value="ancient_forest">Ancient Forest</option>
               <option value="coral_highlands">Coral Highlands</option>
