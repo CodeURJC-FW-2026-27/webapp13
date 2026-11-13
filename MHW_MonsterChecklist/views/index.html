@@ -17,7 +17,7 @@
 
   <body>
     <!-- Page header with logo and tagline-->
-     {{>header}}
+    {{>header}}
 
     <!-- Page content-->
     <div class="container">
@@ -116,7 +116,7 @@
             <div class="card-header">Nueva Zona</div>
             <div class="card-body">
               <a class="btn btn-primary" href="/form_Index">Crear Zona</a>
-            </div>  
+            </div>
           </div>
         </div>
       </div>
@@ -125,200 +125,35 @@
       <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
         <!-- Areas-->
 
+        <!-- hacer un for para que devuelva todas las areas con cada info -->
+        {{#zones}}
         <div class="col IndexCol">
           <div class="card">
-            <a href="/details"
+            <a href="./details?id={{_id}}"
               ><img
                 class="card-img-top"
-                src="/img/Zones/MHW-Yermo_de_Agujas.jpg"
-                alt="..."
-            /></a>
+                src="/image?filename={{image}}"
+                alt="..." /></a
+            >
             <div class="card-body">
-              <h2 class="card-title h4">YERMO DE AGUJAS</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="/details">Read more →</a>
+              <h2 class="card-title h4">{{name}}</h2>
+              <p class="card-text">{{description}}</p>
+              <a class="btn btn-primary" href="./details?id={{_id}}"
+                >Read more →</a
+              >
             </div>
           </div>
         </div>
 
-        <div class="col IndexCol">
-          <div class="card">
-            <a href="/details"
-              ><img
-                class="card-img-top"
-                src="/img/Zones/MHW-Ancient_Forest.jpg"
-                alt="..."
-            /></a>
-            <div class="card-body">
-              <h2 class="card-title h4">Bosque Antiguo</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="/details">Read more →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col IndexCol">
-          <div class="card">
-            <a href="/details"
-              ><img
-                class="card-img-top"
-                src="/img/Zones/MHW-Caverns_of_El_Dorado.jpg"
-                alt="..."
-            /></a>
-            <div class="card-body">
-              <h2 class="card-title h4">Cavernas de El Dorado</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="/details">Read more →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col IndexCol">
-          <div class="card">
-            <a href="/details"
-              ><img
-                class="card-img-top"
-                src="/img/Zones/MHW-Confluence_of_Fates.jpg"
-                alt="..."
-            /></a>
-            <div class="card-body">
-              <h2 class="card-title h4">Confluencia de Destinos</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="/details">Read more →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col IndexCol">
-          <div class="card">
-            <a href="/details"
-              ><img
-                class="card-img-top"
-                src="/img/Zones/MHW-Coral_Highlands.jpg"
-                alt="..."
-            /></a>
-            <div class="card-body">
-              <h2 class="card-title h4">Altiplanos Coralinos</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="/details">Read more →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col IndexCol">
-          <div class="card">
-            <a href="/details"
-              ><img
-                class="card-img-top"
-                src="/img/Zones/MHW-Elders_Recess.jpg"
-                alt="..."
-            /></a>
-            <div class="card-body">
-              <h2 class="card-title h4">Lecho de los Ancianos</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="/details">Read more →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col IndexCol">
-          <div class="card">
-            <a href="details.html"
-              ><img
-                class="card-img-top"
-                src="/img/Zones/MHW-Rotten_Vale.jpg"
-                alt="..."
-            /></a>
-            <div class="card-body">
-              <h2 class="card-title h4">Valle Putrefacto</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="details.html">Read more →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col IndexCol">
-          <div class="card">
-            <a href="details.html"
-              ><img
-                class="card-img-top"
-                src="/img/Zones/MHWI-Castle_Schrade.jpg"
-                alt="..."
-            /></a>
-            <div class="card-body">
-              <h2 class="card-title h4">Castillo Schrade</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="details.html">Read more →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col IndexCol">
-          <div class="card">
-            <a href="details.html"
-              ><img
-                class="card-img-top"
-                src="/img/Zones/MHWI-Hoarfrost_Reach.jpg"
-                alt="..."
-            /></a>
-            <div class="card-body">
-              <h2 class="card-title h4">Arroyo de Escarcha</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="details.html">Read more →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col IndexCol">
-          <div class="card">
-            <a href="/details"
-              ><img
-                class="card-img-top"
-                src="/img/Zones/MHWI-Origin_Isle.jpg"
-                alt="..."
-            /></a>
-            <div class="card-body">
-              <h2 class="card-title h4">Isla Origen</h2>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Reiciendis aliquid atque, nulla.
-              </p>
-              <a class="btn btn-primary" href="/details">Read more →</a>
-            </div>
-          </div>
-        </div>
+        {{/zones}} {{^zones}}
+        <p>No areas found.</p>
+        {{/zones}}
       </div>
     </div>
 
     <!-- Footer-->
     {{>footer}}
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
