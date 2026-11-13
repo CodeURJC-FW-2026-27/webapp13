@@ -27,6 +27,7 @@ router.get("/details", async (req, res) => {
     res.sendStatus(404);
   } else {
     res.render("details.html", {
+      id:id,
       headerTitle: zone.name,
       zone: zone,
       monsters: zone.monsters,
@@ -84,6 +85,7 @@ router.get("/form_index", (req, res) => {
   });
 });
 
+<<<<<<< Updated upstream
 const upload = multer({ dest: "uploads/" });
 
 router.post(
@@ -177,3 +179,27 @@ router.get("/deleteMonster", async (req,res)=>{
       id_zone:id
     });
   })
+=======
+router.post("/new_creature", async (req,res)=> {
+let id = req.query.id;
+let zone= await database.getPost(id);
+let monster = {
+ name: req.body.name,
+dificulty: req.body.formIndexDificultadButton,
+ranks:[req.body.formIndexCategorias1,req.body.formIndexCategorias2,req.body.formIndexCategorias3],
+image:"MHRise-Render_Kulu-Ya-Ku.jpg",
+species:req.body.species,
+elements: [req.body.elements],
+effects:[req.body.effects],
+weaknesses:[req.body.weaknesses],
+resistances:[req.body.resistances],
+habitat:req.body.habitat,
+minSize:req.body.minSize,
+maxSize: req.body.maxSize,
+information:req.body.information
+}
+database.addMonster(id,monster);
+res.redirect(`details?id=${id}`)
+
+})
+>>>>>>> Stashed changes
