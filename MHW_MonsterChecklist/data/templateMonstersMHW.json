@@ -85,8 +85,8 @@
     "weaknesses": ["Fire"],
     "resistances": [],
     "habitat": "Ancient Forest",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 277.42,
+    "maxSize": 1997.39,
     "information": "El Great Jagras es un voraz Fanged Wyvern que devora todo lo que encuentra a su paso, de modo que su estómago se hincha tras cada comida. Es uno de los primeros monstruos a los que se enfrentan los cazadores y resulta ideal para aprender las bases de la caza."
   },
   {
@@ -100,8 +100,8 @@
     "weaknesses": ["Thunder"],
     "resistances": [],
     "habitat": "Ancient Forest",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 970.16,
+    "maxSize": 1344.99,
     "information": "El Pukei-Pukei es un Bird Wyvern que se alimenta de plantas venenosas y que utiliza su larga lengua para atacar y recolectar frutos. Escupe proyectiles tóxicos y puede envenenar a los cazadores, por lo que conviene ir preparado para el veneno."
   },
   {
@@ -115,8 +115,8 @@
     "weaknesses": ["Water"],
     "resistances": [],
     "habitat": "Ancient Forest",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1448.88,
+    "maxSize": 2008.68,
     "information": "El Anjanath es un agresivo y territorial Brute Wyvern que domina la cima de la cadena alimentaria del Bosque Ancestral. Su característica nariz le permite detectar presas a gran distancia y es capaz de lanzar llamas por la boca, así que es importante controlar la distancia durante el combate."
   },
   {
@@ -130,8 +130,8 @@
     "weaknesses": ["Dragon"],
     "resistances": [],
     "habitat": "Ancient Forest",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1499.71,
+    "maxSize": 2130.27,
     "information": "El Rathalos, conocido como el Rey de los Cielos, es un Flying Wyvern de gran agilidad que ataca desde el aire con llamas y con la poderosa púa venenosa de su cola. Es uno de los monstruos más emblemáticos de la saga y un rival muy respetado por los cazadores."
   },
   {
@@ -145,8 +145,8 @@
     "weaknesses": ["Ice"],
     "resistances": [],
     "habitat": "Wildspire Waste",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1844.7,
+    "maxSize": 2620.31,
     "information": "El Diablos es un enorme y agresivo Flying Wyvern del desierto que, con sus potentes cuernos, embiste sin descanso a todo lo que se cruza en su camino. Puede esconderse bajo la arena para emerger de golpe, por lo que exige atención constante."
   },
   {
@@ -160,8 +160,8 @@
     "weaknesses": ["Ice"],
     "resistances": ["Thunder"],
     "habitat": "Wildspire Waste",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1448.89,
+    "maxSize": 2008.68,
     "information": "El Fulgur Anjanath es la subespecie eléctrica del Anjanath. Su cuerpo genera descargas de energía que utiliza para atacar y electrizar a sus rivales, algo que lo hace especialmente peligroso en combates a corta distancia."
   },
   {
@@ -175,8 +175,8 @@
     "weaknesses": ["Thunder"],
     "resistances": ["Ice"],
     "habitat": "Coral Highlands",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1495.78,
+    "maxSize": 2124.69,
     "information": "La Legiana es un elegante Flying Wyvern de aspecto helado cuya cola emite una intensa corriente de aire frío. Utiliza su agilidad aérea para atacar con ráfagas heladas y puede congelar a los cazadores, por lo que es importante tener cuidado con sus embestidas."
   },
   {
@@ -190,8 +190,8 @@
     "weaknesses": ["Ice"],
     "resistances": [],
     "habitat": "Rotten Vale",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 541.61,
+    "maxSize": 1735.94,
     "information": "El Odogaron es un Fanged Wyvern ágil y despiadado que ataca con una rapidez sorprendente, encadenando mordiscos y zarpazos que provocan sangrado. Su apariencia musculosa y su agresividad lo convierten en un cazador implacable."
   },
   {
@@ -205,8 +205,8 @@
     "weaknesses": ["Thunder"],
     "resistances": [],
     "habitat": "Elder's Recess",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1626.35,
+    "maxSize": 2310.14,
     "information": "El Nergigante es un Dragón Anciano de gran agresividad que se alimenta de otros Dragones Ancianos para recuperar su fuerza. Su cuerpo está cubierto de espinas que se regeneran y endurecen con el combate, lo que le permite lanzar devastadores ataques."
   },
   {
@@ -220,8 +220,8 @@
     "weaknesses": ["Ice"],
     "resistances": [],
     "habitat": "Caverns of El Dorado",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 4573.25,
+    "maxSize": 4573.25,
     "information": "La Kulve Taroth es una Dragón Anciana que recubre su cuerpo con oro y otros materiales preciosos y habita las Cavernas de El Dorado. Se trata de un combate de gran escala en el que los cazadores deben colaborar para destruir sus partes valiosas y hacerse con sus tesoros."
   },
   {
@@ -235,8 +235,8 @@
     "weaknesses": ["Dragon"],
     "resistances": ["Fire"],
     "habitat": "Castle Schrade",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 4137.17,
+    "maxSize": 4137.17,
     "information": "El Fatalis es un legendario Dragón Anciano que destruyó el reino de Schrade. Con su descomunal poder y sus devastadoras llamas, es considerado el mayor desafío de Iceborne y un rival que pocos cazadores pueden derrotar."
   },
   {
@@ -250,8 +250,8 @@
     "weaknesses": ["Fire"],
     "resistances": ["Ice"],
     "habitat": "Hoarfrost Reach",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1479.17,
+    "maxSize": 2044.25,
     "information": "El Beotodus es un Piscine Wyvern adaptado a las gélidas condiciones del Arroyo de Escarcha. Se desplaza bajo la nieve y emerge de golpe para atacar con su cuerpo helado, por lo que es habitual encontrarlo entre los primeros monstruos de la expansión."
   },
   {
@@ -265,8 +265,8 @@
     "weaknesses": ["Thunder"],
     "resistances": [],
     "habitat": "Hoarfrost Reach",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1710.02,
+    "maxSize": 2914.8,
     "information": "El Tigrex es un Flying Wyvern surgido de tiempos remotos, famoso por su ensordecedor rugido y sus poderosas patas con las que realiza arrolladoras embestidas. Su salvajismo lo convierte en uno de los monstruos más peligrosos de la expansión."
   },
   {
@@ -280,8 +280,8 @@
     "weaknesses": ["Fire"],
     "resistances": ["Ice"],
     "habitat": "Hoarfrost Reach",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1846.5,
+    "maxSize": 2622.88,
     "information": "El Barioth es un Fanged Wyvern ágil y feroz que habita en los terrenos nevados del Arroyo de Escarcha. Sus colmillos le permiten trepar por paredes de hielo y se lanza sobre sus presas con rapidez, usando su aliento helado y sus garras."
   },
   {
@@ -295,8 +295,8 @@
     "weaknesses": ["Fire"],
     "resistances": ["Ice"],
     "habitat": "Hoarfrost Reach",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 2284.52,
+    "maxSize": 3245.06,
     "information": "La Velkhana es la Dragón Anciana insignia de Iceborne, capaz de controlar el hielo a su voluntad. Congela su entorno con un poder arrollador y es un rival temible que exige preparación y resistencia frente a sus ataques helados."
   },
   {
@@ -310,8 +310,8 @@
     "weaknesses": ["Water"],
     "resistances": ["Thunder"],
     "habitat": "Ancient Forest",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 767.31,
+    "maxSize": 1586.63,
     "information": "El Tobi-Kadachi es un ágil Fanged Wyvern que se desplaza por las alturas del Bosque Ancestral y planea entre los árboles. Acumula electricidad en su pelaje y la descarga contra sus presas, así que puede provocar Thunderblight a los cazadores."
   },
   {
@@ -325,8 +325,8 @@
     "weaknesses": ["Dragon", "Thunder"],
     "resistances": ["Fire"],
     "habitat": "Ancient Forest",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1543.85,
+    "maxSize": 2192.96,
     "information": "La Rathian, la Reina de la Tierra, es la pareja de Rathalos y una Flying Wyvern muy territorial. Ataca con bolas de fuego y con la púa venenosa de su cola, por lo que conviene llevar antídotos al enfrentarse a ella."
   },
   {
@@ -340,8 +340,8 @@
     "weaknesses": ["Fire"],
     "resistances": [],
     "habitat": "Coral Highlands",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1006.16,
+    "maxSize": 1429.2,
     "information": "El Paolumu es una Flying Wyvern esponjosa que se infla con aire para flotar sobre los Altiplanos Coralinos. Libera polvo que puede dormir a los cazadores y usa su vuelo y su cuerpo inflado para esquivar y atacar desde arriba."
   },
   {
@@ -355,8 +355,8 @@
     "weaknesses": ["Thunder", "Ice"],
     "resistances": [],
     "habitat": "Coral Highlands",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 786.76,
+    "maxSize": 1117.55,
     "information": "El Tzitzi-Ya-Ku es un Bird Wyvern de tamaño medio que emite destellos de luz con sus órganos luminosos para cegar a los cazadores. Aprovecha el desconcierto para atacar con rapidez, así que conviene prever sus flashes."
   },
   {
@@ -370,8 +370,8 @@
     "weaknesses": ["Dragon"],
     "resistances": ["Fire"],
     "habitat": "Coral Highlands",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1543.85,
+    "maxSize": 2192.96,
     "information": "La Pink Rathian es la subespecie de la Rathian, con un llamativo color rosado y una toxicidad más peligrosa. Sus ataques envenenan con más facilidad y su agresividad aumenta en los Altiplanos Coralinos."
   },
   {
@@ -385,8 +385,8 @@
     "weaknesses": ["Water"],
     "resistances": [],
     "habitat": "Rotten Vale",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 926.77,
+    "maxSize": 1316.44,
     "information": "El Great Girros es un Fanged Wyvern que vive en el Valle Putrefacto y se alimenta de restos. Sus colmillos contienen una toxina capaz de paralizar a los cazadores, y a menudo ataca en grupo con otros Girros."
   },
   {
@@ -400,8 +400,8 @@
     "weaknesses": ["Dragon", "Ice"],
     "resistances": [],
     "habitat": "Rotten Vale",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1587.05,
+    "maxSize": 2200.23,
     "information": "El Radobaan es un Brute Wyvern que se alimenta de huesos, con cuyo calcio refuerza su cuerpo. Su mandíbula y su cola de hueso son peligrosas, y ataca con embestidas y golpes muy contundentes."
   },
   {
@@ -415,8 +415,8 @@
     "weaknesses": ["Fire", "Dragon"],
     "resistances": ["Water"],
     "habitat": "Rotten Vale",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1843.95,
+    "maxSize": 2619.25,
     "information": "El Vaal Hazak es un Dragón Anciano que habita en lo más profundo del Valle Putrefacto y se rodea de efluvios tóxicos. Utiliza sus alas y una niebla de gas mortal para atacar y debilitar a los cazadores, por lo que la visibilidad es clave."
   },
   {
@@ -430,8 +430,8 @@
     "weaknesses": ["Thunder"],
     "resistances": [],
     "habitat": "Elder's Recess",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 977.78,
+    "maxSize": 2000.0,
     "information": "El Dodogama es un Fanged Wyvern que consume rocas de aspecto volcánico y las usa para expulsar proyectiles abrasadores. Lo encontrarás en el Lecho de los Ancianos, donde su dieta mineral lo convierte en un rival explosivo."
   },
   {
@@ -445,8 +445,8 @@
     "weaknesses": ["Water"],
     "resistances": [],
     "habitat": "Elder's Recess",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1811.59,
+    "maxSize": 2511.53,
     "information": "El Uragaan es un Brute Wyvern de gran tamaño cuyo cuerpo blindado parece una enorme roca. Aplasta a sus enemigos con la fuerza de su cuerpo rodando y con su poderosa mandíbula, lo que obliga a vigilar siempre su posición."
   },
   {
@@ -460,8 +460,8 @@
     "weaknesses": ["Water"],
     "resistances": ["Fire"],
     "habitat": "Elder's Recess",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1581.57,
+    "maxSize": 2246.55,
     "information": "El Lavasioth es un Piscine Wyvern que nada en el magma del Lecho de los Ancianos como si fuera agua. Escupe lava y puede incendiar a los cazadores, por lo que resulta muy útil contar con resistencia al fuego."
   },
   {
@@ -475,8 +475,8 @@
     "weaknesses": ["Water", "Ice"],
     "resistances": ["Fire"],
     "habitat": "Elder's Recess",
-    "minSize": null,
-    "maxSize": null,
+    "minSize": 1575.33,
+    "maxSize": 2237.69,
     "information": "El Teostra, el Emperador de las Llamas, es un Dragón Anciano que domina el fuego y las explosiones con su polvo. Sus ataques provocan potentes estallidos y exigen mantener la distancia mientras se esquivan sus oleadas de llamas."
   },
   {
@@ -489,9 +489,9 @@
     "effects": ["Fireblight"],
     "weaknesses": ["Dragon", "Water"],
     "resistances": ["Fire"],
-    "habitat": "Great Ravine",
-    "minSize": null,
-    "maxSize": null,
+    "habitat": "Everstream",
+    "minSize": 25764.59,
+    "maxSize": 25764.59,
     "information": "El Zorah Magdaros es un colosal Dragón Anciano con un cuerpo similar a un volcán viviente que se desplaza por el Nuevo Mundo. Se enfrenta a él una operación de la Comisión de Investigación con artillería y barricadas, en un combate de enorme escala."
   },
   {
