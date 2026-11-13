@@ -85,7 +85,6 @@ router.get("/form_index", (req, res) => {
   });
 });
 
-<<<<<<< Updated upstream
 const upload = multer({ dest: "uploads/" });
 
 router.post(
@@ -179,7 +178,6 @@ router.get("/deleteMonster", async (req,res)=>{
       id_zone:id
     });
   })
-=======
 router.post("/new_creature", async (req,res)=> {
 let id = req.query.id;
 let zone= await database.getPost(id);
@@ -202,4 +200,3 @@ database.addMonster(id,monster);
 res.redirect(`details?id=${id}`)
 
 })
->>>>>>> Stashed changes
