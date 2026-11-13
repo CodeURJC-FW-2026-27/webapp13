@@ -153,15 +153,14 @@ router.get("/deletePost", async (req, res) => {
 });
 
 //interact with DB -> async
-router.get("/delete", async (req,res)=>{
+router.get("/delete", async (req, res) => {
   //get the name of Monster or Zone
-  let isZone=req.query.status === "true";
-  let name=req.query.name;
+  let isZone = req.query.status === "true";
+  let name = req.query.name;
 
-    database.deletePostByName(name,isZone)  
-  
-    res.render("deletePage.html",{
-    is_zone:isZone
+  database.deletePostByName(name, isZone);
+
+  res.render("deletePage.html", {
+    is_zone: isZone,
   });
-  })
-
+});

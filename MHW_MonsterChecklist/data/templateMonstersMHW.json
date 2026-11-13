@@ -2,20 +2,12 @@
   {
     "name": "Kulu-Ya-Ku",
     "difficulty": 2,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
-    "image": "MHRise-Render_Kulu-Ya-Ku.jpg",
+    "ranks": [true, false, false],
+    "image": "MHW-Kulu_Ya_Ku.jpg",
     "species": "Bird Wyvern",
     "elements": [],
-    "effects": [
-      "Stun"
-    ],
-    "weaknesses": [
-      "Water"
-    ],
+    "effects": ["Stun"],
+    "weaknesses": ["Water"],
     "resistances": [],
     "habitat": "Wildspire Waste",
     "minSize": 793.09,
@@ -25,20 +17,12 @@
   {
     "name": "Barroth",
     "difficulty": 3,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
-    "image": "barroth.jpg",
+    "ranks": [true, false, false],
+    "image": "MHW-Barroth.jpg",
     "species": "Brute Wyvern",
     "elements": [],
-    "effects": [
-      "Stun"
-    ],
-    "weaknesses": [
-      "Fire"
-    ],
+    "effects": ["Stun"],
+    "weaknesses": ["Fire"],
     "resistances": [],
     "habitat": "Wildspire Waste",
     "minSize": 1217.1,
@@ -48,25 +32,13 @@
   {
     "name": "Jyuratodus",
     "difficulty": 2,
-    "ranks": [
-      false,
-      true,
-      false
-    ],
-    "image": "MHW-jyuratodus.jpg",
+    "ranks": [false, true, false],
+    "image": "MHW-Jyuratodus.jpg",
     "species": "Piscine Wyvern",
-    "elements": [
-      "Water"
-    ],
-    "effects": [
-      "Waterblight"
-    ],
-    "weaknesses": [
-      "Thunder"
-    ],
-    "resistances": [
-      "Water"
-    ],
+    "elements": ["Water"],
+    "effects": ["Waterblight"],
+    "weaknesses": ["Thunder"],
+    "resistances": ["Water"],
     "habitat": "Wildspire Waste",
     "minSize": 1327.66,
     "maxSize": 1885.89,
@@ -75,23 +47,13 @@
   {
     "name": "Black Diablos",
     "difficulty": 3,
-    "ranks": [
-      false,
-      true,
-      false
-    ],
-    "image": "diablos_black.jpg",
+    "ranks": [false, true, false],
+    "image": "MHW-Diablos_Black.jpg",
     "species": "Flying Wyvern",
     "elements": [],
-    "effects": [
-      "Stun"
-    ],
-    "weaknesses": [
-      "Ice"
-    ],
-    "resistances": [
-      "Dragon"
-    ],
+    "effects": ["Stun"],
+    "weaknesses": ["Ice"],
+    "resistances": ["Dragon"],
     "habitat": "Wildspire Waste",
     "minSize": 1844.7,
     "maxSize": 2620.31,
@@ -100,25 +62,13 @@
   {
     "name": "Glavenus",
     "difficulty": 5,
-    "ranks": [
-      false,
-      false,
-      true
-    ],
+    "ranks": [false, false, true],
     "image": "MHW-Glavenous.jpg",
     "species": "Brute Wyvern",
-    "elements": [
-      "Fire"
-    ],
-    "effects": [
-      "Fireblight"
-    ],
-    "weaknesses": [
-      "Water"
-    ],
-    "resistances": [
-      "Thunder"
-    ],
+    "elements": ["Fire"],
+    "effects": ["Fireblight"],
+    "weaknesses": ["Water"],
+    "resistances": ["Thunder"],
     "habitat": "Wildspire Waste",
     "minSize": 2166.12,
     "maxSize": 3003.03,
@@ -127,18 +77,12 @@
   {
     "name": "Great Jagras",
     "difficulty": 1,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Great_Jagras.jpg",
     "species": "Fanged Wyvern",
     "elements": [],
     "effects": [],
-    "weaknesses": [
-      "Fire"
-    ],
+    "weaknesses": ["Fire"],
     "resistances": [],
     "habitat": "Ancient Forest",
     "minSize": null,
@@ -148,20 +92,12 @@
   {
     "name": "Pukei-Pukei",
     "difficulty": 2,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Pukei-Pukei.jpg",
     "species": "Bird Wyvern",
     "elements": [],
-    "effects": [
-      "Poison"
-    ],
-    "weaknesses": [
-      "Thunder"
-    ],
+    "effects": ["Poison"],
+    "weaknesses": ["Thunder"],
     "resistances": [],
     "habitat": "Ancient Forest",
     "minSize": null,
@@ -171,22 +107,12 @@
   {
     "name": "Anjanath",
     "difficulty": 3,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Anjanath.jpg",
     "species": "Brute Wyvern",
-    "elements": [
-      "Fire"
-    ],
-    "effects": [
-      "Fireblight"
-    ],
-    "weaknesses": [
-      "Water"
-    ],
+    "elements": ["Fire"],
+    "effects": ["Fireblight"],
+    "weaknesses": ["Water"],
     "resistances": [],
     "habitat": "Ancient Forest",
     "minSize": null,
@@ -196,22 +122,12 @@
   {
     "name": "Rathalos",
     "difficulty": 3,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Rathalos.jpg",
     "species": "Flying Wyvern",
-    "elements": [
-      "Fire"
-    ],
-    "effects": [
-      "Fireblight"
-    ],
-    "weaknesses": [
-      "Dragon"
-    ],
+    "elements": ["Fire"],
+    "effects": ["Fireblight"],
+    "weaknesses": ["Dragon"],
     "resistances": [],
     "habitat": "Ancient Forest",
     "minSize": null,
@@ -221,20 +137,12 @@
   {
     "name": "Diablos",
     "difficulty": 3,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Diablos.jpg",
     "species": "Flying Wyvern",
     "elements": [],
-    "effects": [
-      "Stun"
-    ],
-    "weaknesses": [
-      "Ice"
-    ],
+    "effects": ["Stun"],
+    "weaknesses": ["Ice"],
     "resistances": [],
     "habitat": "Wildspire Waste",
     "minSize": null,
@@ -244,25 +152,13 @@
   {
     "name": "Fulgur Anjanath",
     "difficulty": 4,
-    "ranks": [
-      false,
-      false,
-      true
-    ],
+    "ranks": [false, false, true],
     "image": "MHWI-Fulgur_Anjanath.jpg",
     "species": "Brute Wyvern",
-    "elements": [
-      "Thunder"
-    ],
-    "effects": [
-      "Thunderblight"
-    ],
-    "weaknesses": [
-      "Ice"
-    ],
-    "resistances": [
-      "Thunder"
-    ],
+    "elements": ["Thunder"],
+    "effects": ["Thunderblight"],
+    "weaknesses": ["Ice"],
+    "resistances": ["Thunder"],
     "habitat": "Wildspire Waste",
     "minSize": null,
     "maxSize": null,
@@ -271,25 +167,13 @@
   {
     "name": "Legiana",
     "difficulty": 3,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Legiana.jpg",
     "species": "Flying Wyvern",
-    "elements": [
-      "Ice"
-    ],
-    "effects": [
-      "Iceblight"
-    ],
-    "weaknesses": [
-      "Thunder"
-    ],
-    "resistances": [
-      "Ice"
-    ],
+    "elements": ["Ice"],
+    "effects": ["Iceblight"],
+    "weaknesses": ["Thunder"],
+    "resistances": ["Ice"],
     "habitat": "Coral Highlands",
     "minSize": null,
     "maxSize": null,
@@ -298,20 +182,12 @@
   {
     "name": "Odogaron",
     "difficulty": 3,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Odogaron.jpg",
     "species": "Fanged Wyvern",
     "elements": [],
-    "effects": [
-      "Bleeding"
-    ],
-    "weaknesses": [
-      "Ice"
-    ],
+    "effects": ["Bleeding"],
+    "weaknesses": ["Ice"],
     "resistances": [],
     "habitat": "Rotten Vale",
     "minSize": null,
@@ -321,18 +197,12 @@
   {
     "name": "Nergigante",
     "difficulty": 4,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Nergigante.jpg",
     "species": "Elder Dragon",
     "elements": [],
     "effects": [],
-    "weaknesses": [
-      "Thunder"
-    ],
+    "weaknesses": ["Thunder"],
     "resistances": [],
     "habitat": "Elder's Recess",
     "minSize": null,
@@ -342,22 +212,12 @@
   {
     "name": "Kulve Taroth",
     "difficulty": 4,
-    "ranks": [
-      false,
-      true,
-      false
-    ],
+    "ranks": [false, true, false],
     "image": "MHW-Kulve_Taroth.jpg",
     "species": "Elder Dragon",
-    "elements": [
-      "Fire"
-    ],
-    "effects": [
-      "Fireblight"
-    ],
-    "weaknesses": [
-      "Ice"
-    ],
+    "elements": ["Fire"],
+    "effects": ["Fireblight"],
+    "weaknesses": ["Ice"],
     "resistances": [],
     "habitat": "Caverns of El Dorado",
     "minSize": null,
@@ -367,25 +227,13 @@
   {
     "name": "Fatalis",
     "difficulty": 5,
-    "ranks": [
-      false,
-      false,
-      true
-    ],
+    "ranks": [false, false, true],
     "image": "MHWI-Fatalis.jpg",
     "species": "Elder Dragon",
-    "elements": [
-      "Fire"
-    ],
-    "effects": [
-      "Fireblight"
-    ],
-    "weaknesses": [
-      "Dragon"
-    ],
-    "resistances": [
-      "Fire"
-    ],
+    "elements": ["Fire"],
+    "effects": ["Fireblight"],
+    "weaknesses": ["Dragon"],
+    "resistances": ["Fire"],
     "habitat": "Castle Schrade",
     "minSize": null,
     "maxSize": null,
@@ -394,25 +242,13 @@
   {
     "name": "Beotodus",
     "difficulty": 2,
-    "ranks": [
-      false,
-      false,
-      true
-    ],
+    "ranks": [false, false, true],
     "image": "MHWI-Beotodus.jpg",
     "species": "Piscine Wyvern",
-    "elements": [
-      "Ice"
-    ],
-    "effects": [
-      "Iceblight"
-    ],
-    "weaknesses": [
-      "Fire"
-    ],
-    "resistances": [
-      "Ice"
-    ],
+    "elements": ["Ice"],
+    "effects": ["Iceblight"],
+    "weaknesses": ["Fire"],
+    "resistances": ["Ice"],
     "habitat": "Hoarfrost Reach",
     "minSize": null,
     "maxSize": null,
@@ -421,18 +257,12 @@
   {
     "name": "Tigrex",
     "difficulty": 4,
-    "ranks": [
-      false,
-      false,
-      true
-    ],
+    "ranks": [false, false, true],
     "image": "MHWI-Tigrex.jpg",
     "species": "Flying Wyvern",
     "elements": [],
     "effects": [],
-    "weaknesses": [
-      "Thunder"
-    ],
+    "weaknesses": ["Thunder"],
     "resistances": [],
     "habitat": "Hoarfrost Reach",
     "minSize": null,
@@ -442,25 +272,13 @@
   {
     "name": "Barioth",
     "difficulty": 3,
-    "ranks": [
-      false,
-      false,
-      true
-    ],
+    "ranks": [false, false, true],
     "image": "MHWI-Barioth.jpg",
     "species": "Fanged Wyvern",
-    "elements": [
-      "Ice"
-    ],
-    "effects": [
-      "Iceblight"
-    ],
-    "weaknesses": [
-      "Fire"
-    ],
-    "resistances": [
-      "Ice"
-    ],
+    "elements": ["Ice"],
+    "effects": ["Iceblight"],
+    "weaknesses": ["Fire"],
+    "resistances": ["Ice"],
     "habitat": "Hoarfrost Reach",
     "minSize": null,
     "maxSize": null,
@@ -469,25 +287,13 @@
   {
     "name": "Velkhana",
     "difficulty": 4,
-    "ranks": [
-      false,
-      false,
-      true
-    ],
+    "ranks": [false, false, true],
     "image": "MHWI-Velkhana.jpg",
     "species": "Elder Dragon",
-    "elements": [
-      "Ice"
-    ],
-    "effects": [
-      "Iceblight"
-    ],
-    "weaknesses": [
-      "Fire"
-    ],
-    "resistances": [
-      "Ice"
-    ],
+    "elements": ["Ice"],
+    "effects": ["Iceblight"],
+    "weaknesses": ["Fire"],
+    "resistances": ["Ice"],
     "habitat": "Hoarfrost Reach",
     "minSize": null,
     "maxSize": null,
@@ -496,25 +302,13 @@
   {
     "name": "Tobi-Kadachi",
     "difficulty": 2,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Tobi-Kadachi.jpg",
     "species": "Fanged Wyvern",
-    "elements": [
-      "Thunder"
-    ],
-    "effects": [
-      "Thunderblight"
-    ],
-    "weaknesses": [
-      "Water"
-    ],
-    "resistances": [
-      "Thunder"
-    ],
+    "elements": ["Thunder"],
+    "effects": ["Thunderblight"],
+    "weaknesses": ["Water"],
+    "resistances": ["Thunder"],
     "habitat": "Ancient Forest",
     "minSize": null,
     "maxSize": null,
@@ -523,27 +317,13 @@
   {
     "name": "Rathian",
     "difficulty": 3,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Rathian.jpg",
     "species": "Flying Wyvern",
-    "elements": [
-      "Fire"
-    ],
-    "effects": [
-      "Poison",
-      "Fireblight"
-    ],
-    "weaknesses": [
-      "Dragon",
-      "Thunder"
-    ],
-    "resistances": [
-      "Fire"
-    ],
+    "elements": ["Fire"],
+    "effects": ["Poison", "Fireblight"],
+    "weaknesses": ["Dragon", "Thunder"],
+    "resistances": ["Fire"],
     "habitat": "Ancient Forest",
     "minSize": null,
     "maxSize": null,
@@ -552,20 +332,12 @@
   {
     "name": "Paolumu",
     "difficulty": 3,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Paolumu.jpg",
     "species": "Flying Wyvern",
     "elements": [],
-    "effects": [
-      "Sleep"
-    ],
-    "weaknesses": [
-      "Fire"
-    ],
+    "effects": ["Sleep"],
+    "weaknesses": ["Fire"],
     "resistances": [],
     "habitat": "Coral Highlands",
     "minSize": null,
@@ -575,19 +347,12 @@
   {
     "name": "Tzitzi-Ya-Ku",
     "difficulty": 3,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Tzitzi-Ya-Ku.jpg",
     "species": "Bird Wyvern",
     "elements": [],
     "effects": [],
-    "weaknesses": [
-      "Thunder",
-      "Ice"
-    ],
+    "weaknesses": ["Thunder", "Ice"],
     "resistances": [],
     "habitat": "Coral Highlands",
     "minSize": null,
@@ -597,25 +362,13 @@
   {
     "name": "Pink Rathian",
     "difficulty": 4,
-    "ranks": [
-      false,
-      true,
-      false
-    ],
+    "ranks": [false, true, false],
     "image": "MHW-Pink_Rathian.jpg",
     "species": "Flying Wyvern",
-    "elements": [
-      "Fire"
-    ],
-    "effects": [
-      "Poison"
-    ],
-    "weaknesses": [
-      "Dragon"
-    ],
-    "resistances": [
-      "Fire"
-    ],
+    "elements": ["Fire"],
+    "effects": ["Poison"],
+    "weaknesses": ["Dragon"],
+    "resistances": ["Fire"],
     "habitat": "Coral Highlands",
     "minSize": null,
     "maxSize": null,
@@ -624,20 +377,12 @@
   {
     "name": "Great Girros",
     "difficulty": 3,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Great_Girros.jpg",
     "species": "Fanged Wyvern",
     "elements": [],
-    "effects": [
-      "Paralysis"
-    ],
-    "weaknesses": [
-      "Water"
-    ],
+    "effects": ["Paralysis"],
+    "weaknesses": ["Water"],
     "resistances": [],
     "habitat": "Rotten Vale",
     "minSize": null,
@@ -647,19 +392,12 @@
   {
     "name": "Radobaan",
     "difficulty": 3,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Radobaan.jpg",
     "species": "Brute Wyvern",
     "elements": [],
     "effects": [],
-    "weaknesses": [
-      "Dragon",
-      "Ice"
-    ],
+    "weaknesses": ["Dragon", "Ice"],
     "resistances": [],
     "habitat": "Rotten Vale",
     "minSize": null,
@@ -669,22 +407,13 @@
   {
     "name": "Vaal Hazak",
     "difficulty": 4,
-    "ranks": [
-      false,
-      true,
-      false
-    ],
+    "ranks": [false, true, false],
     "image": "MHW-Vaal_Hazak.jpg",
     "species": "Elder Dragon",
     "elements": [],
     "effects": [],
-    "weaknesses": [
-      "Fire",
-      "Dragon"
-    ],
-    "resistances": [
-      "Water"
-    ],
+    "weaknesses": ["Fire", "Dragon"],
+    "resistances": ["Water"],
     "habitat": "Rotten Vale",
     "minSize": null,
     "maxSize": null,
@@ -693,18 +422,12 @@
   {
     "name": "Dodogama",
     "difficulty": 3,
-    "ranks": [
-      false,
-      true,
-      false
-    ],
+    "ranks": [false, true, false],
     "image": "MHW-Dodogama.jpg",
     "species": "Fanged Wyvern",
     "elements": [],
     "effects": [],
-    "weaknesses": [
-      "Thunder"
-    ],
+    "weaknesses": ["Thunder"],
     "resistances": [],
     "habitat": "Elder's Recess",
     "minSize": null,
@@ -714,18 +437,12 @@
   {
     "name": "Uragaan",
     "difficulty": 3,
-    "ranks": [
-      false,
-      true,
-      false
-    ],
+    "ranks": [false, true, false],
     "image": "MHW-Uragaan.jpg",
     "species": "Brute Wyvern",
     "elements": [],
     "effects": [],
-    "weaknesses": [
-      "Water"
-    ],
+    "weaknesses": ["Water"],
     "resistances": [],
     "habitat": "Elder's Recess",
     "minSize": null,
@@ -735,25 +452,13 @@
   {
     "name": "Lavasioth",
     "difficulty": 3,
-    "ranks": [
-      false,
-      true,
-      false
-    ],
+    "ranks": [false, true, false],
     "image": "MHW-Lavasioth.jpg",
     "species": "Piscine Wyvern",
-    "elements": [
-      "Fire"
-    ],
-    "effects": [
-      "Fireblight"
-    ],
-    "weaknesses": [
-      "Water"
-    ],
-    "resistances": [
-      "Fire"
-    ],
+    "elements": ["Fire"],
+    "effects": ["Fireblight"],
+    "weaknesses": ["Water"],
+    "resistances": ["Fire"],
     "habitat": "Elder's Recess",
     "minSize": null,
     "maxSize": null,
@@ -762,26 +467,13 @@
   {
     "name": "Teostra",
     "difficulty": 4,
-    "ranks": [
-      false,
-      true,
-      false
-    ],
+    "ranks": [false, true, false],
     "image": "MHW-Teostra.jpg",
     "species": "Elder Dragon",
-    "elements": [
-      "Fire"
-    ],
-    "effects": [
-      "Blastblight"
-    ],
-    "weaknesses": [
-      "Water",
-      "Ice"
-    ],
-    "resistances": [
-      "Fire"
-    ],
+    "elements": ["Fire"],
+    "effects": ["Blastblight"],
+    "weaknesses": ["Water", "Ice"],
+    "resistances": ["Fire"],
     "habitat": "Elder's Recess",
     "minSize": null,
     "maxSize": null,
@@ -790,26 +482,13 @@
   {
     "name": "Zorah Magdaros",
     "difficulty": 4,
-    "ranks": [
-      true,
-      false,
-      false
-    ],
+    "ranks": [true, false, false],
     "image": "MHW-Zorah_Magdaros.jpg",
     "species": "Elder Dragon",
-    "elements": [
-      "Fire"
-    ],
-    "effects": [
-      "Fireblight"
-    ],
-    "weaknesses": [
-      "Dragon",
-      "Water"
-    ],
-    "resistances": [
-      "Fire"
-    ],
+    "elements": ["Fire"],
+    "effects": ["Fireblight"],
+    "weaknesses": ["Dragon", "Water"],
+    "resistances": ["Fire"],
     "habitat": "Great Ravine",
     "minSize": null,
     "maxSize": null,
@@ -818,30 +497,13 @@
   {
     "name": "Xeno'jiiva",
     "difficulty": 5,
-    "ranks": [
-      false,
-      true,
-      false
-    ],
+    "ranks": [false, true, false],
     "image": "MHW-Xenojiiva.jpg",
     "species": "Elder Dragon",
-    "elements": [
-      "Dragon"
-    ],
-    "effects": [
-      "Fireblight",
-      "Dragonblight"
-    ],
-    "weaknesses": [
-      "Fire",
-      "Water",
-      "Thunder",
-      "Ice",
-      "Dragon"
-    ],
-    "resistances": [
-      "Sleep"
-    ],
+    "elements": ["Dragon"],
+    "effects": ["Fireblight", "Dragonblight"],
+    "weaknesses": ["Fire", "Water", "Thunder", "Ice", "Dragon"],
+    "resistances": ["Sleep"],
     "habitat": "Confluence of Fates",
     "minSize": 4509.1,
     "maxSize": 4509.1,
@@ -850,26 +512,12 @@
   {
     "name": "Safi'jiiva",
     "difficulty": 5,
-    "ranks": [
-      false,
-      false,
-      true
-    ],
+    "ranks": [false, false, true],
     "image": "MHWI-Safijiiva.jpg",
     "species": "Elder Dragon",
-    "elements": [
-      "Fire"
-    ],
-    "effects": [
-      "Fireblight"
-    ],
-    "weaknesses": [
-      "Dragon",
-      "Thunder",
-      "Ice",
-      "Water",
-      "Fire"
-    ],
+    "elements": ["Fire"],
+    "effects": ["Fireblight"],
+    "weaknesses": ["Dragon", "Thunder", "Ice", "Water", "Fire"],
     "resistances": [],
     "habitat": "Secluded Valley",
     "minSize": 4799.78,
@@ -879,25 +527,13 @@
   {
     "name": "Shara Ishvalda",
     "difficulty": 5,
-    "ranks": [
-      false,
-      false,
-      true
-    ],
+    "ranks": [false, false, true],
     "image": "MHWI-Shara_Ishvalda.jpg",
     "species": "Elder Dragon",
     "elements": [],
-    "effects": [
-      "Stun"
-    ],
-    "weaknesses": [
-      "Ice",
-      "Water"
-    ],
-    "resistances": [
-      "Fire",
-      "Dragon"
-    ],
+    "effects": ["Stun"],
+    "weaknesses": ["Ice", "Water"],
+    "resistances": ["Fire", "Dragon"],
     "habitat": "Origin Isle",
     "minSize": 2910.91,
     "maxSize": 2910.91,
