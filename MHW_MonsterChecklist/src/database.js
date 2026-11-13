@@ -44,3 +44,21 @@ export async function getPost(id){
     return await zones.findOne({ _id: new ObjectId(id) });
 }
 
+export async function deletePostByName(name,status){
+    //Delete Zone
+    if(status){
+        console.log("Borrando Zona")
+        return await zones.findOneAndDelete({"name": name});                                   
+    }
+    //Delete Monster
+    else{
+        console.log("Borrando Monstruo")
+        let zone = await zones.find({"monsters.name":name})
+        console.log(zone)                                   
+
+    }
+}
+
+export async function getPostByName(name){
+    return await zones.findOne({ "name": name });
+}
