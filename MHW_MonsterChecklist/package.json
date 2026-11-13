@@ -7,6 +7,6 @@
     "watch": "nodemon -e js,html,css src/app.js"
   },
   "dependencies": {
-    "mongodb": "7.8.0",
+    "mongodb": "7.8.0"
   }
 }
