@@ -153,15 +153,28 @@ router.get("/deletePost", async (req, res) => {
 });
 
 //interact with DB -> async
-router.get("/delete", async (req,res)=>{
+router.get("/deleteMonster", async (req,res)=>{
   //get the name of Monster or Zone
-  let isZone=req.query.status === "true";
-  let name=req.query.name;
-
-    database.deletePostByName(name,isZone)  
+  let id=req.query.id;
+  let name=req.query.nameMonster;
   
+  //select the Zone
+  let zone = await database.getPost(id);
+  //get the Monsters array
+  let arrayMonsters=zone.monsters;
+  
+  //look for monster with same name and deleted from the array with splice()
+  for(let i=0; i<arrayMonsters.length;i++){
+    if(arrayMonsters[i].name===name){
+      arrayMonsters.splice(i,1);
+      break;
+    }
+  }
+  //update the array of Monsters in DB
+  await database.updatePost(id,arrayMonsters);
+  //send id of selected Zone for redirection
     res.render("deletePage.html",{
-    is_zone:isZone
-  });
+      id_zone:id
+    });
   })
 
