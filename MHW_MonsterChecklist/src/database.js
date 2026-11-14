@@ -36,8 +36,10 @@ export async function getPosts() {
 export async function getPost(id) {
   return await zones.findOne({ _id: new ObjectId(id) });
 }
-export async function updatePost(id,updateMonsters){
+
+export async function updatePost(id, updateMonsters) {
   return await zones.updateOne(
-    {_id:new ObjectId(id) },
-    {$set: { monsters:updateMonsters } });
+    { _id: new ObjectId(id) },
+    { $set: { monsters: updateMonsters } },
+  );
 }

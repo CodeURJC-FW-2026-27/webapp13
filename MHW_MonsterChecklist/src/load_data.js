@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import * as database from "./database.js";
+import { ObjectId } from "mongodb";
 
 const UPLOADS_FOLDER = "./uploads";
 const DATA_FOLDER = "./data"; //CARPETA DE DATOS PREDETERMINADOS
@@ -24,9 +25,12 @@ await database.deletePosts(database.zones);
 for (let zone of zones) {
   // Aqui metemos a cada zona los monstruos de cada zona
   zone.monsters = [];
+  zone._id = new ObjectId();
 
   for (let monster of monsters) {
     if (zone.name.toLowerCase() === monster.habitat.toLowerCase()) {
+      monster._id = new ObjectId();
+
       zone.monsters.push(monster);
     }
   }

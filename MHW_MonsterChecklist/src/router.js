@@ -24,7 +24,11 @@ router.get("/details", async (req, res) => {
 
   if (zone === null) {
     console.log(`The zone with the id ${id} doesn't exist`);
-    res.sendStatus(404);
+    res.render("generalReturn.html", {
+      message: `The zone with the id ${id} doesn't exist`,
+      destinationLink: "/",
+      destination: "Home",
+    });
   } else {
     res.render("details.html", {
       headerTitle: zone.name,
@@ -87,7 +91,7 @@ router.get("/form_index", (req, res) => {
 const upload = multer({ dest: "uploads/" });
 
 router.post(
-  "/formManagerIndex",
+  "/generalReturnIndex",
   upload.single("formIndexImage"),
   async (req, res) => {
     let name = req.body.formIndexName.toString();
@@ -121,10 +125,14 @@ router.post(
     if (req.file) {
       //res.render("uploaded_image", { filename: req.file.filename });
     } else {
-      res.send("File not found!");
+      res.render("generalReturn.html", {
+        message: `File not found!`,
+        destinationLink: "/",
+        destination: "Home",
+      });
     }
 
-    res.render("formManager", {
+    res.render("generalReturn", {
       message: `The zone ${name} has been added successfully`,
       destinationLink: "/",
       destination: "Home",
@@ -132,20 +140,22 @@ router.post(
   },
 );
 
-router.get("/deletePost", async (req, res) => {
-  let id = req.query.id;
+router.get("/deleteZone", async (req, res) => {
+  let zoneId = req.query.id;
 
-  let zone = await database.getPost(id);
-
-  console.log(zone);
+  let zone = await database.getPost(zoneId);
 
   if (zone === null) {
-    console.log(`The zone with the id ${id} doesn't exist`);
-    res.sendStatus(404);
+    console.log(`The zone with the id ${zoneId} doesn't exist`);
+    res.render("generalReturn.html", {
+      message: `The zone with the id ${zoneId} doesn't exist`,
+      destinationLink: "/",
+      destination: "Home",
+    });
   } else {
-    await database.deletePost(id);
-    res.render("formManager.html", {
-      message: `The zone with the id ${id} has been deleted successfully`,
+    await database.deletePost(zoneId);
+    res.render("generalReturn.html", {
+      message: `The zone with the id ${zoneId} and the name ${zone.name} has been deleted successfully`,
       destinationLink: "/",
       destination: "Home",
     });
@@ -153,27 +163,53 @@ router.get("/deletePost", async (req, res) => {
 });
 
 //interact with DB -> async
-router.get("/deleteMonster", async (req,res)=>{
-  //get the name of Monster or Zone
-  let id=req.query.id;
-  let name=req.query.nameMonster;
-  
-  //select the Zone
-  let zone = await database.getPost(id);
+router.get("/deleteMonster", async (req, res) => {
+  //get the id of the Monster
+  let zoneId = req.query.zoneId;
+  let monsterId = req.query.monsterId;
+
   //get the Monsters array
-  let arrayMonsters=zone.monsters;
-  
-  //look for monster with same name and deleted from the array with splice()
-  for(let i=0; i<arrayMonsters.length;i++){
-    if(arrayMonsters[i].name===name){
-      arrayMonsters.splice(i,1);
-      break;
+  let arrayMonsters = await database.getPost(zoneId);
+
+  if (arrayMonsters === null) {
+    console.log(`The zone with the id ${zoneId} doesn't exist`);
+    res.render("generalReturn.html", {
+      message: `The zone with the id ${zoneId} doesn't exist`,
+      destinationLink: "/",
+      destination: "Home",
+    });
+  } else {
+    arrayMonsters = arrayMonsters.monsters;
+
+    //look for monster with same name and delete them from the array with splice()
+    let i = 0;
+    while (arrayMonsters[i] && arrayMonsters[i]._id != monsterId) {
+      i++;
+    }
+
+    console.log(arrayMonsters.length);
+    console.log(i);
+
+    if (i >= arrayMonsters.length) {
+      console.log(`The monster with the id ${monsterId} doesn't exist`);
+      res.render("generalReturn.html", {
+        message: `The monster with the id ${monsterId} doesn't exist`,
+        destinationLink: "/",
+        destination: "Home",
+      });
+    } else {
+      let monsterName = arrayMonsters[i].name;
+      arrayMonsters.splice(i, 1);
+
+      //update the array of Monsters in DB
+      await database.updatePost(zoneId, arrayMonsters);
+      //send id of selected Zone for redirection
+
+      res.render("generalReturn.html", {
+        message: `The monster with the id ${monsterId} and name ${monsterName} has been deleted successfully!`,
+        destinationLink: `./details?id=${zoneId}`,
+        destination: "Back to the Zone",
+      });
     }
   }
-  //update the array of Monsters in DB
-  await database.updatePost(id,arrayMonsters);
-  //send id of selected Zone for redirection
-    res.render("deletePage.html",{
-      id_zone:id
-    });
-  })
+});

@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -7,23 +8,20 @@
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Monster Hunter World Checklist</title>
+    <title>Bestiario Monster Hunter World</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet" />
-
-    <link href="/css/form.css" rel="stylesheet" />
+    <link href="/css/index.css" rel="stylesheet" />
   </head>
   <body>
-    <!-- Header-->
+    <!-- Page header with logo and tagline-->
     {{>header}}
+    <h1>Form Manager</h1>
+    <p>{{message}}</p>
+    <a href="{{destinationLink}}">Back to {{destination}}</a>
 
-    <!-- Footer-->
     {{>footer}}
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="/js/scripts.js"></script>
   </body>
 </html>
