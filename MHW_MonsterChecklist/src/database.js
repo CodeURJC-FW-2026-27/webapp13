@@ -41,6 +41,21 @@ export async function updatePost(id,updateMonsters){
     {_id:new ObjectId(id) },
     {$set: { monsters:updateMonsters } });
 }
+
+export async function updateZonePost(id,updateZone){
+  return await zones.updateOne(
+    {_id:new ObjectId(id) },
+    {$set: { name:updateZone.name,
+            difficulty:updateZone.difficulty,
+            ranks:updateZone.ranks,
+            image:updateZone.image,
+            enviroment: updateZone.enviroment,
+            temperature: updateZone.temperature,
+            description: updateZone.description
+            }
+  });
+}
+
 export async function addMonster(id,monster){
     return await zones.updateOne(
         {_id: new ObjectId(id)} , {$push: {monsters:monster}} )
