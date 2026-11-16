@@ -16,7 +16,7 @@
   </head>
   <body>
     <!-- Responsive navbar-->
-    <!-- Page header with logo and tagline-->
+    <!-- Page header with logo and tagline using Mustache Partials-->
     {{>header}}
 
     <!-- Page content-->
@@ -127,16 +127,19 @@
 
       <div class="row" id="detailsFormDiv">
         <!---New creature form-->
-        <form>
+        <form method= "post" action="new_creature?id={{id}}">
+
+          <!--Name-->
           <div class="form-group formDiv">
-            <label for="formDetailsName">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="formDetailsName"
-              placeholder="Introduce el nombre del monstruo"
-            />
-          </div>
+              <label for="formDetailsName">Nombre</label>
+              <input
+                name="name"
+                type="text" 
+                class="form-control"
+                id="formDetailsName"
+                placeholder="Introduce el nombre de la criatura"
+              />
+            </div>
 
           <!--Dificulty-->
           <div class="form-group formDiv">
@@ -258,6 +261,8 @@
             <select
               class="form-select"
               id="formDetailsMonsterCategory"
+              name="species"
+              id="formIndexMonsterCategory"
               aria-label="Default select example"
             >
               <option value="Bird_Wyvern">Bird-Wyvern</option>
@@ -276,7 +281,7 @@
             <label for="formDetailsMonsterElement" class="formButtonLabel"
               >Elemento del Monstruo</label
             >
-            <select class="form-select" id="formDetailsMonsterElement">
+            <select class="form-select" id="formIndexMonsterElement" name="element">
               <option value="fire">Fire</option>
               <option value="water">Water</option>
               <option value="thunder">Thunder</option>
@@ -289,9 +294,9 @@
           <!--Monster Status-->
           <div class="form-group formDiv">
             <label for="formDetailsMonsterStatus" class="formButtonLabel"
-              >Efectos inflingidos</label
-            >
-            <select class="form-select" id="formDetailsMonsterStatus">
+              >Efectos inflingidos</label>
+
+            <select class="form-select" id="formIndexMonsterStatus" name="effects">
               <option value="poison">Poison</option>
               <option value="stun">Stun</option>
               <option value="paralysis">Paralysis</option>
@@ -306,9 +311,8 @@
           <!--Monster Weaknesses-->
           <div class="form-group formDiv">
             <label for="formDetailsMonsterWeaknesses" class="formButtonLabel"
-              >Debilidades del monstruo</label
-            >
-            <select class="form-select" id="formDetailsMonsterWeaknesses">
+              >Debilidades del monstruo</label>
+            <select class="form-select" id="formIndexMonsterWeaknesses" name="weakness">
               <option value="fire">Fire</option>
               <option value="water">Water</option>
               <option value="thunder">Thunder</option>
@@ -323,7 +327,7 @@
             <label for="formDetailsMonsterResistance" class="formButtonLabel"
               >Resistencia del monstruo</label
             >
-            <select class="form-select" id="formDetailsMonsterResistance">
+  <select class="form-select" id="formIndexMonsterResistance" name="resistances">
               <option value="fire">Fire</option>
               <option value="water">Water</option>
               <option value="thunder">Thunder</option>
@@ -363,6 +367,7 @@
                   >Minimo</label
                 >
                 <input
+                  name="minSize"
                   type="number"
                   class="form-control"
                   id="formMonsterSizeMin"
@@ -373,6 +378,7 @@
                   >Maximo</label
                 >
                 <input
+                  name="maxSize"
                   type="number"
                   class="form-control"
                   id="formMonsterSizeMax"
@@ -387,13 +393,14 @@
               >Descripcion del monstruo</label
             >
             <textarea
+              name="information"
               class="form-control"
               id="formMonsterDescription"
             ></textarea>
           </div>
 
           <div class="formButtonLabel formDiv">
-            <button type="submit" class="btn btn-primary">Crear</button>
+            <button type="submit" class="btn btn-primary" value="crear">Crear</button>
           </div>
         </form>
       </div>

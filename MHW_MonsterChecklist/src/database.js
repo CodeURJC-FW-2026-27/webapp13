@@ -43,3 +43,9 @@ export async function updatePost(id, updateMonsters) {
     { $set: { monsters: updateMonsters } },
   );
 }
+export async function addMonster(id, monster) {
+  return await zones.updateOne(
+    { _id: new ObjectId(id) },
+    { $push: { monsters: monster } },
+  );
+}
