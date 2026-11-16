@@ -50,8 +50,10 @@
             </div>
             <p class="card-text">{{description}}</p>
             <a class="btn btn-primary" href="#detailsFormDiv">Nueva criatura</a>
-            <a class="btn btn-primary" href="/deleteZone?id={{_id}}">Borrar</a>
-            <a class="btn btn-primary" href="#!">Editar</a>
+            <a class="btn btn-primary" href="/deletePost?id={{_id}}">Borrar</a>
+            <a class="btn btn-primary" href="/updatePostPage?id={{_id}}"
+              >Editar</a
+            >
             <a class="btn btn-primary" href="./"
               >Volver a la pagina principal</a
             >
@@ -127,19 +129,20 @@
 
       <div class="row" id="detailsFormDiv">
         <!---New creature form-->
-        <form method= "post" action="new_creature?id={{id}}">
-
+        <form method="post" action="new_creature?id={{id}}">
           <!--Name-->
           <div class="form-group formDiv">
-              <label for="formDetailsName">Nombre</label>
-              <input
-                name="name"
-                type="text" 
-                class="form-control"
-                id="formDetailsName"
-                placeholder="Introduce el nombre de la criatura"
-              />
-            </div>
+            <label for="formDetailsName">Nombre</label>
+            <input
+              name="name"
+              type="text"
+              class="form-control"
+              id="formDetailsName"
+              placeholder="Introduce el nombre de la criatura"
+              required
+              minlength="10"
+            />
+          </div>
 
           <!--Dificulty-->
           <div class="form-group formDiv">
@@ -264,6 +267,7 @@
               name="species"
               id="formIndexMonsterCategory"
               aria-label="Default select example"
+              required
             >
               <option value="Bird_Wyvern">Bird-Wyvern</option>
               <option value="Brute_Wyvern">Brute-Wyvern</option>
@@ -281,7 +285,12 @@
             <label for="formDetailsMonsterElement" class="formButtonLabel"
               >Elemento del Monstruo</label
             >
-            <select class="form-select" id="formIndexMonsterElement" name="element">
+            <select
+              class="form-select"
+              id="formIndexMonsterElement"
+              name="element"
+              required
+            >
               <option value="fire">Fire</option>
               <option value="water">Water</option>
               <option value="thunder">Thunder</option>
@@ -294,9 +303,15 @@
           <!--Monster Status-->
           <div class="form-group formDiv">
             <label for="formDetailsMonsterStatus" class="formButtonLabel"
-              >Efectos inflingidos</label>
+              >Efectos inflingidos</label
+            >
 
-            <select class="form-select" id="formIndexMonsterStatus" name="effects">
+            <select
+              class="form-select"
+              id="formIndexMonsterStatus"
+              name="effects"
+              required
+            >
               <option value="poison">Poison</option>
               <option value="stun">Stun</option>
               <option value="paralysis">Paralysis</option>
@@ -311,8 +326,13 @@
           <!--Monster Weaknesses-->
           <div class="form-group formDiv">
             <label for="formDetailsMonsterWeaknesses" class="formButtonLabel"
-              >Debilidades del monstruo</label>
-            <select class="form-select" id="formIndexMonsterWeaknesses" name="weakness">
+              >Debilidades del monstruo</label
+            >
+            <select
+              class="form-select"
+              id="formIndexMonsterWeaknesses"
+              name="weakness"
+            >
               <option value="fire">Fire</option>
               <option value="water">Water</option>
               <option value="thunder">Thunder</option>
@@ -327,7 +347,12 @@
             <label for="formDetailsMonsterResistance" class="formButtonLabel"
               >Resistencia del monstruo</label
             >
-  <select class="form-select" id="formIndexMonsterResistance" name="resistances">
+            <select
+              class="form-select"
+              id="formIndexMonsterResistance"
+              name="resistances"
+              required
+            >
               <option value="fire">Fire</option>
               <option value="water">Water</option>
               <option value="thunder">Thunder</option>
@@ -342,17 +367,15 @@
             <label for="formDetailsMonsterHabitat" class="formButtonLabel"
               >Habitat</label
             >
-            <select class="form-select" id="formDetailsMonsterHabitat">
-              <option value="wildspire_waste">Wildspire Waste</option>
-              <option value="ancient_forest">Ancient Forest</option>
-              <option value="coral_highlands">Coral Highlands</option>
-              <option value="rotten_vale">Rotten Vale</option>
-              <option value="elders_Recess">Elder's Recess</option>
-              <option value="hoarsfrost_reach">Hoarsfrost Reach</option>
-              <option value="origin_isle">Origin Isle</option>
-              <option value="confluence_of_fates">Confluence of Fates</option>
-              <option value="caverns_of_el_dorado">Caverns of El Dorado</option>
-              <option value="castle_schrade">Castle Schrade</option>
+            <select
+              class="form-select"
+              id="formDetailsMonsterHabitat"
+              name="habitat"
+              required
+            >
+              {{#zones_name}}
+              <option value="{{.}}">{{.}}</option>
+              {{/zones_name}}
             </select>
           </div>
 
@@ -371,6 +394,7 @@
                   type="number"
                   class="form-control"
                   id="formMonsterSizeMin"
+                  required
                 />
               </div>
               <div class="col">
@@ -382,6 +406,7 @@
                   type="number"
                   class="form-control"
                   id="formMonsterSizeMax"
+                  required
                 />
               </div>
             </div>
@@ -396,11 +421,15 @@
               name="information"
               class="form-control"
               id="formMonsterDescription"
+              required
+              minlength="10"
             ></textarea>
           </div>
 
           <div class="formButtonLabel formDiv">
-            <button type="submit" class="btn btn-primary" value="crear">Crear</button>
+            <button type="submit" class="btn btn-primary" value="crear">
+              Crear
+            </button>
           </div>
         </form>
       </div>

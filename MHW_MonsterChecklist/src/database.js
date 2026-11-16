@@ -49,3 +49,38 @@ export async function addMonster(id, monster) {
     { $push: { monsters: monster } },
   );
 }
+
+export async function updateZonePost(id, updateZone) {
+  return await zones.updateOne(
+    { _id: new ObjectId(id) },
+    {
+      $set: {
+        name: updateZone.name,
+        difficulty: updateZone.difficulty,
+        ranks: updateZone.ranks,
+        image: updateZone.image,
+        enviroment: updateZone.enviroment,
+        temperature: updateZone.temperature,
+        description: updateZone.description,
+      },
+    },
+  );
+}
+
+export async function addMonster(id, monster) {
+  return await zones.updateOne(
+    { _id: new ObjectId(id) },
+    { $push: { monsters: monster } },
+  );
+}
+
+export async function getZonesPage(page, pageSize) {
+  return await zones
+    .find()
+    .skip((page - 1) * pageSize)
+    .limit(pageSize)
+    .toArray();
+}
+export async function getZonesCount() {
+  return await zones.countDocuments();
+}
