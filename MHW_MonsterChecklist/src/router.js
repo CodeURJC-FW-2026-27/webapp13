@@ -51,8 +51,6 @@ router.get("/details", async (req, res) => {
       zonesNames.push(zones[i].name.toString());
     }
   }
-  console.log(zonesNames)
-
 
   if (zone === null) {
     console.log(`The zone with the id ${id} doesn't exist`);
@@ -151,8 +149,6 @@ router.post(
       description: description,
     };
 
-    console.log(newZone);
-
     await database.addZone(newZone);
 
     if (req.file) {
@@ -198,13 +194,44 @@ router.get("/deleteMonster", async (req,res)=>{
   //select the Zone
   let zone = await database.getPost(id);
   //get the Monsters array
-  let arrayMonsters=zone.monsters;
-  
-  //look for monster with same name and deleted from the array with splice()
-  for(let i=0; i<arrayMonsters.length;i++){
-    if(arrayMonsters[i].name===name){
-      arrayMonsters.splice(i,1);
-      break;
+  let arrayMonsters = await database.getPost(zoneId);
+
+  if (arrayMonsters === null) {
+    console.log(`The zone with the id ${zoneId} doesn't exist`);
+    res.render("generalReturn.html", {
+      message: `The zone with the id ${zoneId} doesn't exist`,
+      destinationLink: "/",
+      destination: "Home",
+    });
+  } else {
+    arrayMonsters = arrayMonsters.monsters;
+
+    //look for monster with same name and delete them from the array with splice()
+    let i = 0;
+    while (arrayMonsters[i] && arrayMonsters[i]._id != monsterId) {
+      i++;
+    }
+
+    if (i >= arrayMonsters.length) {
+      console.log(`The monster with the id ${monsterId} doesn't exist`);
+      res.render("generalReturn.html", {
+        message: `The monster with the id ${monsterId} doesn't exist`,
+        destinationLink: "/",
+        destination: "Home",
+      });
+    } else {
+      let monsterName = arrayMonsters[i].name;
+      arrayMonsters.splice(i, 1);
+
+      //update the array of Monsters in DB
+      await database.updatePost(zoneId, arrayMonsters);
+      //send id of selected Zone for redirection
+
+      res.render("generalReturn.html", {
+        message: `The monster with the id ${monsterId} and name ${monsterName} has been deleted successfully!`,
+        destinationLink: `./details?id=${zoneId}`,
+        destination: "Back to the Zone",
+      });
     }
   }
   //update the array of Monsters in DB
@@ -290,7 +317,6 @@ router.post("/updatePost",upload.single("formIndexImage"), async(req,res)=>{
       description: zone.description!== newDescription? newDescription: zone.description
     };
 
-    console.log(updatedZone)
     //set the changes in DB
     await database.updateZonePost(id,updatedZone);
     res.render("updatePageNotifi",{
