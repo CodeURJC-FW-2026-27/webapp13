@@ -10,7 +10,7 @@ export default router;
 
 router.get("/", async (req, res) => {
   //number of Zones shown per page
-  const pageSize = 6;
+  const pageSize=6;
   //get the total number of Zones
   const totalZones = await database.getZonesCount();
   //numbre of pages in total
@@ -43,29 +43,26 @@ router.get("/details", async (req, res) => {
   let id = req.query.id;
 
   let zone = await database.getPost(id);
-  let zones = await database.getPosts();
-  console.log(zones);
-  let zonesNames = [];
-  for (let i = 0; i < zones.length; i++) {
-    if (zones[i].name) {
+  let zones= await database.getPosts();
+  console.log(zones)
+  let zonesNames=[];
+  for (let i=0; i<zones.length;i++){
+    if (zones[i].name){
       zonesNames.push(zones[i].name.toString());
     }
   }
-  console.log(zonesNames);
+  console.log(zonesNames)
+
 
   if (zone === null) {
     console.log(`The zone with the id ${id} doesn't exist`);
-    res.render("generalReturn.html", {
-      message: `The zone with the id ${id} doesn't exist`,
-      destinationLink: "/",
-      destination: "Home",
-    });
+    res.sendStatus(404);
   } else {
     res.render("details.html", {
       id: id,
       headerTitle: zone.name,
       zone: zone,
-      zones_name: zonesNames,
+      zones_name:zonesNames,
       monsters: zone.monsters,
 
       getDifficulty: function () {
@@ -73,15 +70,9 @@ router.get("/details", async (req, res) => {
       },
       getRanks: function () {
         let s = "";
-        if (this.ranks[0]) {
-          s += "LR ";
-        }
-        if (this.ranks[1]) {
-          s += "HR ";
-        }
-        if (this.ranks[2]) {
-          s += "MR";
-        }
+        if (this.ranks[0]){s+= "LR "};
+        if (this.ranks[1]) {s+= "HR "};
+        if(this.ranks[2])  {s+="MR"};
 
         return s;
       },
@@ -132,7 +123,7 @@ router.get("/form_index", (req, res) => {
 const upload = multer({ dest: "uploads/" });
 
 router.post(
-  "/generalReturnIndex",
+  "/formManagerIndex",
   upload.single("formIndexImage"),
   async (req, res) => {
     let name = req.body.formIndexName.toString();
@@ -140,7 +131,7 @@ router.post(
     let difficulty = parseInt(req.body.formIndexDifficulty);
 
     let selectedRanks = req.body.formIndexRanks;
-    let ranks = [0, 1, 2].map((rank) => selectedRanks(String(rank)));
+    let ranks=[0,1,2].map((rank)=> selectedRanks.includes(String(rank)))
 
     let image = req.file.filename;
 
@@ -167,11 +158,7 @@ router.post(
     if (req.file) {
       //res.render("uploaded_image", { filename: req.file.filename });
     } else {
-      res.render("generalReturn.html", {
-        message: `File not found!`,
-        destinationLink: "/",
-        destination: "Home",
-      });
+      res.send("File not found!");
     }
 
     res.render("generalReturn", {
@@ -182,22 +169,20 @@ router.post(
   },
 );
 
-router.get("/deleteZone", async (req, res) => {
-  let zoneId = req.query.id;
+router.get("/deletePost", async (req, res) => {
+  let id = req.query.id;
 
-  let zone = await database.getPost(zoneId);
+  let zone = await database.getPost(id);
+
+  console.log(zone);
 
   if (zone === null) {
-    console.log(`The zone with the id ${zoneId} doesn't exist`);
-    res.render("generalReturn.html", {
-      message: `The zone with the id ${zoneId} doesn't exist`,
-      destinationLink: "/",
-      destination: "Home",
-    });
+    console.log(`The zone with the id ${id} doesn't exist`);
+    res.sendStatus(404);
   } else {
-    await database.deletePost(zoneId);
-    res.render("generalReturn.html", {
-      message: `The zone with the id ${zoneId} and the name ${zone.name} has been deleted successfully`,
+    await database.deletePost(id);
+    res.render("formManager.html", {
+      message: `The zone with the id ${id} has been deleted successfully`,
       destinationLink: "/",
       destination: "Home",
     });
@@ -205,73 +190,37 @@ router.get("/deleteZone", async (req, res) => {
 });
 
 //interact with DB -> async
-router.get("/deleteMonster", async (req, res) => {
-  //get the id of the Monster
-  let zoneId = req.query.zoneId;
-  let monsterId = req.query.monsterId;
-
+router.get("/deleteMonster", async (req,res)=>{
+  //get the name of Monster and  zone id
+  let id=req.query.id;
+  let name=req.query.nameMonster;
+  
+  //select the Zone
+  let zone = await database.getPost(id);
   //get the Monsters array
-  let arrayMonsters = await database.getPost(zoneId);
-
-  if (arrayMonsters === null) {
-    console.log(`The zone with the id ${zoneId} doesn't exist`);
-    res.render("generalReturn.html", {
-      message: `The zone with the id ${zoneId} doesn't exist`,
-      destinationLink: "/",
-      destination: "Home",
-    });
-  } else {
-    arrayMonsters = arrayMonsters.monsters;
-
-    //look for monster with same name and delete them from the array with splice()
-    let i = 0;
-    while (arrayMonsters[i] && arrayMonsters[i]._id != monsterId) {
-      i++;
-    }
-
-    console.log(arrayMonsters.length);
-    console.log(i);
-
-    if (i >= arrayMonsters.length) {
-      console.log(`The monster with the id ${monsterId} doesn't exist`);
-      res.render("generalReturn.html", {
-        message: `The monster with the id ${monsterId} doesn't exist`,
-        destinationLink: "/",
-        destination: "Home",
-      });
-    } else {
-      let monsterName = arrayMonsters[i].name;
-      arrayMonsters.splice(i, 1);
-
-      //update the array of Monsters in DB
-      await database.updatePost(zoneId, arrayMonsters);
-      //send id of selected Zone for redirection
-
-      res.render("generalReturn.html", {
-        message: `The monster with the id ${monsterId} and name ${monsterName} has been deleted successfully!`,
-        destinationLink: `./details?id=${zoneId}`,
-        destination: "Back to the Zone",
-      });
+  let arrayMonsters=zone.monsters;
+  
+  //look for monster with same name and deleted from the array with splice()
+  for(let i=0; i<arrayMonsters.length;i++){
+    if(arrayMonsters[i].name===name){
+      arrayMonsters.splice(i,1);
+      break;
     }
   }
   //update the array of Monsters in DB
-  await database.updatePost(id, arrayMonsters);
+  await database.updatePost(id,arrayMonsters);
   //send id of selected Zone for redirection
-  res.render("deletePage.html", {
-    destinationLink: "/details?id=" + id,
-  });
-});
+    res.render("deletePage.html",{
+      destinationLink:"/details?id="+id,
+    });
+  })
 router.post("/new_creature", async (req, res) => {
   let id = req.query.id;
   let zone = await database.getPost(id);
   let monster = {
     name: req.body.name,
     dificulty: req.body.formIndexDificultadButton,
-    ranks: [
-      req.body.formIndexCategorias1,
-      req.body.formIndexCategorias2,
-      req.body.formIndexCategorias3,
-    ],
+    ranks: [req.body.formIndexCategorias1, req.body.formIndexCategorias2, req.body.formIndexCategorias3],
     image: "MHRise-Render_Kulu-Ya-Ku.jpg",
     species: req.body.species,
     elements: [req.body.element],
@@ -281,79 +230,71 @@ router.post("/new_creature", async (req, res) => {
     habitat: req.body.habitat,
     minSize: req.body.minSize,
     maxSize: req.body.maxSize,
-    information: req.body.information,
-  };
+    information: req.body.information
+  }
   database.addMonster(id, monster);
-  res.redirect(`details?id=${id}`);
-});
+  res.redirect(`details?id=${id}`)
 
-router.get("/updatePostPage", async (req, res) => {
+})
+
+router.get("/updatePostPage", async (req,res)=>{
   let id = req.query.id;
   let zone = await database.getPost(id);
-  if (zone === null) {
+ if (zone===null) {
     console.log(`The zone with the id ${id} doesn't exist`);
     res.sendStatus(404);
   }
   //Check which difficulty radio button is True
-  zone.isDiff1 = zone.difficulty === 1;
-  zone.isDiff2 = zone.difficulty === 2;
-  zone.isDiff3 = zone.difficulty === 3;
-  zone.isDiff4 = zone.difficulty === 4;
-  zone.isDiff5 = zone.difficulty === 5;
+    zone.isDiff1 = zone.difficulty === 1;
+    zone.isDiff2 = zone.difficulty === 2;
+    zone.isDiff3 = zone.difficulty === 3;
+    zone.isDiff4 = zone.difficulty === 4;
+    zone.isDiff5 = zone.difficulty === 5;
 
-  //Check the value of the Temp if X value is true then its Checkbox in form will be checked
-  zone.isTemp0 = zone.temperature === 0;
-  zone.isTemp1 = zone.temperature === 1;
-  zone.isTemp2 = zone.temperature === 2;
+    //Check the value of the Temp if X value is true then its Checkbox in form will be checked 
+    zone.isTemp0 = zone.temperature === 0;
+    zone.isTemp1 = zone.temperature === 1;
+    zone.isTemp2 = zone.temperature === 2;
 
-  //Redirect user to updatePageZone
+    //Redirect user to updatePageZone
   res.render("updatePageZone.html", {
-    zone: zone,
-    headerTitle: "Actualizar Zona",
-  });
-});
+      zone: zone,      
+      headerTitle:"Actualizar Zona"
+    })
+})
 
-router.post(
-  "/updatePost",
-  upload.single("formIndexImage"),
-  async (req, res) => {
-    let id = req.query.id;
+router.post("/updatePost",upload.single("formIndexImage"), async(req,res)=>{
+    let id=req.query.id;
     let zone = await database.getPost(id);
 
     //Retrive the data from updateForm
     let newName = req.body.formIndexName.toString();
     let newDifficulty = parseInt(req.body.formIndexDifficulty);
     //retrive the ranks from the multicheckboxes
-    let selectedRanks = req.body.formIndexRanks;
-    let newRanks = [0, 1, 2].map((rank) =>
-      selectedRanks.includes(String(rank)),
-    );
+    let selectedRanks =  req.body.formIndexRanks;
+    let newRanks =[0,1,2].map((rank)=> selectedRanks.includes(String(rank))); 
 
     let newEnviroment = req.body.formIndexEnviroment.toString();
     let newTemperature = parseInt(req.body.formIndexTemperature);
     let newDescription = req.body.formIndexDescription.toString();
 
+
     //Checks which fields have been changed with ternary ops and sets them on the updatedZone.
     let updatedZone = {
-      name: zone.name !== newName ? newName : zone.name,
-      difficulty:
-        zone.difficulty !== newDifficulty ? newDifficulty : zone.difficulty,
-      ranks: zone.ranks !== newRanks ? newRanks : zone.ranks,
-      image: req.file ? req.file.filename : zone.image,
-      enviroment:
-        zone.enviroment !== newEnviroment ? newEnviroment : zone.enviroment,
-      temperature:
-        zone.temperature !== newTemperature ? newTemperature : zone.temperature,
-      description:
-        zone.description !== newDescription ? newDescription : zone.description,
+      name: zone.name!==newName? newName : zone.name ,
+      difficulty: zone.difficulty!==newDifficulty? newDifficulty : zone.difficulty ,
+      ranks:zone.ranks!==newRanks ? newRanks : zone.ranks,
+      image: req.file ? req.file.filename: zone.image,
+      enviroment: zone.enviroment!==newEnviroment? newEnviroment : zone.enviroment,
+      temperature: zone.temperature!== newTemperature? newTemperature: zone.temperature,
+      description: zone.description!== newDescription? newDescription: zone.description
     };
 
-    console.log(updatedZone);
+    console.log(updatedZone)
     //set the changes in DB
-    await database.updateZonePost(id, updatedZone);
-    res.render("updatePageNotifi", {
-      headerTitle: "Actualizacion Completa",
-      destinationLink: "/details?id=" + id,
-    });
-  },
-);
+    await database.updateZonePost(id,updatedZone);
+    res.render("updatePageNotifi",{
+      headerTitle:"Actualizacion Completa",
+      destinationLink: "/details?id="+id
+    })
+})
