@@ -158,15 +158,11 @@
           <li class="page-item">
             <a class="page-link" href="/?page={{previousPage}}">Anterior</a>
           </li>
-          {{/hasPrevious}}
-
-          {{#pages}}
+          {{/hasPrevious}} {{#pages}}
           <li class="page-item {{#isCurrent}}active{{/isCurrent}}">
             <a class="page-link" href="/?page={{number}}">{{number}}</a>
           </li>
-          {{/pages}}
-
-          {{#hasNext}}
+          {{/pages}} {{#hasNext}}
           <li class="page-item">
             <a class="page-link" href="/?page={{nextPage}}">Siguiente</a>
           </li>
@@ -174,7 +170,6 @@
         </ul>
       </nav>
       {{/hasPages}}
-
     </div>
 
     <!-- Footer-->

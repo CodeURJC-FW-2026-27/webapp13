@@ -44,14 +44,12 @@ router.get("/details", async (req, res) => {
 
   let zone = await database.getPost(id);
   let zones = await database.getPosts();
-  console.log(zones);
   let zonesNames = [];
   for (let i = 0; i < zones.length; i++) {
     if (zones[i].name) {
       zonesNames.push(zones[i].name.toString());
     }
   }
-  console.log(zonesNames);
 
   if (zone === null) {
     console.log(`The zone with the id ${id} doesn't exist`);
@@ -139,8 +137,7 @@ router.post(
 
     let difficulty = parseInt(req.body.formIndexDifficulty);
 
-    let selectedRanks = req.body.formIndexRanks;
-    let ranks = [0, 1, 2].map((rank) => selectedRanks(String(rank)));
+    let ranks = req.body.formIndexRanks;
 
     let image = req.file.filename;
 
@@ -159,8 +156,6 @@ router.post(
       temperature: temperature,
       description: description,
     };
-
-    console.log(newZone);
 
     await database.addZone(newZone);
 
@@ -228,9 +223,6 @@ router.get("/deleteMonster", async (req, res) => {
     while (arrayMonsters[i] && arrayMonsters[i]._id != monsterId) {
       i++;
     }
-
-    console.log(arrayMonsters.length);
-    console.log(i);
 
     if (i >= arrayMonsters.length) {
       console.log(`The monster with the id ${monsterId} doesn't exist`);
@@ -348,7 +340,6 @@ router.post(
         zone.description !== newDescription ? newDescription : zone.description,
     };
 
-    console.log(updatedZone);
     //set the changes in DB
     await database.updateZonePost(id, updatedZone);
     res.render("updatePageNotifi", {
