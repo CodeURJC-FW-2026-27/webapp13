@@ -9,11 +9,33 @@ const router = express.Router();
 export default router;
 
 router.get("/", async (req, res) => {
-  let zones = await database.getPosts(database.zones);
+  //number of Zones shown per page
+  const pageSize=6;
+  //get the total number of Zones
+  const totalZones = await database.getZonesCount();
+  //numbre of pages in total
+  const totalPages = Math.ceil(totalZones / pageSize);
+
+  let currentPage = Number.parseInt(req.query.page, 10) || 1;
+
+  // Mantén el número de página dentro del rango válido.
+  currentPage = Math.max(1, Math.min(currentPage, totalPages || 1));
+
+  const zones = await database.getZonesPage(currentPage, pageSize);
 
   res.render("index.html", {
     headerTitle: "Bestiario Monster Hunter",
-    zones: zones,
+    zones,
+    pages: Array.from({ length: totalPages }, (_, i) => ({
+      number: i + 1,
+      isCurrent: i + 1 === currentPage,
+    })),
+    currentPage,
+    hasPages: totalPages > 1,
+    previousPage: currentPage - 1,
+    nextPage: currentPage + 1,
+    hasPrevious: currentPage > 1,
+    hasNext: currentPage < totalPages,
   });
 });
 
@@ -21,6 +43,16 @@ router.get("/details", async (req, res) => {
   let id = req.query.id;
 
   let zone = await database.getPost(id);
+  let zones= await database.getPosts();
+  console.log(zones)
+  let zonesNames=[];
+  for (let i=0; i<zones.length;i++){
+    if (zones[i].name){
+      zonesNames.push(zones[i].name.toString());
+    }
+  }
+  console.log(zonesNames)
+
 
   if (zone === null) {
     console.log(`The zone with the id ${id} doesn't exist`);
@@ -30,7 +62,9 @@ router.get("/details", async (req, res) => {
       id: id,
       headerTitle: zone.name,
       zone: zone,
+      zones_name:zonesNames,
       monsters: zone.monsters,
+
       getDifficulty: function () {
         return "⭐".repeat(this.difficulty);
       },
@@ -98,7 +132,7 @@ router.post(
 
     let selectedRanks = req.body.formIndexRanks;
     let ranks=[0,1,2].map((rank)=> selectedRanks(String(rank)))
-    
+
     let image = req.file.filename;
 
     let enviroment = req.body.formIndexEnviroment.toString();
@@ -189,9 +223,9 @@ router.post("/new_creature", async (req, res) => {
     ranks: [req.body.formIndexCategorias1, req.body.formIndexCategorias2, req.body.formIndexCategorias3],
     image: "MHRise-Render_Kulu-Ya-Ku.jpg",
     species: req.body.species,
-    elements: [req.body.elements],
+    elements: [req.body.element],
     effects: [req.body.effects],
-    weaknesses: [req.body.weaknesses],
+    weaknesses: [req.body.weakness],
     resistances: [req.body.resistances],
     habitat: req.body.habitat,
     minSize: req.body.minSize,

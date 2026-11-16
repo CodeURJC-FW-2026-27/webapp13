@@ -91,20 +91,22 @@
             <div class="card-header">Search</div>
             <div class="card-body">
               <div class="input-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="Enter search term..."
-                  aria-label="Enter search term..."
-                  aria-describedby="button-search"
-                />
-                <button
-                  class="btn btn-primary"
-                  id="button-search"
-                  type="button"
-                >
-                  Busca!
-                </button>
+                <form action="/">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Enter search term..."
+                    aria-label="Enter search term..."
+                    aria-describedby="button-search"
+                  />
+                  <button
+                    class="btn btn-primary"
+                    id="button-search"
+                    type="submit"
+                  >
+                    Busca!
+                  </button>
+                </form>
               </div>
             </div>
           </div>
@@ -149,6 +151,30 @@
         <p>No areas found.</p>
         {{/zones}}
       </div>
+      {{#hasPages}}
+      <nav aria-label="Paginación">
+        <ul class="pagination justify-content-center">
+          {{#hasPrevious}}
+          <li class="page-item">
+            <a class="page-link" href="/?page={{previousPage}}">Anterior</a>
+          </li>
+          {{/hasPrevious}}
+
+          {{#pages}}
+          <li class="page-item {{#isCurrent}}active{{/isCurrent}}">
+            <a class="page-link" href="/?page={{number}}">{{number}}</a>
+          </li>
+          {{/pages}}
+
+          {{#hasNext}}
+          <li class="page-item">
+            <a class="page-link" href="/?page={{nextPage}}">Siguiente</a>
+          </li>
+          {{/hasNext}}
+        </ul>
+      </nav>
+      {{/hasPages}}
+
     </div>
 
     <!-- Footer-->

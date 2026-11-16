@@ -31,6 +31,8 @@
                 id="formIndexName"
                 name="formIndexName"
                 placeholder="Introduce el nuevo nombre de la zona"
+                required
+                minlength="3"
                 />
             </div>
 
@@ -109,6 +111,8 @@
                 name="formIndexEnviroment"
                 value="{{zone.enviroment}}"
                 placeholder="Introduce el tipo de entorno de la zona"
+                required
+                minlength="10"
                 />
             </div>
 
@@ -142,7 +146,10 @@
                 id="formIndexDescription"
                 name="formIndexDescription"
                 placeholder="Una breve descripcion del entorno que has diseñado"
+                required
+                minlength="10"
                 >{{zone.description}}</textarea>
+
             </div>
 
             <div class="form-group formDiv">

@@ -134,6 +134,8 @@
                 class="form-control"
                 id="formDetailsName"
                 placeholder="Introduce el nombre de la criatura"
+                required
+                minlength="10"
               />
             </div>
 
@@ -260,6 +262,7 @@
               name="species"
               id="formIndexMonsterCategory"
               aria-label="Default select example"
+              required
             >
               <option value="Bird_Wyvern">Bird-Wyvern</option>
               <option value="Brute_Wyvern">Brute-Wyvern</option>
@@ -277,7 +280,7 @@
             <label for="formDetailsMonsterElement" class="formButtonLabel"
               >Elemento del Monstruo</label
             >
-            <select class="form-select" id="formIndexMonsterElement" name="element">
+            <select class="form-select" id="formIndexMonsterElement" name="element" required>
               <option value="fire">Fire</option>
               <option value="water">Water</option>
               <option value="thunder">Thunder</option>
@@ -292,7 +295,7 @@
             <label for="formDetailsMonsterStatus" class="formButtonLabel"
               >Efectos inflingidos</label>
 
-            <select class="form-select" id="formIndexMonsterStatus" name="effects">
+            <select class="form-select" id="formIndexMonsterStatus" name="effects" required>
               <option value="poison">Poison</option>
               <option value="stun">Stun</option>
               <option value="paralysis">Paralysis</option>
@@ -323,7 +326,7 @@
             <label for="formDetailsMonsterResistance" class="formButtonLabel"
               >Resistencia del monstruo</label
             >
-  <select class="form-select" id="formIndexMonsterResistance" name="resistances">
+  <select class="form-select" id="formIndexMonsterResistance" name="resistances" required>
               <option value="fire">Fire</option>
               <option value="water">Water</option>
               <option value="thunder">Thunder</option>
@@ -338,17 +341,11 @@
             <label for="formDetailsMonsterHabitat" class="formButtonLabel"
               >Habitat</label
             >
-            <select class="form-select" id="formDetailsMonsterHabitat">
-              <option value="wildspire_waste">Wildspire Waste</option>
-              <option value="ancient_forest">Ancient Forest</option>
-              <option value="coral_highlands">Coral Highlands</option>
-              <option value="rotten_vale">Rotten Vale</option>
-              <option value="elders_Recess">Elder's Recess</option>
-              <option value="hoarsfrost_reach">Hoarsfrost Reach</option>
-              <option value="origin_isle">Origin Isle</option>
-              <option value="confluence_of_fates">Confluence of Fates</option>
-              <option value="caverns_of_el_dorado">Caverns of El Dorado</option>
-              <option value="castle_schrade">Castle Schrade</option>
+            <select class="form-select" id="formDetailsMonsterHabitat" name="habitat" required>
+              {{#zones_name}}
+                <option value="{{.}}">{{.}}</option>
+              {{/zones_name}}
+              
             </select>
           </div>
 
@@ -367,6 +364,7 @@
                   type="number"
                   class="form-control"
                   id="formMonsterSizeMin"
+                  required
                 />
               </div>
               <div class="col">
@@ -378,6 +376,7 @@
                   type="number"
                   class="form-control"
                   id="formMonsterSizeMax"
+                  required
                 />
               </div>
             </div>
@@ -392,6 +391,8 @@
               name="information"
               class="form-control"
               id="formMonsterDescription"
+              required
+              minlength="10"          
             ></textarea>
           </div>
 

@@ -58,5 +58,15 @@ export async function updateZonePost(id,updateZone){
 
 export async function addMonster(id,monster){
     return await zones.updateOne(
-        {_id: new ObjectId(id)} , {$push: {monsters:monster}} )
+        {_id: new ObjectId(id)} , {$push: {monsters:monster}} );
+}
+
+export async function getZonesPage(page,pageSize){
+  return await zones.find()
+      .skip((page-1)*pageSize)
+      .limit(pageSize)
+      .toArray();
+}
+export async function getZonesCount() {
+  return await zones.countDocuments();
 }
