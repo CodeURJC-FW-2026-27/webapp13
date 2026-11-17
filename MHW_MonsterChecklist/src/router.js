@@ -308,6 +308,7 @@ router.get("/editCreature", async (req, res) => {
 })
 
 router.post("/updateCreature", upload.single("formDetailsMonsterImage"), async (req, res) => {
+  
   let id = req.query.zoneId;
   let monsterId = req.query.monsterId;
   let newMonster = buildMonster(req);

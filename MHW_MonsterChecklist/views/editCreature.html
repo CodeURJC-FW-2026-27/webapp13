@@ -23,9 +23,8 @@
 
     <div class="row" id="detailsFormDiv">
       <!---New creature form-->
-      <form method="post" 
-      action="/updateCreature?zoneId={{zone._id}}&monsterId={{monster._id}}"
-      enctype="multipart/form-data">
+      <form method="post" action="updateCreature?zoneId={{zone._id}}&monsterId={{monster._id}}"
+        enctype="multipart/form-data">
         <!--Name-->
         <div class="form-group formDiv">
           <label for="formDetailsName">Nombre</label>
@@ -93,7 +92,7 @@
         <!--Image-->
         <div class="form-group formDiv">
           <label for="formDetailsMonsterImage" class="formButtonLabel">Imagen de la criatura</label>
-          <input type="file" class="form-control" id="formDetailsMonsterImage" name="formDetailsMonsterImage"/>
+          <input type="file" class="form-control" id="formDetailsMonsterImage" name="formDetailsMonsterImage" />
         </div>
 
         <!--Species-->
