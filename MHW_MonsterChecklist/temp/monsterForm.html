@@ -1,0 +1,193 @@
+<!--
+  Partial del formulario de monstruos. Se usa con {{>monsterForm}} en:
+    - details.html     (crear: "monster" no existe)
+    - editMonster.html (editar: "monster" es el monstruo actual)
+  Variables que pone el router: formAction, submitLabel, cancelLink,
+  isEdit, imageRequired, zone, monster y las listas *Options.
+-->
+<form method="post" action="{{formAction}}" enctype="multipart/form-data">
+  <!-- Name -->
+  <div class="form-group formDiv">
+    <label for="formMonsterName">Nombre</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formMonsterName"
+      name="name"
+      value="{{monster.name}}"
+      pattern="[A-Z].*"
+      placeholder="Introduce el nombre de la criatura"
+      required
+      minlength="3"
+      maxlength="50"
+    />
+  </div>
+
+  <!-- Difficulty (1 a 5 estrellas) -->
+  <div class="form-group formDiv">
+    <p class="formButtonLabel">Dificultad</p>
+    <div
+      class="row row-cols-lg-5 row-cols-md-2 row-cols-1"
+      style="width: fit-content"
+    >
+      {{#difficultyOptions}}
+      <div class="formContainerItem col">
+        <input
+          type="radio"
+          name="difficulty"
+          value="{{value}}"
+          id="{{id}}"
+          {{#checked}}checked{{/checked}}
+          required
+        />
+        <label for="{{id}}">{{label}}</label>
+      </div>
+      {{/difficultyOptions}}
+    </div>
+  </div>
+
+  <!-- Ranks (minimo 1, se valida en el servidor) -->
+  <div class="form-group formDiv">
+    <p class="formButtonLabel">Categorias</p>
+    {{#rankOptions}}
+    <div class="formContainerItem">
+      <input
+        type="checkbox"
+        id="{{id}}"
+        name="ranks"
+        value="{{value}}"
+        {{#checked}}checked{{/checked}}
+      />
+      <label for="{{id}}">{{label}}</label>
+    </div>
+    {{/rankOptions}}
+  </div>
+
+  <!-- Image: obligatoria solo al crear -->
+  <div class="form-group formDiv">
+    <label for="formMonsterImage" class="formButtonLabel">
+      Imagen de la criatura
+      {{#isEdit}}(Actual: {{monster.image}}){{/isEdit}}
+    </label>
+    <input
+      type="file"
+      name="formDetailsMonsterImage"
+      class="form-control"
+      id="formMonsterImage"
+      accept="image/*"
+      {{#imageRequired}}required{{/imageRequired}}
+    />
+    {{#isEdit}}
+    <small class="form-text">Déjalo vacío para conservar la imagen actual.</small>
+    {{/isEdit}}
+  </div>
+
+  <!-- Species -->
+  <div class="form-group formDiv">
+    <label for="formMonsterSpecies" class="formButtonLabel">Especie del monstruo</label>
+    <select class="form-select" id="formMonsterSpecies" name="species" required>
+      {{#speciesOptions}}
+      <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+      {{/speciesOptions}}
+    </select>
+  </div>
+
+  <!-- Element -->
+  <div class="form-group formDiv">
+    <label for="formMonsterElement" class="formButtonLabel">Elemento del Monstruo</label>
+    <select class="form-select" id="formMonsterElement" name="element" required>
+      {{#elementOptions}}
+      <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+      {{/elementOptions}}
+    </select>
+  </div>
+
+  <!-- Effects -->
+  <div class="form-group formDiv">
+    <label for="formMonsterEffects" class="formButtonLabel">Efectos infligidos</label>
+    <select class="form-select" id="formMonsterEffects" name="effects" required>
+      {{#effectOptions}}
+      <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+      {{/effectOptions}}
+    </select>
+  </div>
+
+  <!-- Weakness -->
+  <div class="form-group formDiv">
+    <label for="formMonsterWeakness" class="formButtonLabel">Debilidades del monstruo</label>
+    <select class="form-select" id="formMonsterWeakness" name="weakness" required>
+      {{#weaknessOptions}}
+      <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+      {{/weaknessOptions}}
+    </select>
+  </div>
+
+  <!-- Resistance -->
+  <div class="form-group formDiv">
+    <label for="formMonsterResistance" class="formButtonLabel">Resistencia del monstruo</label>
+    <select class="form-select" id="formMonsterResistance" name="resistances" required>
+      {{#resistanceOptions}}
+      <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+      {{/resistanceOptions}}
+    </select>
+  </div>
+
+  <!-- Habitat: es la zona actual, no se elige -->
+  <div class="form-group formDiv">
+    <p style="margin-bottom: 0px">El habitat del monstruo sera: {{zone.name}}</p>
+    <input type="hidden" name="habitat" value="{{zone.name}}" />
+  </div>
+
+  <!-- Size (los datos tienen decimales, por eso step="any") -->
+  <div class="form-group formDiv">
+    <div class="row">
+      <label for="formMonsterSizeMin" class="formButtonLabel">Tamaño monstruo (en cm)</label>
+      <div class="col">
+        <label for="formMonsterSizeMin" class="formButtonLabel">Minimo</label>
+        <input
+          name="minSize"
+          value="{{monster.minSize}}"
+          type="number"
+          min="0"
+          step="any"
+          class="form-control"
+          id="formMonsterSizeMin"
+          required
+        />
+      </div>
+      <div class="col">
+        <label for="formMonsterSizeMax" class="formButtonLabel">Maximo</label>
+        <input
+          name="maxSize"
+          value="{{monster.maxSize}}"
+          type="number"
+          min="0"
+          step="any"
+          class="form-control"
+          id="formMonsterSizeMax"
+          required
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Information -->
+  <div class="form-group formDiv">
+    <label for="formMonsterInformation" class="formButtonLabel">Informacion</label>
+    <textarea
+      name="information"
+      class="form-control"
+      id="formMonsterInformation"
+      required
+      minlength="10"
+      maxlength="600"
+    >{{monster.information}}</textarea>
+  </div>
+
+  <div class="formButtonLabel formDiv">
+    <button type="submit" class="btn btn-primary">{{submitLabel}}</button>
+    {{#isEdit}}
+    <a class="btn btn-primary" href="{{cancelLink}}">Cancelar</a>
+    {{/isEdit}}
+  </div>
+</form>

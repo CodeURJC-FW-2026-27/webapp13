@@ -59,9 +59,9 @@
                   Rank
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a href="#!">Low Rank</a></li>
-                  <li><a href="#!">High Rank</a></li>
-                  <li><a href="#!">Master Rank</a></li>
+                  <li><a href="getRank?rank=LR">Low Rank</a></li>
+                  <li><a href="getRank?rank=HR">High Rank</a></li>
+                  <li><a href="getRank?rank=MR">Master Rank</a></li>
                 </ul>
               </div>
 
@@ -76,9 +76,11 @@
                   Temperatura
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a href="#!">Schorching</a></li>
-                  <li><a href="#!">Temperate Climate</a></li>
-                  <li><a href="#!">Frostbite</a></li>
+                  <li><a href="getTemperature?temperature=0">Schorching</a></li>
+                  <li>
+                    <a href="getTemperature?temperature=1">Temperate Climate</a>
+                  </li>
+                  <li><a href="getTemperature?temperature=2">Frostbite</a></li>
                 </ul>
               </div>
             </div>
@@ -124,11 +126,10 @@
         </div>
       </div>
 
-      <!-- Nested row for Areas-->
+      <!-- Nested row for Zones-->
       <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
-        <!-- Areas-->
+        <!-- Zones-->
 
-        <!-- hacer un for para que devuelva todas las areas con cada info -->
         {{#zones}}
         <div class="col IndexCol">
           <div class="card">
@@ -152,6 +153,7 @@
         <p>No areas found.</p>
         {{/zones}}
       </div>
+
       {{#hasPages}}
       <nav aria-label="Paginación">
         <ul class="pagination justify-content-center">
@@ -172,6 +174,7 @@
       </nav>
       {{/hasPages}}
     </div>
+    <!-- End container-->
 
     <!-- Footer-->
     {{>footer}}

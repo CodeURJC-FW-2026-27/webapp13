@@ -386,19 +386,7 @@
 
           <!--Monster Habitat-->
           <div class="form-group formDiv">
-            <label for="formDetailsMonsterHabitat" class="formButtonLabel"
-              >Habitat</label
-            >
-            <select
-              class="form-select"
-              id="formDetailsMonsterHabitat"
-              name="habitat"
-              required
-            >
-              {{#zones_name}}
-              <option value="{{.}}">{{.}}</option>
-              {{/zones_name}}
-            </select>
+            <p style="margin-bottom: 0px;">El habitat del monstruo sera: {{zone.name}}</p>
           </div>
 
           <!--Monster Size-->
