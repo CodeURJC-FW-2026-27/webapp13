@@ -23,6 +23,8 @@ router.get("/", async (req, res) => {
 
   const zones = await database.getZonesPage(currentPage, pageSize);
 
+  
+
   res.render("index.html", {
     headerTitle: "Bestiario Monster Hunter",
     zones,
@@ -38,6 +40,28 @@ router.get("/", async (req, res) => {
     hasNext: currentPage < totalPages,
   });
 });
+
+function buildMonster(req) {
+    return {
+      name: req.body.name,
+      dificulty: req.body.formIndexDificultadButton,
+      ranks: [
+        req.body.formIndexCategorias1,
+        req.body.formIndexCategorias2,
+        req.body.formIndexCategorias3,
+      ],
+      image: req.file.filename,
+      species: req.body.species,
+      elements: [req.body.element],
+      effects: [req.body.effects],
+      weaknesses: [req.body.weakness],
+      resistances: [req.body.resistances],
+      habitat: req.body.habitat,
+      minSize: req.body.minSize,
+      maxSize: req.body.maxSize,
+      information: req.body.information,
+    };
+  }
 
 router.get("/details", async (req, res) => {
   let id = req.query.id;
@@ -237,31 +261,52 @@ router.get("/deleteMonster", async (req,res)=>{
   //update the array of Monsters in DB
   await database.updatePost(id,arrayMonsters);
   //send id of selected Zone for redirection
-    res.render("deletePage.html",{
-      destinationLink:"/details?id="+id,
-    });
-  })
-router.post("/new_creature", async (req, res) => {
-  let id = req.query.id;
-  let zone = await database.getPost(id);
-  let monster = {
-    name: req.body.name,
-    dificulty: req.body.formIndexDificultadButton,
-    ranks: [req.body.formIndexCategorias1, req.body.formIndexCategorias2, req.body.formIndexCategorias3],
-    image: "MHRise-Render_Kulu-Ya-Ku.jpg",
-    species: req.body.species,
-    elements: [req.body.element],
-    effects: [req.body.effects],
-    weaknesses: [req.body.weakness],
-    resistances: [req.body.resistances],
-    habitat: req.body.habitat,
-    minSize: req.body.minSize,
-    maxSize: req.body.maxSize,
-    information: req.body.information
-  }
-  database.addMonster(id, monster);
-  res.redirect(`details?id=${id}`)
+  res.render("deletePage.html", {
+    destinationLink: "/details?id=" + id,
+  });
+});
 
+router.post("/newCreature", upload.single("formDetailsMonsterImage"), async (req, res) => {
+  let id = req.query.id;
+  let monster = buildMonster(req);
+  database.addMonster(id, monster);
+  res.render("generalReturn.html", {
+        message: `The monster with the id ${monster._id} and name ${monster.name} has been added successfully!`,
+        destinationLink: `./details?id=${id}`,
+        destination: "Back to the Zone",
+      });
+});
+
+router.get("/editCreature", async (req, res) => {
+  let zone = await database.getPost(req.query.zoneId);
+  let monster = zone.monsters.find(m => m._id.toString() === req.query.monsterId);
+  if (!monster) {
+    console.log(`The monster with the id ${monsterId} doesn't exist`);
+    res.render("generalReturn.html", {
+      message: `The monster with the id ${monsterId} doesn't exist`,
+      destinationLink: "/",
+      destination: "Home",
+    });
+  }
+  else {
+    res.render("editCreature.html", {
+      zone, monster
+    })
+  }
+})
+
+router.post("/updateCreature", upload.single("formDetailsMonsterImage"), async (req, res) => {
+  
+  let id = req.query.zoneId;
+  let monsterId = req.query.monsterId;
+  let newMonster = buildMonster(req);
+  await database.updateMonster(id,monsterId,newMonster);
+
+  res.render("generalReturn.html", {
+    message: `El monstruo de id ${monsterId} fue modificado con sucesso `,
+    destinationLink: "/details?id=" + req.query.zoneId,
+    destination: "details",
+  });
 })
 
 router.get("/updatePostPage", async (req,res)=>{
@@ -343,7 +388,7 @@ router.get("/search", async(req,res)=>{
 
   res.render("index.html", {
     headerTitle: "Bestiario Monster Hunter",
-    zones,
+    zones
 /*
     pages: Array.from({ length: totalPages }, (_, i) => ({
       number: i + 1,
@@ -357,4 +402,5 @@ router.get("/search", async(req,res)=>{
     hasNext: currentPage < totalPages,
   });
   */
-})
+  })
+});
