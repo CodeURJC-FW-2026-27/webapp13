@@ -121,7 +121,7 @@ router.get("/form_index", (req, res) => {
 const upload = multer({ dest: "uploads/" });
 
 router.post(
-  "/formManagerIndex",
+  "/generalReturnIndex",
   upload.single("formIndexImage"),
   async (req, res) => {
     let name = req.body.formIndexName.toString();
@@ -323,4 +323,38 @@ router.post("/updatePost",upload.single("formIndexImage"), async(req,res)=>{
       headerTitle:"Actualizacion Completa",
       destinationLink: "/details?id="+id
     })
+})
+
+router.get("/search", async(req,res)=>{
+  let nameInput= req.query.zoneName;
+  
+  let zones = nameInput
+    ? await database.searchZonesByName(nameInput)
+    : [];
+  console.log(zones)
+  //Pagination
+ /* let len = zones.length;
+  const pageSize=6;
+  const totalPages = Math.ceil(len / pageSize);
+  let currentPage = Number.parseInt(req.query.page, 10) || 1;
+  currentPage = Math.max(1, Math.min(currentPage, totalPages || 1));
+  */
+  //
+
+  res.render("index.html", {
+    headerTitle: "Bestiario Monster Hunter",
+    zones,
+/*
+    pages: Array.from({ length: totalPages }, (_, i) => ({
+      number: i + 1,
+      isCurrent: i + 1 === currentPage,
+    })),
+    currentPage,
+    hasPages: totalPages > 1,
+    previousPage: currentPage - 1,
+    nextPage: currentPage + 1,
+    hasPrevious: currentPage > 1,
+    hasNext: currentPage < totalPages,
+  });
+  */
 })

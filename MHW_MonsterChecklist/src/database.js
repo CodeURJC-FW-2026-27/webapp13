@@ -9,7 +9,7 @@ const client = new MongoClient("mongodb://localhost:27017"); //Conexion local co
 const db = client.db("MonsterHunter"); //Base de datos
 
 export const zones = db.collection("Zones"); //Documento con los archivos JSON
-
+await zones.createIndex({ name: 'text' }); //Creates an index
 export const UPLOADS_FOLDER = "./uploads"; //donde se guardan los archivos subidos por los usuarios
 
 //Funciones para juguetear con cada coleccion de la base de datos (usando las colecciones exportadas arriba)
@@ -76,4 +76,9 @@ export async function getZonesPage(page, pageSize) {
 }
 export async function getZonesCount() {
   return await zones.countDocuments();
+}
+
+export async function searchZonesByName(nameInput){
+  return await zones.find({ $text: { $search: nameInput} })
+                    .toArray();
 }
