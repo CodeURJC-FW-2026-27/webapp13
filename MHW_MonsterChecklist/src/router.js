@@ -314,7 +314,7 @@ router.post("/updateCreature", upload.single("formDetailsMonsterImage"), async (
   let newMonster = buildMonster(req);
   await database.updateMonster(id,monsterId,newMonster);
 
-  res.render("/generalReturn.html", {
+  res.render("generalReturn.html", {
     message: `El monstruo de id ${monsterId} fue modificado con sucesso `,
     destinationLink: "/details?id=" + req.query.zoneId,
     destination: "details",

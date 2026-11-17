@@ -46,7 +46,7 @@ export async function updatePost(id, updateMonsters) {
 export async function updateMonster(id, monsterId, monster) {
   return await zones.updateOne(
     { _id: new ObjectId(id), "monsters._id": new ObjectId(monsterId)},
-    { $set: { "monster.$":monster } },
+    { $set: { "monsters.$":monster } },
   );
 }
 export async function addMonster(id, monster) {
