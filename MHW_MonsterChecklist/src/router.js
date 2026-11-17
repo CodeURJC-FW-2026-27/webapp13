@@ -3,11 +3,13 @@ import multer from "multer";
 import fs from "node:fs/promises";
 
 import * as database from "./database.js";
-import { ObjectId } from "mongodb";
 
 const router = express.Router();
 export default router;
 
+const upload = multer({ dest: "uploads/" });
+
+// / (root)
 router.get("/", async (req, res) => {
   //number of Zones shown per page
   const pageSize=6;
@@ -22,8 +24,6 @@ router.get("/", async (req, res) => {
   currentPage = Math.max(1, Math.min(currentPage, totalPages || 1));
 
   const zones = await database.getZonesPage(currentPage, pageSize);
-
-  
 
   res.render("index.html", {
     headerTitle: "Bestiario Monster Hunter",
@@ -41,45 +41,27 @@ router.get("/", async (req, res) => {
   });
 });
 
-function buildMonster(req) {
-    return {
-      name: req.body.name,
-      dificulty: req.body.formIndexDificultadButton,
-      ranks: [
-        req.body.formIndexCategorias1,
-        req.body.formIndexCategorias2,
-        req.body.formIndexCategorias3,
-      ],
-      image: req.file.filename,
-      species: req.body.species,
-      elements: [req.body.element],
-      effects: [req.body.effects],
-      weaknesses: [req.body.weakness],
-      resistances: [req.body.resistances],
-      habitat: req.body.habitat,
-      minSize: req.body.minSize,
-      maxSize: req.body.maxSize,
-      information: req.body.information,
-    };
-  }
-
+// /details
 router.get("/details", async (req, res) => {
   let id = req.query.id;
 
   let zone = await database.getPost(id);
-  let zones= await database.getPosts();
-  console.log(zones)
-  let zonesNames=[];
-  for (let i=0; i<zones.length;i++){
-    if (zones[i].name){
+  let zones = await database.getPosts();
+
+  let zonesNames = [];
+  for (let i = 0; i < zones.length; i++) {
+    if (zones[i].name) {
       zonesNames.push(zones[i].name.toString());
     }
   }
 
   if (zone === null) {
+    // if the zone doesn't exist
     console.log(`The zone with the id ${id} doesn't exist`);
     res.sendStatus(404);
   } else {
+    // if the zone exists
+
     res.render("details.html", {
       id: id,
       headerTitle: zone.name,
@@ -92,9 +74,18 @@ router.get("/details", async (req, res) => {
       },
       getRanks: function () {
         let s = "";
-        if (this.ranks[0]){s+= "LR "};
-        if (this.ranks[1]) {s+= "HR "};
-        if(this.ranks[2])  {s+="MR"};
+        if (this.ranks[0]) {
+          s += "LR ";
+        }
+        if (this.ranks[1]) {
+          s += "HR ";
+        }
+        if (this.ranks[2]) {
+          s += "MR";
+        }
+        if (s == "") {
+          s = "None";
+        }
 
         return s;
       },
@@ -109,6 +100,9 @@ router.get("/details", async (req, res) => {
             break;
           case 2:
             s = "Scorching";
+            break;
+          default:
+            s = "None";
             break;
         }
 
@@ -126,6 +120,7 @@ router.get("/details", async (req, res) => {
   }
 });
 
+// /image
 router.get("/image", (req, res) => {
   let filename = req.query.filename;
   // If filename has \ or / then path traversal attack is detected
@@ -136,32 +131,30 @@ router.get("/image", (req, res) => {
   res.download("uploads/" + filename);
 });
 
+// /form_index
 router.get("/form_index", (req, res) => {
   res.render("formIndex.html", {
     headerTitle: "Formulario para añadir Zonas de caza",
   });
 });
 
-const upload = multer({ dest: "uploads/" });
-
+// /generalReturnIndex (for the index form to add zones)
 router.post(
   "/generalReturnIndex",
   upload.single("formIndexImage"),
   async (req, res) => {
     let name = req.body.formIndexName.toString();
-
     let difficulty = parseInt(req.body.formIndexDifficulty);
 
     let selectedRanks = req.body.formIndexRanks;
     let ranks=[0,1,2].map((rank)=> selectedRanks.includes(String(rank)))
 
     let image = req.file.filename;
-
     let enviroment = req.body.formIndexEnviroment.toString();
-
     let temperature = parseInt(req.body.formIndexTemperature);
-
     let description = req.body.formIndexDescription.toString();
+
+    // comprobacion de valores
 
     let newZone = {
       name: name,
@@ -176,12 +169,11 @@ router.post(
     await database.addZone(newZone);
 
     if (req.file) {
-      //res.render("uploaded_image", { filename: req.file.filename });
     } else {
       res.send("File not found!");
     }
 
-    res.render("generalReturn", {
+    res.render("generalReturn.html", {
       message: `The zone ${name} has been added successfully`,
       destinationLink: "/",
       destination: "Home",
@@ -189,16 +181,20 @@ router.post(
   },
 );
 
-router.get("/deletePost", async (req, res) => {
-  let id = req.query.id;
+// /deleteZone
+router.get("/deleteZone", async (req, res) => {
+  let zoneId = req.query.id;
 
   let zone = await database.getPost(id);
 
   console.log(zone);
 
   if (zone === null) {
-    console.log(`The zone with the id ${id} doesn't exist`);
-    res.sendStatus(404);
+    res.render("generalReturn.html", {
+      message: `The zone with the id ${zoneId} doesn't exist`,
+      destinationLink: "/",
+      destination: "Home",
+    });
   } else {
     await database.deletePost(id);
     res.render("formManager.html", {
@@ -209,19 +205,16 @@ router.get("/deletePost", async (req, res) => {
   }
 });
 
-//interact with DB -> async
-router.get("/deleteMonster", async (req,res)=>{
-  //get the name of Monster and  zone id
-  let id=req.query.id;
-  let name=req.query.nameMonster;
-  
-  //select the Zone
-  let zone = await database.getPost(id);
+// /deleteMonster
+router.get("/deleteMonster", async (req, res) => {
+  //get the id of the Monster
+  let zoneId = req.query.zoneId;
+  let monsterId = req.query.monsterId;
+
   //get the Monsters array
   let arrayMonsters = await database.getPost(zoneId);
 
   if (arrayMonsters === null) {
-    console.log(`The zone with the id ${zoneId} doesn't exist`);
     res.render("generalReturn.html", {
       message: `The zone with the id ${zoneId} doesn't exist`,
       destinationLink: "/",
@@ -230,14 +223,13 @@ router.get("/deleteMonster", async (req,res)=>{
   } else {
     arrayMonsters = arrayMonsters.monsters;
 
-    //look for monster with same name and delete them from the array with splice()
+    //look for monster with same id and delete them from the array with splice()
     let i = 0;
     while (arrayMonsters[i] && arrayMonsters[i]._id != monsterId) {
       i++;
     }
 
     if (i >= arrayMonsters.length) {
-      console.log(`The monster with the id ${monsterId} doesn't exist`);
       res.render("generalReturn.html", {
         message: `The monster with the id ${monsterId} doesn't exist`,
         destinationLink: "/",
@@ -258,61 +250,95 @@ router.get("/deleteMonster", async (req,res)=>{
       });
     }
   }
-  //update the array of Monsters in DB
-  await database.updatePost(id,arrayMonsters);
-  //send id of selected Zone for redirection
-  res.render("deletePage.html", {
-    destinationLink: "/details?id=" + id,
-  });
 });
 
-router.post("/newCreature", upload.single("formDetailsMonsterImage"), async (req, res) => {
-  let id = req.query.id;
-  let monster = buildMonster(req);
-  database.addMonster(id, monster);
-  res.render("generalReturn.html", {
-        message: `The monster with the id ${monster._id} and name ${monster.name} has been added successfully!`,
-        destinationLink: `./details?id=${id}`,
-        destination: "Back to the Zone",
-      });
-});
+// /newCreature
+router.post(
+  "/newCreature",
+  upload.single("formDetailsMonsterImage"),
+  async (req, res) => {
+    function buildMonster(req) {
+      return {
+        name: req.body.name,
+        dificulty: req.body.formIndexDificultadButton,
+        ranks: [
+          req.body.formIndexCategorias1,
+          req.body.formIndexCategorias2,
+          req.body.formIndexCategorias3,
+        ],
+        image: req.file.filename,
+        species: req.body.species,
+        elements: [req.body.element],
+        effects: [req.body.effects],
+        weaknesses: [req.body.weakness],
+        resistances: [req.body.resistances],
+        habitat: req.body.habitat,
+        minSize: req.body.minSize,
+        maxSize: req.body.maxSize,
+        information: req.body.information,
+      };
+    }
 
+    let id = req.query.id;
+    let monster = buildMonster(req);
+    
+    database.addMonster(id, monster);
+
+    res.render("generalReturn.html", {
+      message: `The monster with the id ${monster._id} and name ${monster.name} has been added successfully!`,
+      destinationLink: `./details?id=${id}`,
+      destination: "Back to the Zone",
+    });
+  },
+);
+
+// /editCreature
 router.get("/editCreature", async (req, res) => {
   let zone = await database.getPost(req.query.zoneId);
-  let monster = zone.monsters.find(m => m._id.toString() === req.query.monsterId);
-  if (!monster) {
+
+  let monster = zone.monsters.find(
+    (m) => m._id.toString() === req.query.monsterId,
+  );
+
+  if (monster === null) {
     console.log(`The monster with the id ${monsterId} doesn't exist`);
     res.render("generalReturn.html", {
       message: `The monster with the id ${monsterId} doesn't exist`,
       destinationLink: "/",
       destination: "Home",
     });
-  }
-  else {
+  } else {
     res.render("editCreature.html", {
-      zone, monster
-    })
+      zone,
+      monster,
+    });
   }
-})
+});
 
-router.post("/updateCreature", upload.single("formDetailsMonsterImage"), async (req, res) => {
-  
-  let id = req.query.zoneId;
-  let monsterId = req.query.monsterId;
-  let newMonster = buildMonster(req);
-  await database.updateMonster(id,monsterId,newMonster);
+// /updateCreature
+router.post(
+  "/updateCreature",
+  upload.single("formDetailsMonsterImage"),
+  async (req, res) => {
+    let id = req.query.zoneId;
+    let monsterId = req.query.monsterId;
+    let newMonster = buildMonster(req);
+    await database.updateMonster(id, monsterId, newMonster);
 
-  res.render("generalReturn.html", {
-    message: `El monstruo de id ${monsterId} fue modificado con sucesso `,
-    destinationLink: "/details?id=" + req.query.zoneId,
-    destination: "details",
-  });
-})
+    res.render("/generalReturn.html", {
+      message: `El monstruo de id ${monsterId} fue modificado con sucesso `,
+      destinationLink: "/details?id=" + req.query.zoneId,
+      destination: "details",
+    });
+  },
+);
 
-router.get("/updatePostPage", async (req,res)=>{
+// /updateZone
+router.get("/updateZoneForm", async (req, res) => {
   let id = req.query.id;
   let zone = await database.getPost(id);
- if (zone===null) {
+
+  if (zone === null) {
     console.log(`The zone with the id ${id} doesn't exist`);
     res.sendStatus(404);
   }
@@ -328,15 +354,19 @@ router.get("/updatePostPage", async (req,res)=>{
     zone.isTemp1 = zone.temperature === 1;
     zone.isTemp2 = zone.temperature === 2;
 
-    //Redirect user to updatePageZone
-  res.render("updatePageZone.html", {
-      zone: zone,      
-      headerTitle:"Actualizar Zona"
-    })
-})
+  //Redirect user to updatePageZone
+  res.render("updateZone.html", {
+    zone: zone,
+    headerTitle: "Actualizar Zona",
+  });
+});
 
-router.post("/updatePost",upload.single("formIndexImage"), async(req,res)=>{
-    let id=req.query.id;
+// /updateZone
+router.post(
+  "/updateZone",
+  upload.single("formIndexImage"),
+  async (req, res) => {
+    let id = req.query.id;
     let zone = await database.getPost(id);
 
     //Retrive the data from updateForm
