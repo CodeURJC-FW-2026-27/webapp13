@@ -41,28 +41,6 @@ router.get("/", async (req, res) => {
   });
 });
 
-function buildMonster(req) {
-  return {
-    name: req.body.name,
-    dificulty: req.body.formIndexDificultadButton,
-    ranks: [
-      req.body.formIndexCategorias1,
-      req.body.formIndexCategorias2,
-      req.body.formIndexCategorias3,
-    ],
-    image: req.file.filename,
-    species: req.body.species,
-    elements: [req.body.element],
-    effects: [req.body.effects],
-    weaknesses: [req.body.weakness],
-    resistances: [req.body.resistances],
-    habitat: req.body.habitat,
-    minSize: req.body.minSize,
-    maxSize: req.body.maxSize,
-    information: req.body.information,
-  };
-}
-
 // /details
 router.get("/details", async (req, res) => {
   let id = req.query.id;
@@ -146,7 +124,6 @@ router.get("/details", async (req, res) => {
   }
 });
 
-
 // /image
 router.get("/image", (req, res) => {
   let filename = req.query.filename;
@@ -165,8 +142,6 @@ router.get("/form_index", (req, res) => {
   });
 });
 
-
-
 // /generalReturnIndex (for the index form to add zones)
 router.post(
   "/generalReturnIndex",
@@ -181,7 +156,7 @@ router.post(
     let description = req.body.formIndexDescription.toString();
 
     // comprobacion de valores
-    
+
     let newZone = {
       name: name,
       difficulty: difficulty,
@@ -195,7 +170,6 @@ router.post(
     await database.addZone(newZone);
 
     if (req.file) {
-      
     } else {
       res.render("generalReturn.html", {
         message: `File not found!`,
@@ -281,14 +255,36 @@ router.get("/deleteMonster", async (req, res) => {
   }
 });
 
-
 // /newCreature
 router.post(
   "/newCreature",
   upload.single("formDetailsMonsterImage"),
   async (req, res) => {
+    function buildMonster(req) {
+      return {
+        name: req.body.name,
+        dificulty: req.body.formIndexDificultadButton,
+        ranks: [
+          req.body.formIndexCategorias1,
+          req.body.formIndexCategorias2,
+          req.body.formIndexCategorias3,
+        ],
+        image: req.file.filename,
+        species: req.body.species,
+        elements: [req.body.element],
+        effects: [req.body.effects],
+        weaknesses: [req.body.weakness],
+        resistances: [req.body.resistances],
+        habitat: req.body.habitat,
+        minSize: req.body.minSize,
+        maxSize: req.body.maxSize,
+        information: req.body.information,
+      };
+    }
+
     let id = req.query.id;
     let monster = buildMonster(req);
+    
     database.addMonster(id, monster);
 
     res.render("generalReturn.html", {
@@ -299,7 +295,6 @@ router.post(
   },
 );
 
-
 // /editCreature
 router.get("/editCreature", async (req, res) => {
   let zone = await database.getPost(req.query.zoneId);
@@ -307,7 +302,6 @@ router.get("/editCreature", async (req, res) => {
   let monster = zone.monsters.find(
     (m) => m._id.toString() === req.query.monsterId,
   );
-
 
   if (monster === null) {
     console.log(`The monster with the id ${monsterId} doesn't exist`);
@@ -323,7 +317,6 @@ router.get("/editCreature", async (req, res) => {
     });
   }
 });
-
 
 // /updateCreature
 router.post(
@@ -370,7 +363,6 @@ router.get("/updateZoneForm", async (req, res) => {
     headerTitle: "Actualizar Zona",
   });
 });
-
 
 // /updateZone
 router.post(
