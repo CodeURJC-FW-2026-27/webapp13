@@ -18,6 +18,7 @@ function makeOptions(choices, currentValue) {
 
 // / (root)
 router.get("/", async (req, res) => {
+
   //number of Zones shown per page
   const pageSize = 6;
   //get the total number of Zones
@@ -148,12 +149,18 @@ router.get("/form_index", (req, res) => {
   });
 });
 
-function verifyZoneValues(zone) {
+async function  verifyZoneValues(zone) {
   if (zone.name == "") return "El nombre es obligatorio!";
   if (zone.name[0] != zone.name[0].toUpperCase())
     return "La primera letra del nombre tiene que estar en mayuscula!";
 
   //comprobar si no hay otros nombres iguales
+   let currentNames = await database.getZoneNames();
+  console.log(currentNames);
+
+   if (currentNames.includes(zone.name)){
+    return "El nombre tiene que ser unico!";
+   }
 
   if (!zone.difficulty || zone.difficulty < 1 || zone.difficulty > 5)
     return "La dificultad es obligatoria!";
@@ -196,7 +203,7 @@ function buildZone(req, newImage) {
 router.post("/newZone", upload.single("formIndexImage"), async (req, res) => {
   let newZone = buildZone(req, req?.file?.filename);
 
-  let errorMessage = verifyZoneValues(newZone);
+  let errorMessage = await verifyZoneValues(newZone);
 
   if (errorMessage == "") {
     await database.addZone(newZone);
@@ -508,7 +515,7 @@ router.post(
 
       let newZone = buildZone(req, oldImage);
 
-      let errorMessage = verifyZoneValues(newZone);
+      let errorMessage = await verifyZoneValues(newZone);
 
       if (errorMessage == "") {
         newZone.monsters = [];

@@ -94,6 +94,7 @@ export async function updateZone(id, updateZone) {
   );
 }
 
+
 export async function getZonesPage(page, pageSize) {
   return await zones
     .find()
@@ -108,4 +109,32 @@ export async function getZonesCount() {
 export async function searchZonesByName(nameInput){
   return await zones.find({ $text: { $search: nameInput} })
                     .toArray();
+}
+
+export async function getZoneNames(){
+  //from MongoDB documentation - https://www.mongodb.com/es/docs/drivers/node/current/crud/query/project/#single-field
+  // return only* the name field
+  const projectFields = {_id: 0, name: 1};
+  const cursor = zones.find().project(projectFields);
+  let names = [];
+
+  for await (const doc of cursor) {
+    names.push(doc.name);
+  }
+
+  return names;
+}
+
+export async function getMonsterNames(zoneId){
+  //from MongoDB documentation - https://www.mongodb.com/es/docs/drivers/node/current/crud/query/project/#single-field
+  // return only* the name field
+  const projectFields = {_id: 0, name: 1};
+  const cursor = zones.find().project(projectFields);
+  let names = [];
+
+  for await (const doc of cursor) {
+    names.push(doc.name);
+  }
+
+  return names;
 }
