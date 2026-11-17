@@ -8,6 +8,14 @@ export default router;
 
 const upload = multer({ dest: "uploads/" });
 
+function makeOptions(choices, currentValue) {
+  return choices.map(([value, label]) => ({
+    value,
+    label,
+    selected: value === currentValue
+  }));
+}
+
 // / (root)
 router.get("/", async (req, res) => {
   //number of Zones shown per page
@@ -332,6 +340,13 @@ router.get("/editMonster", async (req, res) => {
       (m) => m._id.toString() === req.query.monsterId,
     );
 
+    //Check which difficulty radio button is True
+    monster.isDiff1 = monster.difficulty === 1;
+    monster.isDiff2 = monster.difficulty === 2;
+    monster.isDiff3 = monster.difficulty === 3;
+    monster.isDiff4 = monster.difficulty === 4;
+    monster.isDiff5 = monster.difficulty === 5;
+    
     if (monster === null) {
       res.render("generalReturn.html", {
         message: `The monster with the id ${monsterId} doesn't exist`,
@@ -342,7 +357,71 @@ router.get("/editMonster", async (req, res) => {
       res.render("editMonster.html", {
         zone,
         monster,
-      });
+        speciesOptions: makeOptions(
+    [
+      ["Bird Wyvern", "Bird-Wyvern"],
+      ["Brute Wyvern", "Brute-Wyvern"],
+      ["Fanged Beast", "Fanged-Beast"],
+      ["Fanged", "Fanged"],
+      ["Wyvern", "Wyvern"],
+      ["Flying Wyvern", "Flying-Wyvern"],
+      ["Piscine Wyvern", "Piscine-Wyvern"],
+      ["Elder Dragon", "Elder Dragon"],
+    ],
+    monster.species
+    ),
+
+  elementOptions: makeOptions(
+    [
+      ["Fire", "Fire"],
+      ["Water", "Water"],
+      ["Thunder", "Thunder"],
+      ["Ice", "Ice"],
+      ["Dragon", "Dragon"],
+      ["None", "None"],
+    ],
+    monster.elements[0],
+  ),
+  effectOptions: makeOptions(
+    [
+      ["Poison", "Poison"],
+      ["Stun", "Stun"],
+      ["Paralysis", "Paralysis"],
+      ["Sleep", "Sleep"],
+      ["Blastblight", "Blastblight"],
+      ["Bleeding", "Bleeding"],
+      ["Waterblight", "Waterblight"],
+      ["Fireblight", "Fireblight"],
+      ["Thunderblight", "Thunderblight"],
+      ["Iceblight", "Iceblight"],
+      ["None", "None"],
+    ],
+    monster.effects[0],
+  ),
+  weaknessOptions: makeOptions(
+    [
+      ["Fire", "Fire"],
+      ["Water", "Water"],
+      ["Thunder", "Thunder"],
+      ["Ice", "Ice"],
+      ["Dragon", "Dragon"],
+      ["None", "None"],
+    ],  
+    monster.weaknesses[0],
+  ),
+
+  resistanceOptions: makeOptions(
+    [
+      ["Fire", "Fire"],
+      ["Water", "Water"],
+      ["Thunder", "Thunder"],
+      ["Ice", "Ice"],
+      ["Dragon", "Dragon"],
+      ["None", "None"],
+    ],
+    monster.resistances[0],
+    
+  ) });
     }
   }
 });

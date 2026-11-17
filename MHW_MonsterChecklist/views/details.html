@@ -89,7 +89,11 @@
                 </tr>
                 <tr>
                   <td>Elemento</td>
-                  <td>{{elements}}</td>
+                  <td>
+                    {{#elements}}
+                      {{elements}}
+                    {{/elements}}
+                    </td>
                 </tr>
                 <tr>
                   <td>Efectos inflingidos</td>
@@ -97,11 +101,19 @@
                 </tr>
                 <tr>
                   <td>Debilidad</td>
-                  <td>{{weakness}}</td>
+                  <td>
+                    {{#weaknesses}}
+                      {{weaknesses}}
+                    {{/weaknesses}}                    
+                  </td>
                 </tr>
                 <tr>
                   <td>Resistencia</td>
-                  <td>{{resistances}}</td>
+                  <td>
+                    {{#resistances}}
+                      {{resistances}}
+                    {{/resistances}}                      
+                  </td>
                 </tr>
                 <tr>
                   <td>Habitat</td>
@@ -257,6 +269,7 @@
               name="formDetailsMonsterImage"
               class="form-control"
               id="formDetailsMonsterImage"
+              required
             />
           </div>
 
