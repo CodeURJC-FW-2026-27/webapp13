@@ -284,7 +284,7 @@ router.post(
 
     let id = req.query.id;
     let monster = buildMonster(req);
-    
+
     database.addMonster(id, monster);
 
     res.render("generalReturn.html", {
@@ -297,24 +297,32 @@ router.post(
 
 // /editCreature
 router.get("/editCreature", async (req, res) => {
+  let zoneId = req.query.zoneId;
   let zone = await database.getPost(req.query.zoneId);
 
-  let monster = zone.monsters.find(
-    (m) => m._id.toString() === req.query.monsterId,
-  );
-
-  if (monster === null) {
-    console.log(`The monster with the id ${monsterId} doesn't exist`);
+  if (zone === null) {
     res.render("generalReturn.html", {
-      message: `The monster with the id ${monsterId} doesn't exist`,
+      message: `The zone with the id ${zoneId} doesn't exist`,
       destinationLink: "/",
       destination: "Home",
     });
   } else {
-    res.render("editCreature.html", {
-      zone,
-      monster,
-    });
+    let monster = zone.monsters.find(
+      (m) => m._id.toString() === req.query.monsterId,
+    );
+
+    if (monster === null) {
+      res.render("generalReturn.html", {
+        message: `The monster with the id ${monsterId} doesn't exist`,
+        destinationLink: "/",
+        destination: "Home",
+      });
+    } else {
+      res.render("editCreature.html", {
+        zone,
+        monster,
+      });
+    }
   }
 });
 
@@ -336,14 +344,17 @@ router.post(
   },
 );
 
-// /updateZone
+// /updateZoneForm
 router.get("/updateZoneForm", async (req, res) => {
-  let id = req.query.id;
-  let zone = await database.getPost(id);
+  let monsterId = req.query.id;
+  let zone = await database.getPost(monsterId);
 
   if (zone === null) {
-    console.log(`The zone with the id ${id} doesn't exist`);
-    res.sendStatus(404);
+    res.render("generalReturn.html", {
+      message: `The monster with the id ${monsterId} doesn't exist`,
+      destinationLink: "/",
+      destination: "Home",
+    });
   }
   //Check which difficulty radio button is True
   zone.isDiff1 = zone.difficulty === 1;
@@ -369,42 +380,55 @@ router.post(
   "/updateZone",
   upload.single("formIndexImage"),
   async (req, res) => {
-    let id = req.query.id;
-    let zone = await database.getPost(id);
+    let zoneId = req.query.id;
+    let zone = await database.getPost(zoneId);
 
-    //Retrive the data from updateForm
-    let newName = req.body.formIndexName.toString();
-    let newDifficulty = parseInt(req.body.formIndexDifficulty);
-    //retrive the ranks from the multicheckboxes
-    let selectedRanks = req.body.formIndexRanks;
-    let newRanks = [0, 1, 2].map((rank) =>
-      selectedRanks.includes(String(rank)),
-    );
+    if (zone === null) {
+      res.render("generalReturn.html", {
+        message: `The zone with the id ${zoneId} doesn't exist`,
+        destinationLink: "/",
+        destination: "Home",
+      });
+    } else {
+      //Retrive the data from updateForm
+      let newName = req.body.formIndexName.toString();
+      let newDifficulty = parseInt(req.body.formIndexDifficulty);
+      //retrive the ranks from the multicheckboxes
+      let selectedRanks = req.body.formIndexRanks;
+      let newRanks = [0, 1, 2].map((rank) =>
+        selectedRanks.includes(String(rank)),
+      );
 
-    let newEnviroment = req.body.formIndexEnviroment.toString();
-    let newTemperature = parseInt(req.body.formIndexTemperature);
-    let newDescription = req.body.formIndexDescription.toString();
+      let newEnviroment = req.body.formIndexEnviroment.toString();
+      let newTemperature = parseInt(req.body.formIndexTemperature);
+      let newDescription = req.body.formIndexDescription.toString();
 
-    //Checks which fields have been changed with ternary ops and sets them on the updatedZone.
-    let updatedZone = {
-      name: zone.name !== newName ? newName : zone.name,
-      difficulty:
-        zone.difficulty !== newDifficulty ? newDifficulty : zone.difficulty,
-      ranks: zone.ranks !== newRanks ? newRanks : zone.ranks,
-      image: req.file ? req.file.filename : zone.image,
-      enviroment:
-        zone.enviroment !== newEnviroment ? newEnviroment : zone.enviroment,
-      temperature:
-        zone.temperature !== newTemperature ? newTemperature : zone.temperature,
-      description:
-        zone.description !== newDescription ? newDescription : zone.description,
-    };
+      //Checks which fields have been changed with ternary ops and sets them on the updatedZone.
+      let updatedZone = {
+        name: zone.name !== newName ? newName : zone.name,
+        difficulty:
+          zone.difficulty !== newDifficulty ? newDifficulty : zone.difficulty,
+        ranks: zone.ranks !== newRanks ? newRanks : zone.ranks,
+        image: req.file ? req.file.filename : zone.image,
+        enviroment:
+          zone.enviroment !== newEnviroment ? newEnviroment : zone.enviroment,
+        temperature:
+          zone.temperature !== newTemperature
+            ? newTemperature
+            : zone.temperature,
+        description:
+          zone.description !== newDescription
+            ? newDescription
+            : zone.description,
+      };
 
-    //set the changes in DB
-    await database.updateZonePost(id, updatedZone);
-    res.render("updatePageNotifi", {
-      headerTitle: "Actualizacion Completa",
-      destinationLink: "/details?id=" + id,
-    });
+      //set the changes in DB
+      await database.updateZonePost(zoneId, updatedZone);
+      res.render("generalReturn.html", {
+        message: `La zona de id ${zoneId} y nombre ${zone.name} fue modificada con sucesso `,
+        destinationLink: "/details?id=" + zoneId,
+        destination: zone.name,
+      });
+    }
   },
 );
