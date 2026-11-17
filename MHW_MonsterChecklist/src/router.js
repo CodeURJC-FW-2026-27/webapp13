@@ -291,6 +291,7 @@ router.get("/deleteMonster", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 function buildMonster(req, image) {
   return {
     name: req.body.name,
@@ -359,6 +360,18 @@ router.get("/editMonster", async (req, res) => {
         message: `The monster with the id ${monsterId} doesn't exist`,
         destinationLink: "/",
         destination: "Home",
+=======
+router.post("/newCreature", upload.single("formDetailsMonsterImage"), async (req, res) => {
+  let id = req.query.id;
+  let monster = buildMonster(req);
+  database.addMonster(id, monster);
+ 
+
+  res.render("generalReturn.html", {
+        message: `The monster with the id ${monster._id} and name ${monster.name} has been added successfully!`,
+        destinationLink: `./details?id=${id}`,
+        destination: "Back to the Zone",
+>>>>>>> c3b540b (filtro dificuldad)
       });
     } else {
       res.render("editMonster.html", {
@@ -489,6 +502,62 @@ router.get("/updateZoneForm", async (req, res) => {
       headerTitle: "Actualizar Zona",
     });
   }
+<<<<<<< HEAD
+=======
+
+  else {
+     
+  //Check which difficulty radio button is True
+  monster.isDiff1 = monster.difficulty === 1;
+  monster.isDiff2 = monster.difficulty === 2;
+  monster.isDiff3 = monster.difficulty === 3;
+  monster.isDiff4 = monster.difficulty === 4;
+  monster.isDiff5 = monster.difficulty === 5;
+    res.render("editCreature.html", {
+      zone, monster
+    })
+  }
+})
+
+router.post("/updateCreature", upload.single("formDetailsMonsterImage"), async (req, res) => {
+  
+  let id = req.query.zoneId;
+  let monsterId = req.query.monsterId;
+  let newMonster = buildMonster(req);
+  await database.updateMonster(id,monsterId,newMonster);
+
+  res.render("generalReturn.html", {
+    message: `El monstruo de id ${monsterId} fue modificado con sucesso `,
+    destinationLink: "/details?id=" + req.query.zoneId,
+    destination: "details",
+  });
+})
+
+router.get("/updatePostPage", async (req, res) => {
+  let id = req.query.id;
+  let zone = await database.getPost(id);
+  if (zone === null) {
+    console.log(`The zone with the id ${id} doesn't exist`);
+    res.sendStatus(404);
+  }
+  //Check which difficulty radio button is True
+  zone.isDiff1 = zone.difficulty === 1;
+  zone.isDiff2 = zone.difficulty === 2;
+  zone.isDiff3 = zone.difficulty === 3;
+  zone.isDiff4 = zone.difficulty === 4;
+  zone.isDiff5 = zone.difficulty === 5;
+
+  //Check the value of the Temp if X value is true then its Checkbox in form will be checked
+  zone.isTemp0 = zone.temperature === 0;
+  zone.isTemp1 = zone.temperature === 1;
+  zone.isTemp2 = zone.temperature === 2;
+
+  //Redirect user to updatePageZone
+  res.render("updatePageZone.html", {
+    zone: zone,
+    headerTitle: "Actualizar Zona",
+  });
+>>>>>>> c3b540b (filtro dificuldad)
 });
 
 // /updateZone
@@ -541,6 +610,45 @@ router.post(
       }
     }
   },
+
+router.get("/getDifficulty", async (req, res) => {
+  //number of Zones shown per page
+  const pageSize = 6;
+  //get the total number of Zones
+  const totalZones = await database.getZonesCount();
+  //number of pages in total
+  const totalPages = Math.ceil(totalZones / pageSize);
+
+  let currentPage = Number.parseInt(req.query.page, 10) || 1;
+
+  // Mantén el número de página dentro del rango válido.
+  currentPage = Math.max(1, Math.min(currentPage, totalPages || 1));
+
+  const zones = await database.getZonesPage(currentPage, pageSize);
+
+let difficultytoShow = req.query.difficulty;
+let zonesToShow = await database.findDifficulltyZone(difficultytoShow);
+console.log(zonesToShow)
+
+res.render("index.html", {
+    headerTitle: "Bestiario Monster Hunter",
+    zonesToShow,
+    pages: Array.from({ length: totalPages }, (_, i) => ({
+      number: i + 1,
+      isCurrent: i + 1 === currentPage,
+    })),
+    currentPage,
+    hasPages: totalPages > 1,
+    previousPage: currentPage - 1,
+    nextPage: currentPage + 1,
+    hasPrevious: currentPage > 1,
+    hasNext: currentPage < totalPages,
+  });
+
+
+})
+
+
 );
 
 // /search

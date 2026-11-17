@@ -48,11 +48,16 @@ export async function addMonster(id, monster) {
   );
 }
 
+<<<<<<< HEAD
 export async function deleteMonster(id, updateMonsters) {
   return await zones.updateOne(
     { _id: new ObjectId(id) },
     { $set: { monsters: updateMonsters } },
   );
+=======
+export async function findDifficulltyZone(difficulty){
+return await zones.findOne({difficulty:difficulty});
+>>>>>>> c3b540b (filtro dificuldad)
 }
 
 export async function getMonster (zoneId, monsterId)
