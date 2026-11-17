@@ -1,6 +1,5 @@
 import express from "express";
 import multer from "multer";
-import fs from "node:fs/promises";
 
 import * as database from "./database.js";
 
@@ -45,8 +44,8 @@ router.get("/", async (req, res) => {
 router.get("/details", async (req, res) => {
   let id = req.query.id;
 
-  let zone = await database.getPost(id);
-  let zones = await database.getPosts();
+  let zone = await database.getZone(id);
+  let zones = await database.getZones();
 
   let zonesNames = [];
   for (let i = 0; i < zones.length; i++) {
@@ -57,8 +56,11 @@ router.get("/details", async (req, res) => {
 
   if (zone === null) {
     // if the zone doesn't exist
-    console.log(`The zone with the id ${id} doesn't exist`);
-    res.sendStatus(404);
+    res.render("generalReturn.html", {
+      message: `The zone with the id ${id} does't exist`,
+      destinationLink: "/",
+      destination: "Home",
+    });
   } else {
     // if the zone exists
 
@@ -138,56 +140,78 @@ router.get("/form_index", (req, res) => {
   });
 });
 
-// /generalReturnIndex (for the index form to add zones)
-router.post(
-  "/generalReturnIndex",
-  upload.single("formIndexImage"),
-  async (req, res) => {
-    let name = req.body.formIndexName.toString();
-    let difficulty = parseInt(req.body.formIndexDifficulty);
+function verifyZoneValues(zone) {
+  if (zone.name == "") return "El nombre es obligatorio!";
+  if (zone.name[0] != zone.name[0].toUpperCase())
+    return "La primera letra del nombre tiene que estar en mayuscula!";
 
-    let selectedRanks = req.body.formIndexRanks;
-    let ranks = [0, 1, 2].map((rank) => selectedRanks.includes(String(rank)));
+  //comprobar si no hay otros nombres iguales
 
-    let image = req.file.filename;
-    let enviroment = req.body.formIndexEnviroment.toString();
-    let temperature = parseInt(req.body.formIndexTemperature);
-    let description = req.body.formIndexDescription.toString();
+  if (!zone.difficulty || zone.difficulty < 1 || zone.difficulty > 5)
+    return "La dificultad es obligatoria!";
+  if (!zone.image) return "La imagen es obligatoria!";
+  if (!zone.ranks) return "Las categorias son obligatorias!";
+  if (zone.enviroment == "") return "El entorno es obligatorio!";
+  if (zone.temperature < 0 || zone.temperature > 2)
+    return "La temperatura es obligatoria";
+  if (!zone.description) return "La descripcion es obligatoria";
 
-    // comprobacion de valores
+  return "";
+}
 
-    let newZone = {
-      name: name,
-      difficulty: difficulty,
-      ranks: ranks,
-      image: image,
-      enviroment: enviroment,
-      temperature: temperature,
-      description: description,
-    };
+function buildZone(req, newImage) {
+  let name = req.body.formIndexName.toString();
+  let difficulty = parseInt(req.body.formIndexDifficulty);
 
+  let selectedRanks = req.body.formIndexRanks;
+  let ranks = [0, 1, 2].map((rank) => selectedRanks?.includes(String(rank)));
+
+  let image = newImage;
+  let enviroment = req.body.formIndexEnviroment.toString();
+  let temperature = parseInt(req.body.formIndexTemperature);
+  let description = req.body.formIndexDescription.toString();
+
+  let newZone = {
+    name: name,
+    difficulty: difficulty,
+    ranks: ranks,
+    image: image,
+    enviroment: enviroment,
+    temperature: temperature,
+    description: description,
+  };
+
+  return newZone;
+}
+
+// /newZone
+router.post("/newZone", upload.single("formIndexImage"), async (req, res) => {
+  let newZone = buildZone(req, req?.file?.filename);
+
+  let errorMessage = verifyZoneValues(newZone);
+
+  if (errorMessage == "") {
     await database.addZone(newZone);
 
-    if (req.file) {
-    } else {
-      res.send("File not found!");
-    }
-
     res.render("generalReturn.html", {
-      message: `The zone ${name} has been added successfully`,
+      message: `The zone ${newZone.name} has been added successfully`,
       destinationLink: "/",
       destination: "Home",
     });
-  },
-);
+  } else {
+    res.render("generalReturn.html", {
+      message: `Error : ${errorMessage}`,
+      destinationLink: "/form_index",
+      destination: "New zone form",
+    });
+  }
+});
 
 // /deleteZone
 router.get("/deleteZone", async (req, res) => {
   let zoneId = req.query.id;
 
-  let zone = await database.getPost(id);
-
-  console.log(zone);
+  let zone = await database.getZone(zoneId);
 
   if (zone === null) {
     res.render("generalReturn.html", {
@@ -196,9 +220,9 @@ router.get("/deleteZone", async (req, res) => {
       destination: "Home",
     });
   } else {
-    await database.deletePost(id);
-    res.render("formManager.html", {
-      message: `The zone with the id ${id} has been deleted successfully`,
+    await database.deleteZone(zoneId);
+    res.render("generalReturn.html", {
+      message: `The zone with the id ${zoneId} has been deleted successfully`,
       destinationLink: "/",
       destination: "Home",
     });
@@ -212,7 +236,7 @@ router.get("/deleteMonster", async (req, res) => {
   let monsterId = req.query.monsterId;
 
   //get the Monsters array
-  let arrayMonsters = await database.getPost(zoneId);
+  let arrayMonsters = await database.getZone(zoneId);
 
   if (arrayMonsters === null) {
     res.render("generalReturn.html", {
@@ -240,7 +264,7 @@ router.get("/deleteMonster", async (req, res) => {
       arrayMonsters.splice(i, 1);
 
       //update the array of Monsters in DB
-      await database.updatePost(zoneId, arrayMonsters);
+      await database.deleteMonster(zoneId, arrayMonsters);
       //send id of selected Zone for redirection
 
       res.render("generalReturn.html", {
@@ -252,50 +276,50 @@ router.get("/deleteMonster", async (req, res) => {
   }
 });
 
-// /newCreature
+function buildMonster(req, image) {
+  return {
+    name: req.body.name,
+    dificulty: req.body.formIndexDificultadButton,
+    ranks: [
+      req.body.formIndexCategorias1,
+      req.body.formIndexCategorias2,
+      req.body.formIndexCategorias3,
+    ],
+    image: image,
+    species: req.body.species,
+    elements: [req.body.element],
+    effects: [req.body.effects],
+    weaknesses: [req.body.weakness],
+    resistances: [req.body.resistances],
+    habitat: req.body.habitat,
+    minSize: req.body.minSize,
+    maxSize: req.body.maxSize,
+    information: req.body.information,
+  };
+}
+
+// /newMonster
 router.post(
-  "/newCreature",
+  "/newMonster",
   upload.single("formDetailsMonsterImage"),
   async (req, res) => {
-    function buildMonster(req) {
-      return {
-        name: req.body.name,
-        dificulty: req.body.formIndexDificultadButton,
-        ranks: [
-          req.body.formIndexCategorias1,
-          req.body.formIndexCategorias2,
-          req.body.formIndexCategorias3,
-        ],
-        image: req.file.filename,
-        species: req.body.species,
-        elements: [req.body.element],
-        effects: [req.body.effects],
-        weaknesses: [req.body.weakness],
-        resistances: [req.body.resistances],
-        habitat: req.body.habitat,
-        minSize: req.body.minSize,
-        maxSize: req.body.maxSize,
-        information: req.body.information,
-      };
-    }
-
     let id = req.query.id;
-    let monster = buildMonster(req);
+    let monster = buildMonster(req, req.file.filename);
 
     database.addMonster(id, monster);
 
     res.render("generalReturn.html", {
-      message: `The monster with the id ${monster._id} and name ${monster.name} has been added successfully!`,
+      message: `The monster with the name ${monster.name} has been added successfully!`,
       destinationLink: `./details?id=${id}`,
       destination: "Back to the Zone",
     });
   },
 );
 
-// /editCreature
-router.get("/editCreature", async (req, res) => {
+// /editMonster
+router.get("/editMonster", async (req, res) => {
   let zoneId = req.query.zoneId;
-  let zone = await database.getPost(req.query.zoneId);
+  let zone = await database.getZone(req.query.zoneId);
 
   if (zone === null) {
     res.render("generalReturn.html", {
@@ -315,7 +339,7 @@ router.get("/editCreature", async (req, res) => {
         destination: "Home",
       });
     } else {
-      res.render("editCreature.html", {
+      res.render("editMonster.html", {
         zone,
         monster,
       });
@@ -323,17 +347,25 @@ router.get("/editCreature", async (req, res) => {
   }
 });
 
-// /updateCreature
+// /updateMonster
 router.post(
-  "/updateCreature",
+  "/updateMonster",
   upload.single("formDetailsMonsterImage"),
   async (req, res) => {
-    let id = req.query.zoneId;
+    let zoneId = req.query.zoneId;
     let monsterId = req.query.monsterId;
-    let newMonster = buildMonster(req);
-    await database.updateMonster(id, monsterId, newMonster);
+    let oldMonster = await database.getMonster(zoneId, monsterId);
 
-    res.render("/generalReturn.html", {
+    let oldImage = oldMonster.image;
+
+      if (req?.file?.filename)
+        oldImage = req?.file?.filename;
+
+
+    let newMonster = buildMonster(req, oldImage);
+    await database.updateMonster(zoneId, monsterId, newMonster);
+
+    res.render("generalReturn.html", {
       message: `El monstruo de id ${monsterId} fue modificado con sucesso `,
       destinationLink: "/details?id=" + req.query.zoneId,
       destination: "details",
@@ -344,7 +376,7 @@ router.post(
 // /updateZoneForm
 router.get("/updateZoneForm", async (req, res) => {
   let monsterId = req.query.id;
-  let zone = await database.getPost(monsterId);
+  let zone = await database.getZone(monsterId);
 
   if (zone === null) {
     res.render("generalReturn.html", {
@@ -352,24 +384,25 @@ router.get("/updateZoneForm", async (req, res) => {
       destinationLink: "/",
       destination: "Home",
     });
+  } else {
+    //Check which difficulty radio button is True
+    zone.isDiff1 = zone.difficulty === 1;
+    zone.isDiff2 = zone.difficulty === 2;
+    zone.isDiff3 = zone.difficulty === 3;
+    zone.isDiff4 = zone.difficulty === 4;
+    zone.isDiff5 = zone.difficulty === 5;
+
+    //Check the value of the Temp if X value is true then its Checkbox in form will be checked
+    zone.isTemp0 = zone.temperature === 0;
+    zone.isTemp1 = zone.temperature === 1;
+    zone.isTemp2 = zone.temperature === 2;
+
+    //Redirect user to updatePageZone
+    res.render("updateZone.html", {
+      zone: zone,
+      headerTitle: "Actualizar Zona",
+    });
   }
-  //Check which difficulty radio button is True
-  zone.isDiff1 = zone.difficulty === 1;
-  zone.isDiff2 = zone.difficulty === 2;
-  zone.isDiff3 = zone.difficulty === 3;
-  zone.isDiff4 = zone.difficulty === 4;
-  zone.isDiff5 = zone.difficulty === 5;
-
-  //Check the value of the Temp if X value is true then its Checkbox in form will be checked
-  zone.isTemp0 = zone.temperature === 0;
-  zone.isTemp1 = zone.temperature === 1;
-  zone.isTemp2 = zone.temperature === 2;
-
-  //Redirect user to updatePageZone
-  res.render("updateZone.html", {
-    zone: zone,
-    headerTitle: "Actualizar Zona",
-  });
 });
 
 // /updateZone
@@ -378,7 +411,7 @@ router.post(
   upload.single("formIndexImage"),
   async (req, res) => {
     let zoneId = req.query.id;
-    let zone = await database.getPost(zoneId);
+    let zone = await database.getZone(zoneId);
 
     if (zone === null) {
       res.render("generalReturn.html", {
@@ -387,62 +420,48 @@ router.post(
         destination: "Home",
       });
     } else {
-      //Retrive the data from updateForm
-      let newName = req.body.formIndexName.toString();
-      let newDifficulty = parseInt(req.body.formIndexDifficulty);
-      //retrive the ranks from the multicheckboxes
-      let selectedRanks = req.body.formIndexRanks;
-      let newRanks = [0, 1, 2].map((rank) =>
-        selectedRanks.includes(String(rank)),
-      );
 
-      let newEnviroment = req.body.formIndexEnviroment.toString();
-      let newTemperature = parseInt(req.body.formIndexTemperature);
-      let newDescription = req.body.formIndexDescription.toString();
+      
+      let oldImage = zone.image;
 
-      //Checks which fields have been changed with ternary ops and sets them on the updatedZone.
-      let updatedZone = {
-        name: zone.name !== newName ? newName : zone.name,
-        difficulty:
-          zone.difficulty !== newDifficulty ? newDifficulty : zone.difficulty,
-        ranks: zone.ranks !== newRanks ? newRanks : zone.ranks,
-        image: req.file ? req.file.filename : zone.image,
-        enviroment:
-          zone.enviroment !== newEnviroment ? newEnviroment : zone.enviroment,
-        temperature:
-          zone.temperature !== newTemperature
-            ? newTemperature
-            : zone.temperature,
-        description:
-          zone.description !== newDescription
-            ? newDescription
-            : zone.description,
-      };
+      if (req?.file?.filename)
+        oldImage = req?.file?.filename;
 
-      //set the changes in DB
-      await database.updateZonePost(id, updatedZone);
-      res.render("/generalReturn.html", {
-        message: `La zona de id ${zoneId} fue modificada con sucesso `,
-        destinationLink: "/details?id=" + zoneId,
-        destination: "details",
-      });
+      let newZone = buildZone(req, oldImage);
+
+      let errorMessage = verifyZoneValues(newZone);
+
+      if (errorMessage == "") {
+        newZone.monsters = [];
+
+        zone.monsters.forEach((monster) => {
+          monster.habitat = newZone.name;
+          newZone.monsters.push(monster);
+        });
+
+        await database.updateZone(zoneId, newZone);
+
+        res.render("generalReturn.html", {
+          message: `La zona de id ${zoneId} fue modificada con sucesso `,
+          destinationLink: "/details?id=" + zoneId,
+          destination: "details",
+        });
+      } else {
+        res.render("generalReturn.html", {
+          message: `Error : ${errorMessage}`,
+          destinationLink: "/form_index",
+          destination: "New zone form",
+        });
+      }
     }
   },
 );
 
+// /search
 router.get("/search", async (req, res) => {
   let nameInput = req.query.zoneName;
 
   let zones = nameInput ? await database.searchZonesByName(nameInput) : [];
-  console.log(zones);
-  //Pagination
-  /* let len = zones.length;
-  const pageSize=6;
-  const totalPages = Math.ceil(len / pageSize);
-  let currentPage = Number.parseInt(req.query.page, 10) || 1;
-  currentPage = Math.max(1, Math.min(currentPage, totalPages || 1));
-  */
-  //
 
   res.render("index.html", {
     headerTitle: "Bestiario Monster Hunter",

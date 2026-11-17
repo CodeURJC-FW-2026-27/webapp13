@@ -21,43 +21,62 @@ export async function addZones(post) {
   return await zones.insertMany(post);
 }
 
-export async function deletePost(id) {
+export async function deleteZone(id) {
   return await zones.findOneAndDelete({ _id: new ObjectId(id) });
 }
 
-export async function deletePosts() {
+export async function deleteZones() {
   return await zones.deleteMany();
 }
 
-export async function getPosts() {
-  return await zones.find().toArray();
-}
-
-export async function getPost(id) {
+export async function getZone(id) {
   return await zones.findOne({ _id: new ObjectId(id) });
 }
 
-export async function updatePost(id, updateMonsters) {
-  return await zones.updateOne(
-    { _id: new ObjectId(id) },
-    { $set: { monsters: updateMonsters } },
-  );
+export async function getZones() {
+  return await zones.find().toArray();
 }
-export async function updateMonster(id, monsterId, monster) {
-  return await zones.updateOne(
-    { _id: new ObjectId(id), "monsters._id": new ObjectId(monsterId)},
-    { $set: { "monster.$":monster } },
-  );
-}
+
+
+
+
 export async function addMonster(id, monster) {
+  monster._id = new ObjectId(id);
   return await zones.updateOne(
     { _id: new ObjectId(id) },
     { $push: { monsters: monster } },
   );
 }
 
+export async function deleteMonster(id, updateMonsters) {
+  return await zones.updateOne(
+    { _id: new ObjectId(id) },
+    { $set: { monsters: updateMonsters } },
+  );
+}
 
-export async function updateZonePost(id, updateZone) {
+export async function getMonster (zoneId, monsterId)
+{
+  let zone = await zones.findOne({ _id: new ObjectId(zoneId) });
+
+  let monster = zone.monsters.find((m) => m._id.toString() === monsterId);
+
+  return monster;
+}
+
+
+
+export async function updateMonster(id, monsterId, newMonster) {
+  newMonster._id = new ObjectId(id);
+  return await zones.updateOne(
+    { _id: new ObjectId(id), "monsters._id": new ObjectId(monsterId)},
+    { $set: { "monsters.$":newMonster } },
+  );
+}
+
+
+
+export async function updateZone(id, updateZone) {
   return await zones.updateOne(
     { _id: new ObjectId(id) },
     {
@@ -69,6 +88,7 @@ export async function updateZonePost(id, updateZone) {
         enviroment: updateZone.enviroment,
         temperature: updateZone.temperature,
         description: updateZone.description,
+        monsters: updateZone.monsters,
       },
     },
   );

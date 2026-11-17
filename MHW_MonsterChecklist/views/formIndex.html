@@ -23,11 +23,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <form
-            method="post"
-            action="./generalReturnIndex"
-            enctype="multipart/form-data"
-          >
+          <form method="post" action="./newZone" enctype="multipart/form-data">
             <!-- Name -->
             <div class="form-group formDiv">
               <label for="formIndexName">Name</label>
@@ -37,6 +33,8 @@
                 id="formIndexName"
                 name="formIndexName"
                 placeholder="Introduce el nombre de la zona"
+                required
+                minlength="5"
               />
             </div>
 
@@ -58,6 +56,7 @@
                     name="formIndexDifficulty"
                     value="1"
                     id="formIndexDifficultyButton0"
+                    required
                   />
                   <label for="formIndexDifficultyButton0">⭐</label>
                 </div>
@@ -150,6 +149,7 @@
                 name="formIndexImage"
                 class="form-control"
                 id="formIndexImage"
+                required
               />
             </div>
 
@@ -164,6 +164,7 @@
                 id="formIndexEnviroment"
                 name="formIndexEnviroment"
                 placeholder="Introduce el tipo de entorno de la zona (zona con volcanes, zona con pantano, zona montañosa, etc.)"
+                required
               />
             </div>
 
@@ -179,6 +180,7 @@
                   id="formIndexTemperature1"
                   name="formIndexTemperature"
                   value="0"
+                  required
                 />
                 <label for="formIndexTemperature1">Frostbite</label>
               </div>
@@ -214,6 +216,7 @@
                 id="formIndexDescription"
                 name="formIndexDescription"
                 placeholder="Una breve descripcion del entorno que has diseñado"
+                required
               ></textarea>
             </div>
 

@@ -20,7 +20,7 @@ let zones = await parseJsonFile(dataFileZones);
 let monsters = await parseJsonFile(dataFileMonsters);
 
 //Borrar base de datos para meter los nuevos
-await database.deletePosts(database.zones);
+await database.deleteZones(database.zones);
 
 for (let zone of zones) {
   // Aqui metemos a cada zona los monstruos de cada zona
