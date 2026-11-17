@@ -29,7 +29,7 @@
         <div class="form-group formDiv">
           <label for="formDetailsName">Nombre</label>
           <input name="name" value="{{monster.name}}" type="text" class="form-control" id="formDetailsName"
-            placeholder="Introduce el nombre de la criatura" required minlength="5" />
+            placeholder="Introduce el nombre de la criatura" required minlength="5" aria-required="true"/>
         </div>
 
         <!--Dificulty-->
@@ -42,27 +42,32 @@
 
           <div class="row row-cols-lg-5 row-cols-md-2 row-cols-1" style="width: fit-content">
             <div class="formContainerItem col">
-              <input type="radio" name="formDetailsDificultadButton" value="0" id="formDetailsDificultadButton1" />
+              <input type="radio" name="formDetailsDificultadButton" value="0" 
+              id="formDetailsDificultadButton1" {{#monster.isDiff1}}checked{{/monster.isDiff1}}/>
               <label for="formDetailsDificultadButton1">⭐</label>
             </div>
 
             <div class="formContainerItem col">
-              <input type="radio" name="formDetailsDificultadButton" value="1" id="formDetailsDificultadButton2" />
+              <input type="radio" name="formDetailsDificultadButton" value="1" 
+              id="formDetailsDificultadButton2" {{#monster.isDiff2}}checked{{/monster.isDiff2}} />
               <label for="formDetailsDificultadButton2">⭐⭐</label>
             </div>
 
             <div class="formContainerItem col">
-              <input type="radio" name="formDetailsDificultadButton" value="2" id="formDetailsDificultadButton3" />
+              <input type="radio" name="formDetailsDificultadButton" value="2" 
+              id="formDetailsDificultadButton3" {{#monster.isDiff3}}checked{{/monster.isDiff3}}/>
               <label for="formDetailsDificultadButton3">⭐⭐⭐</label>
             </div>
 
             <div class="formContainerItem col">
-              <input type="radio" name="formDetailsDificultadButton" value="3" id="formDetailsDificultadButton4" />
+              <input type="radio" name="formDetailsDificultadButton" value="3" 
+              id="formDetailsDificultadButton4" {{#monster.isDiff4}}checked{{/monster.isDiff4}}/>
               <label for="formDetailsDificultadButton4">⭐⭐⭐⭐</label>
             </div>
 
             <div class="formContainerItem col">
-              <input type="radio" name="formDetailsDificultadButton" value="4" id="formDetailsDificultadButton5" />
+              <input type="radio" name="formDetailsDificultadButton" value="4" 
+              id="formDetailsDificultadButton5" {{#monster.isDiff5}}checked{{/monster.isDiff5}}/>
               <label for="formDetailsDificultadButton5">⭐⭐⭐⭐⭐</label>
             </div>
           </div>
@@ -74,17 +79,20 @@
           <p class="formButtonLabel">Categorias</p>
 
           <div class="formContainerItem">
-            <input type="checkbox" id="formDetailsCategorias1" name="formDetailsCategorias1" value="0" />
+            <input type="checkbox" id="formDetailsCategorias1" name="formDetailsCategorias1" 
+            value="0" {{#monster.ranks.0}}checked{{/monster.ranks.0}}/>
             <label for="formDetailsCategorias1">Low Rank</label>
           </div>
 
           <div class="formContainerItem">
-            <input type="checkbox" id="formDetailsCategorias2" name="formDetailsCategorias2" value="1" />
+            <input type="checkbox" id="formDetailsCategorias2" name="formDetailsCategorias2" 
+            value="1" {{#monster.ranks.1}}checked{{/monster.ranks.1}}/>
             <label for="formDetailsCategorias2">High Rank</label>
           </div>
 
           <div class="formContainerItem">
-            <input type="checkbox" id="formDetailsCategorias3" name="formDetailsCategorias3" value="2" />
+            <input type="checkbox" id="formDetailsCategorias3" name="formDetailsCategorias3" 
+            value="2" {{#monster.ranks.2}}checked{{/monster.ranks.2}}/>
             <label for="formDetailsCategorias3">Master Rank</label>
           </div>
         </div>
@@ -100,43 +108,30 @@
           <label for="formDetailsMonsterCategory" class="formButtonLabel">Especie del monstruo</label>
           <select class="form-select" id="formDetailsMonsterCategory" name="species" id="formIndexMonsterCategory"
             aria-label="Default select example" required>
-            <option value="Bird_Wyvern">Bird-Wyvern</option>
-            <option value="Brute_Wyvern">Brute-Wyvern</option>
-            <option value="Fanged_Beast">Fanged-Beast</option>
-            <option value="Fanged">Fanged</option>
-            <option value="Wyvern">Wyvern</option>
-            <option value="Flying_Wyvern">Flying-Wyvern</option>
-            <option value="Piscine_Wyvern">Piscine-Wyvern</option>
-            <option value="Elder_Dragon">Elder Dragon</option>
+            {{#speciesOptions}}
+              <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+            {{/speciesOptions}}
           </select>
         </div>
 
         <!--Monster Element-->
         <div class="form-group formDiv">
           <label for="formDetailsMonsterElement" class="formButtonLabel">Elemento del Monstruo</label>
-          <select class="form-select" id="formIndexMonsterElement" name="element" required>
-            <option value="fire">Fire</option>
-            <option value="water">Water</option>
-            <option value="thunder">Thunder</option>
-            <option value="ice">Ice</option>
-            <option value="dragon">Dragon</option>
-            <option value="none">None</option>
+          <select class="form-select" id="formDetailsMonsterCategory" name="species" required>
+            {{#elementOptions}}
+              <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+            {{/elementOptions}}
           </select>
         </div>
-
+        
         <!--Monster Status-->
         <div class="form-group formDiv">
           <label for="formDetailsMonsterStatus" class="formButtonLabel">Efectos inflingidos</label>
 
           <select class="form-select" id="formIndexMonsterStatus" name="effects" required>
-            <option value="poison">Poison</option>
-            <option value="stun">Stun</option>
-            <option value="paralysis">Paralysis</option>
-            <option value="sleep">Sleep</option>
-            <option value="blastblight">Blastblight</option>
-            <option value="bleeding">Bleeding</option>
-            <option value="waterblight">Waterblight</option>
-            <option value="none">None</option>
+          {{#effectOptions}}
+              <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+            {{/effectOptions}}
           </select>
         </div>
 
@@ -144,12 +139,9 @@
         <div class="form-group formDiv">
           <label for="formDetailsMonsterWeaknesses" class="formButtonLabel">Debilidades del monstruo</label>
           <select class="form-select" id="formIndexMonsterWeaknesses" name="weakness">
-            <option value="fire">Fire</option>
-            <option value="water">Water</option>
-            <option value="thunder">Thunder</option>
-            <option value="ice">Ice</option>
-            <option value="dragon">Dragon</option>
-            <option value="none">None</option>
+           {{#weaknessOptions}}
+              <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+            {{/weaknessOptions}}
           </select>
         </div>
 
@@ -157,12 +149,9 @@
         <div class="form-group formDiv">
           <label for="formDetailsMonsterResistance" class="formButtonLabel">Resistencia del monstruo</label>
           <select class="form-select" id="formIndexMonsterResistance" name="resistances" required>
-            <option value="fire">Fire</option>
-            <option value="water">Water</option>
-            <option value="thunder">Thunder</option>
-            <option value="ice">Ice</option>
-            <option value="dragon">Dragon</option>
-            <option value="none">None</option>
+            {{#resistanceOptions}}
+              <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+            {{/resistanceOptions}}
           </select>
         </div>
 
@@ -186,7 +175,7 @@
             <div class="col">
               <label for="formMonsterSizeMax" class="formButtonLabel">Maximo</label>
               <input name="maxSize" value="{{monster.maxSize}}" type="number" class="form-control"
-                id="formMonsterSizeMax" required />
+                id="formMonsterSizeMax"/>
             </div>
           </div>
         </div>
