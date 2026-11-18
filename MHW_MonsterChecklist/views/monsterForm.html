@@ -11,7 +11,7 @@
         <div class="form-group formDiv">
           <label for="formDetailsName">Nombre</label>
           <input name="name" value="{{monster.name}}" type="text" class="form-control" id="formDetailsName"
-            placeholder="Introduce el nombre de la criatura" required minlength="5" aria-required="true"/>
+            placeholder="Introduce el nombre de la criatura" required minlength="3" maxlength="100" pattern="[A-Z].*"/>
         </div>
 
         <!--Dificulty-->
@@ -139,7 +139,7 @@
             <div class="col">
               <label for="formMonsterSizeMax" class="formButtonLabel">Maximo</label>
               <input name="maxSize" value="{{monster.maxSize}}" type="number" class="form-control"
-                id="formMonsterSizeMax"/>
+                id="formMonsterSizeMax" required/>
             </div>
           </div>
         </div>
@@ -148,7 +148,7 @@
         <div class="form-group formDiv">
           <label for="formMonsterDescription" class="formButtonLabel">Informacion</label>
           <textarea name="information" class="form-control" id="formMonsterDescription" required
-            minlength="10" maxlength="50">{{monster.information}}</textarea>
+            minlength="3" maxlength="600">{{monster.information}}</textarea>
         </div>
 
         <div class="formButtonLabel formDiv">
