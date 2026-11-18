@@ -157,6 +157,8 @@
    el fichero load_data.js carga los datos de prueba(plantillas.json de la carpeta data) en la base de datos de mongo al iniciarse la aplicacion, router.js gestiona las acciones desencadendas por el usuario como pueden ser crear, borrar, editar, mostrar informacion para que la visualice el usuario
    - Carpeta views: contiene los archivos html para la generacion de vistas y que se mostraran al usuario entre ellos se encuentra la pagina principal (index.html), plantillas de formularios (zoneForm.html y monsterForm.hmtl)
    ### Video demostrativo(en youtube)
+   Video youtube - [text](https://youtu.be/Pogbg2bmenU)
+
 
    ### Participación de miembros
    - Carlos
@@ -181,7 +183,7 @@
 
       - Ficheros en los que más he participado:
          1. router.js https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/details.html
-         2. databse.js 
+         2. database.js 
          3. monsterForm.html
          4. details.html
          
