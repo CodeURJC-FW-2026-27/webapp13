@@ -3,27 +3,27 @@ import * as database from "./database.js";
 import { ObjectId } from "mongodb";
 
 const UPLOADS_FOLDER = "./uploads";
-const DATA_FOLDER = "./data"; //CARPETA DE DATOS PREDETERMINADOS
+const DATA_FOLDER = "./data"; //default data folder
 
-let dataFileZones = "templateZonesMHW.json"; //ARCHIVO PRIMARY
-let dataFileMonsters = "templateMonstersMHW.json"; //ARCHIVO SECONDARY
+let dataFileZones = "templateZonesMHW.json"; // zones file
+let dataFileMonsters = "templateMonstersMHW.json"; //monsters file
 
-//funcion para parsear datos de un archivo que esta en la carpeta data
+//parse the json data
 async function parseJsonFile(jsonFilePath) {
   let dataString = await fs.readFile(DATA_FOLDER + "/" + jsonFilePath, "utf8");
 
   return JSON.parse(dataString);
 }
 
-//cargo los datos de los archivos Json
+//get the data from the jsons
 let zones = await parseJsonFile(dataFileZones);
 let monsters = await parseJsonFile(dataFileMonsters);
 
-//Borrar base de datos para meter los nuevos
+//delete the data from the database every time the app reloads
 await database.deleteZones(database.zones);
 
+//create the zones and add for every monster the zone to it's correspondent zone (checking the name)
 for (let zone of zones) {
-  // Aqui metemos a cada zona los monstruos de cada zona
   zone.monsters = [];
   zone._id = new ObjectId();
 
@@ -38,12 +38,10 @@ for (let zone of zones) {
 
 await database.addZones(zones);
 
-//console.log(zones);
-
-//funciones para borrar la carpeta uploads, crearla y copiar los datos de la carpeta predeterminada a uploads
+//Remove the uploads folder and reupload the default data
 await fs.rm(UPLOADS_FOLDER, { recursive: true, force: true });
 await fs.mkdir(UPLOADS_FOLDER);
 await fs.cp(DATA_FOLDER + "/images", UPLOADS_FOLDER, { recursive: true });
 
-//si todo sale bien sale esto
+//pray if this logs
 console.log("Demo data loaded");

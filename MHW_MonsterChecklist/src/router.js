@@ -32,8 +32,8 @@ function buildZone(req, newImage) {
 
   let selectedRanks = req.body.formIndexRanks;
   let ranks = [0, 1, 2].map((rank) => selectedRanks?.includes(String(rank)));
+  // function to map the ranks (ranks is an array that has the values 0,1,or 2, but they can not be, f.e. [1,3], [3])
 
-  let image = newImage;
   let enviroment = req.body.formIndexEnviroment.toString();
   let temperature = parseInt(req.body.formIndexTemperature);
   let description = req.body.formIndexDescription.toString();
@@ -42,7 +42,7 @@ function buildZone(req, newImage) {
     name: name,
     difficulty: difficulty,
     ranks: ranks,
-    image: image,
+    image: newImage,
     enviroment: enviroment,
     temperature: temperature,
     description: description,
@@ -58,7 +58,6 @@ async function verifyZoneValues(zone, oldName) {
 
   //Verify if the name is unique in the database
   let currentNames = await database.getZoneNames();
-  console.log(currentNames);
 
   if (currentNames.includes(zone.name) && zone.name != oldName) {
     return "El nombre tiene que ser unico!";
@@ -76,24 +75,42 @@ async function verifyZoneValues(zone, oldName) {
   return "";
 }
 
-function buildMonster(req, image) {
-  const selectedRanks = [].concat(req.body.ranks ?? []); // string, array o undefined
+function buildMonster(req, newImage) {
 
-  return {
-    name: (req.body.name ?? "").trim(),
-    difficulty: parseInt(req.body.difficulty),
-    ranks: [0, 1, 2].map((r) => selectedRanks.includes(String(r))),
-    image: image,
-    species: req.body.species,
-    elements: [req.body.element],
-    effects: [req.body.effects],
-    weaknesses: [req.body.weakness],
-    resistances: [req.body.resistances],
-    habitat: req.body.habitat,
-    minSize: parseFloat(req.body.minSize), // antes se guardaban como string
-    maxSize: parseFloat(req.body.maxSize),
-    information: (req.body.information ?? "").trim(),
-  };
+  let name = req.body.name.toString();
+  let difficulty = parseInt(req.body.difficulty);
+
+  let selectedRanks = req.body.formIndexRanks;
+  let ranks = [0, 1, 2].map((rank) => selectedRanks?.includes(String(rank)));
+  // function to map the ranks (ranks is an array that has the values 0,1,or 2, but they can not be, f.e. [1,3], [3])
+
+  let species= req.body.species;
+  let elements= [req.body.element];
+  let effects= [req.body.effects];
+  let weaknesses= [req.body.weakness];
+  let resistances= [req.body.resistances];
+  let habitat= req.body.habitat;
+  let minSize= parseFloat(req.body.minSize);
+  let maxSize= parseFloat(req.body.maxSize);
+  let information= req.body.information.toString();
+
+  let newMonster={
+    name:name,
+    difficulty:difficulty,
+    ranks: ranks,
+    image:newImage,
+    species:species,
+    elements:elements,
+    effects:effects,
+    weaknesses:weaknesses,
+    resistances:resistances,
+    habitat:habitat,
+    minSize:minSize,
+    maxSize:maxSize,
+    information:information,
+  }
+
+  return newMonster;
 }
 
 async function verifyMonsterValues(monster, zoneId, oldName = null) {
@@ -107,7 +124,7 @@ async function verifyMonsterValues(monster, zoneId, oldName = null) {
 
   if (!monster.difficulty || monster.difficulty < 1 || monster.difficulty > 5)
     return "La dificultad es obligatoria!";
-  if (!monster.ranks.some(Boolean)) return "Elige al menos una categoria!";
+  if (!monster.ranks.some(Boolean)) return "Elige al menos una categoria!"; //some(Boolean) - if it has at least 1 Boolean value
   if (!monster.image) return "La imagen es obligatoria!";
   if (!monster.species) return "La especie es obligatoria!";
   if (!monster.elements[0]) return "El elemento es obligatorio!";
@@ -115,7 +132,7 @@ async function verifyMonsterValues(monster, zoneId, oldName = null) {
   if (!monster.weaknesses[0]) return "La debilidad es obligatoria!";
   if (!monster.resistances[0]) return "La resistencia es obligatoria!";
   if (!monster.habitat) return "El hábitat es obligatorio!";
-  if (Number.isNaN(monster.minSize) || Number.isNaN(monster.maxSize))
+  if (Number.isNaN(monster.minSize) || Number.isNaN(monster.maxSize)) //isNan - verifify if they are not numbers (NAN) so i can return an error
     return "El tamaño minimo y maximo son obligatorios!";
   if (monster.minSize > monster.maxSize)
     return "El tamaño minimo no puede ser mayor que el maximo!";
@@ -123,23 +140,20 @@ async function verifyMonsterValues(monster, zoneId, oldName = null) {
   return "";
 }
 
+//function to render the zone form in edit mode or new mode depending if the zone parameter is or isn't null (it's a default parameter)
 function renderZoneForm(res, zone = null) {
-  const isEdit = zone !== null;
+  const isEdit = zone !== null;// verify and ocnvert zone to chech if its null (==)
 
   res.render("zoneForm.html", {
-    headerTitle: isEdit
-      ? "Actualizar Zona"
-      : "Formulario para añadir Zonas de caza",
+    headerTitle: isEdit? "Actualizar Zona": "Formulario para añadir Zonas de caza",
 
-    // Lo que cambia entre crear y editar
-    isEdit,
-    zone, // en creacion es null: {{zone.name}} se pinta vacio
-    formAction: isEdit ? `/updateZone?id=${zone._id}` : "/newZone",
+    isEdit, // if it's a new zone or it's to edit a zone
+    zone, // when it's a new zone, this is null: {{zone.name}} doenst return anything
+    formAction: isEdit ? `/updateZone?id=${zone._id}` : "/newZone", // true/false
     submitLabel: isEdit ? "Actualizar" : "Guardar",
     cancelLink: isEdit ? `/details?id=${zone._id}` : "/",
-    imageRequired: !isEdit,
+    imageRequired: !isEdit, // if we are editing the zone, we can reuse the image, so the image is nor required
 
-    // Opciones ya con "checked" calculado (adios isDiff1..5 / isTemp0..2)
     difficultyOptions: makeChoices(
       [
         [1, "⭐"],
@@ -150,7 +164,7 @@ function renderZoneForm(res, zone = null) {
       ],
       (v) => zone?.difficulty === v,
       "formIndexDifficultyButton",
-    ),
+    ), // calculate the isDiff1 to isDiff5 to be true or false so they can be used in the moustache view
 
     rankOptions: makeChoices(
       [
@@ -160,7 +174,7 @@ function renderZoneForm(res, zone = null) {
       ],
       (v) => zone?.ranks?.[v] === true,
       "formIndexRank",
-    ),
+    ), // same, need boolean values
 
     temperatureOptions: makeChoices(
       [
@@ -170,7 +184,7 @@ function renderZoneForm(res, zone = null) {
       ],
       (v) => zone?.temperature === v,
       "formIndexTemperature",
-    ),
+    ),// same
   });
 }
 
@@ -205,6 +219,7 @@ router.get("/", async (req, res) => {
     hasPrevious: currentPage > 1,
     hasNext: currentPage < totalPages,
   });
+
 });
 
 // /image
@@ -241,6 +256,7 @@ router.get("/details", async (req, res) => {
       zone: zone,
       monsters: zone.monsters,
 
+      // can't use arrow functions
       getDifficulty: function () {
         return "⭐".repeat(this.difficulty);
       },
@@ -606,6 +622,7 @@ router.get("/updateZoneForm", async (req, res) => {
     zone.isTemp0 = zone.temperature === 0;
     zone.isTemp1 = zone.temperature === 1;
     zone.isTemp2 = zone.temperature === 2;
+    // we need these for the moustache partials and verifications because they need to be boolenas
 
     //Redirect user to updatePageZone
     res.render("updateZone.html", {
@@ -695,11 +712,12 @@ router.get("/search", async (req, res) => {
 
 });
 
+
 router.get("/showDifficulty",async (req,res) => {
 let difficulty= Number(req.query.difficulty);
 console.log(difficulty);
 console.log(typeof difficulty);
-let zones = await database.findDifficulltyZone(difficulty);
+let zones = await database.findDifficultyZone(difficulty);
 console.log(zones);
 
 res.render("index.html", {

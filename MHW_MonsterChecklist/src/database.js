@@ -4,77 +4,42 @@ import { MongoClient, ObjectId } from "mongodb";
 const router = express.Router();
 export default router;
 
-const client = new MongoClient("mongodb://localhost:27017"); //Conexion local con mongoDB
+const client = new MongoClient("mongodb://localhost:27017"); //Local conexion with MongoDB
 
-const db = client.db("MonsterHunter"); //Base de datos
+const db = client.db("MonsterHunter"); //Data base name
 
-export const zones = db.collection("Zones"); //Documento con los archivos JSON
-await zones.createIndex({ name: "text" }); //Creates an index
-export const UPLOADS_FOLDER = "./uploads"; //donde se guardan los archivos subidos por los usuarios
+export const zones = db.collection("Zones"); //Document with the Zones (named "zones")
+await zones.createIndex({ name: "text" }); //Creates an index (to get the names faster)
+export const UPLOADS_FOLDER = "./uploads"; //Where to save the uploaded data (photos)
 
-//Funciones para juguetear con cada coleccion de la base de datos (usando las colecciones exportadas arriba)
-export async function addZone(post) {
-  return await zones.insertOne(post);
+
+export async function addZone(newZone) {
+  return await zones.insertOne(zone);
 }
 
-export async function addZones(post) {
-  return await zones.insertMany(post);
+export async function addZones(newZones) {
+  return await zones.insertMany(newZones);
 }
 
-export async function deleteZone(id) {
-  return await zones.findOneAndDelete({ _id: new ObjectId(id) });
+export async function deleteZone(zoneId) {
+  return await zones.findOneAndDelete({ _id: new ObjectId(zoneId) });
 }
 
-export async function deleteZones() {
+export async function deleteZones() { // delete all the saved zones
   return await zones.deleteMany();
 }
 
-export async function getZone(id) {
-  return await zones.findOne({ _id: new ObjectId(id) });
+export async function getZone(zoneId) {
+  return await zones.findOne({ _id: new ObjectId(zoneId) });
 }
 
 export async function getZones() {
   return await zones.find().toArray();
 }
 
-export async function addMonster(id, monster) {
-  monster._id = new ObjectId();
+export async function updateZone(zoneId, updateZone) {
   return await zones.updateOne(
-    { _id: new ObjectId(id) },
-    { $push: { monsters: monster } },
-  );
-}
-
-export async function deleteMonster(id, updateMonsters) {
-  return await zones.updateOne(
-    { _id: new ObjectId(id) },
-    { $set: { monsters: updateMonsters } },
-  );
-}
-
-export async function findDifficulltyZone(difficulty) {
-  return await zones.find({ difficulty: difficulty }).toArray() ;
-}
-
-export async function getMonster(zoneId, monsterId) {
-  let zone = await zones.findOne({ _id: new ObjectId(zoneId) });
-
-  let monster = zone.monsters.find((m) => m._id.toString() === monsterId);
-
-  return monster;
-}
-
-export async function updateMonster(id, monsterId, newMonster) {
-  newMonster._id = new ObjectId(monsterId);
-  return await zones.updateOne(
-    { _id: new ObjectId(id), "monsters._id": new ObjectId(monsterId) },
-    { $set: { "monsters.$": newMonster } },
-  );
-}
-
-export async function updateZone(id, updateZone) {
-  return await zones.updateOne(
-    { _id: new ObjectId(id) },
+    { _id: new ObjectId(zoneId) },
     {
       $set: {
         name: updateZone.name,
@@ -90,20 +55,61 @@ export async function updateZone(id, updateZone) {
   );
 }
 
+
+
+export async function addMonster(zoneId, monster) {
+  monster._id = new ObjectId();
+  return await zones.updateOne(
+    { _id: new ObjectId(zoneId) },
+    { $push: { monsters: monster } },
+  );
+}
+
+export async function deleteMonster(zoneId, updateMonsters) {
+  return await zones.updateOne(
+    { _id: new ObjectId(zoneId) },
+    { $set: { monsters: updateMonsters } },
+  );
+}
+
+export async function getMonster(zoneId, monsterId) {
+  let zone = await zones.findOne({ _id: new ObjectId(zoneId) });
+
+  let monster = zone.monsters.find((m) => m._id.toString() === monsterId); 
+  //arrrow function to verify if i found the monster using the id
+
+  return monster;
+}
+
+export async function updateMonster(zoneId, monsterId, newMonster) {
+  newMonster._id = new ObjectId(monsterId);
+  return await zones.updateOne(
+    { _id: new ObjectId(zoneId), "monsters._id": new ObjectId(monsterId) },
+    { $set: { "monsters.$": newMonster } },
+  );
+}
+
+
+
+export async function findDifficultyZone(difficulty) {
+  return await zones.find({ difficulty: difficulty }).toArray() ;
+} 
+
 export async function getZonesPage(page, pageSize) {
   return await zones
     .find()
     .skip((page - 1) * pageSize)
     .limit(pageSize)
     .toArray();
-}
+} // get the zones per page
+
 export async function getZonesCount() {
   return await zones.countDocuments();
-}
+} // get how many zones they are
 
 export async function searchZonesByName(nameInput) {
   return await zones.find({ $text: { $search: nameInput } }).toArray();
-}
+} // get the zones by name
 
 export async function getZoneNames() {
   //from MongoDB documentation - https://www.mongodb.com/es/docs/drivers/node/current/crud/query/project/#single-field
@@ -121,5 +127,10 @@ export async function getZoneNames() {
 
 export async function getMonsterNames(zoneId) {
   const zone = await getZone(zoneId);
-  return (zone?.monsters ?? []).map((monster) => monster.name);
+  let monsterNames =[];
+
+  for (monster of zone.monsters)
+    monsterNames.push(monster.name)
+
+  return (monsterNames);
 }
