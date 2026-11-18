@@ -56,10 +56,13 @@ async function verifyZoneValues(zone, oldName) {
   if (zone.name[0] != zone.name[0].toUpperCase())
     return "La primera letra del nombre tiene que estar en mayuscula!";
 
+  if (zone.name.length < 3 || zone.name.length > 100)
+    return "El nombre no coincide con la longitud pedida!";
+
   //Verify if the name is unique in the database
   let currentNames = await database.getZoneNames();
 
-  if (currentNames.includes(zone.name) && zone.name != oldName) {
+  if (currentNames && (currentNames.includes(zone.name) && zone.name != oldName)) {
     return "El nombre tiene que ser unico!";
   }
 
@@ -68,9 +71,13 @@ async function verifyZoneValues(zone, oldName) {
   if (!zone.image) return "La imagen es obligatoria!";
   if (!zone.ranks.some(Boolean)) return "Las categorias son obligatorias!";
   if (zone.enviroment == "") return "El entorno es obligatorio!";
+  if (zone.enviroment.length < 3 || zone.enviroment.length > 250)
+    return "El entorno no coincide con la longitud pedida!";
   if (zone.temperature < 0 || zone.temperature > 2)
     return "La temperatura es obligatoria";
   if (zone.description == "") return "La descripcion es obligatoria";
+  if (zone.description.length < 3 || zone.description.length > 600)
+    return "La descripcion no coincide con la longitud pedida!";
 
   return "";
 }
@@ -117,9 +124,12 @@ async function verifyMonsterValues(monster, zoneId, oldName = null) {
   if (monster.name[0] != monster.name[0].toUpperCase())
     return "La primera letra del nombre tiene que estar en mayuscula!";
 
+  if (monster.name.length < 3 || monster.name.length > 100)
+    return "El nombre no coincide con la longitud pedida!";
+
   const monsterNames = await database.getMonsterNames(zoneId);
 
-  if (monsterNames.includes(monster.name) && monster.name !== oldName)
+  if (monsterNames &&(monsterNames.includes(monster.name) && monster.name !== oldName))
     return "El nombre tiene que ser unico!";
 
   if (!monster.difficulty || monster.difficulty < 1 || monster.difficulty > 5)
@@ -138,6 +148,8 @@ async function verifyMonsterValues(monster, zoneId, oldName = null) {
   if (monster.minSize > monster.maxSize)
     return "El tamaño minimo no puede ser mayor que el maximo!";
   if (!monster.information) return "La informacion es obligatoria!";
+  if (monster.information.length < 3 || monster.information.length > 600)
+    return "La descripcion no coincide con la longitud pedida!";
   return "";
 }
 
@@ -422,102 +434,101 @@ router.get("/details", async (req, res) => {
       imageRequired: true,
 
       difficultyOptions: makeChoices(
-      [
-        [1, "⭐"],
-        [2, "⭐⭐"],
-        [3, "⭐⭐⭐"],
-        [4, "⭐⭐⭐⭐"],
-        [5, "⭐⭐⭐⭐⭐"],
-      ],
-      () => false,
-      "formIndexDifficultyButton",
-    ),
-    rankOptions: makeChoices(
-      [
-        [0, "Low Rank"],
-        [1, "High Rank"],
-        [2, "Master Rank"],
-      ],
-      () => false,
-      "formIndexRank",
-    ), // same, need boolean values
+        [
+          [1, "⭐"],
+          [2, "⭐⭐"],
+          [3, "⭐⭐⭐"],
+          [4, "⭐⭐⭐⭐"],
+          [5, "⭐⭐⭐⭐⭐"],
+        ],
+        () => false,
+        "formIndexDifficultyButton",
+      ),
+      rankOptions: makeChoices(
+        [
+          [0, "Low Rank"],
+          [1, "High Rank"],
+          [2, "Master Rank"],
+        ],
+        () => false,
+        "formIndexRank",
+      ), // same, need boolean values
 
-    temperatureOptions: makeChoices(
-      [
-        [0, "Frostbite"],
-        [1, "Temperate climate"],
-        [2, "Scorching"],
-      ],
-      () => false,
-      "formIndexTemperature",
-    ), // same
-    speciesOptions: makeOptions(
-      [
-        ["Bird Wyvern", "Bird-Wyvern"],
-        ["Brute Wyvern", "Brute-Wyvern"],
-        ["Fanged Wyvern", "Fanged-Wyvern"],
-        ["Fanged", "Fanged"],
-        ["Wyvern", "Wyvern"],
-        ["Flying Wyvern", "Flying-Wyvern"],
-        ["Piscine Wyvern", "Piscine-Wyvern"],
-        ["Elder Dragon", "Elder Dragon"],
-      ],
-      null,
-    ),
+      temperatureOptions: makeChoices(
+        [
+          [0, "Frostbite"],
+          [1, "Temperate climate"],
+          [2, "Scorching"],
+        ],
+        () => false,
+        "formIndexTemperature",
+      ), // same
+      speciesOptions: makeOptions(
+        [
+          ["Bird Wyvern", "Bird-Wyvern"],
+          ["Brute Wyvern", "Brute-Wyvern"],
+          ["Fanged Wyvern", "Fanged-Wyvern"],
+          ["Fanged", "Fanged"],
+          ["Wyvern", "Wyvern"],
+          ["Flying Wyvern", "Flying-Wyvern"],
+          ["Piscine Wyvern", "Piscine-Wyvern"],
+          ["Elder Dragon", "Elder Dragon"],
+        ],
+        null,
+      ),
 
-    elementOptions: makeOptions(
-      [
-        ["Fire", "Fire"],
-        ["Water", "Water"],
-        ["Thunder", "Thunder"],
-        ["Ice", "Ice"],
-        ["Dragon", "Dragon"],
-        ["None", "None"],
-      ],
-      null,
-    ),
+      elementOptions: makeOptions(
+        [
+          ["Fire", "Fire"],
+          ["Water", "Water"],
+          ["Thunder", "Thunder"],
+          ["Ice", "Ice"],
+          ["Dragon", "Dragon"],
+          ["None", "None"],
+        ],
+        null,
+      ),
 
-    effectOptions: makeOptions(
-      [
-        ["Poison", "Poison"],
-        ["Stun", "Stun"],
-        ["Paralysis", "Paralysis"],
-        ["Sleep", "Sleep"],
-        ["Blastblight", "Blastblight"],
-        ["Bleeding", "Bleeding"],
-        ["Waterblight", "Waterblight"],
-        ["Fireblight", "Fireblight"],
-        ["Thunderblight", "Thunderblight"],
-        ["Iceblight", "Iceblight"],
-        ["None", "None"],
-      ],
-      null,
-    ),
+      effectOptions: makeOptions(
+        [
+          ["Poison", "Poison"],
+          ["Stun", "Stun"],
+          ["Paralysis", "Paralysis"],
+          ["Sleep", "Sleep"],
+          ["Blastblight", "Blastblight"],
+          ["Bleeding", "Bleeding"],
+          ["Waterblight", "Waterblight"],
+          ["Fireblight", "Fireblight"],
+          ["Thunderblight", "Thunderblight"],
+          ["Iceblight", "Iceblight"],
+          ["None", "None"],
+        ],
+        null,
+      ),
 
-    weaknessOptions: makeOptions(
-      [
-        ["Fire", "Fire"],
-        ["Water", "Water"],
-        ["Thunder", "Thunder"],
-        ["Ice", "Ice"],
-        ["Dragon", "Dragon"],
-        ["None", "None"],
-      ],
-      null,
-    ),
+      weaknessOptions: makeOptions(
+        [
+          ["Fire", "Fire"],
+          ["Water", "Water"],
+          ["Thunder", "Thunder"],
+          ["Ice", "Ice"],
+          ["Dragon", "Dragon"],
+          ["None", "None"],
+        ],
+        null,
+      ),
 
-    resistanceOptions: makeOptions(
-      [
-        ["Fire", "Fire"],
-        ["Water", "Water"],
-        ["Thunder", "Thunder"],
-        ["Ice", "Ice"],
-        ["Dragon", "Dragon"],
-        ["None", "None"],
-      ],
-      null,
-      
-    ),
+      resistanceOptions: makeOptions(
+        [
+          ["Fire", "Fire"],
+          ["Water", "Water"],
+          ["Thunder", "Thunder"],
+          ["Ice", "Ice"],
+          ["Dragon", "Dragon"],
+          ["None", "None"],
+        ],
+        null,
+      ),
     });
   }
 });
@@ -551,7 +562,7 @@ router.post("/newZone", upload.single("formIndexImage"), async (req, res) => {
 
   if (errorMessage === "") {
     await database.addZone(newZone);
-    console.log(newZone._id)
+    console.log(newZone._id);
     res.render("generalReturn.html", {
       headerTitle: "Todo correcto!",
       message: `La zona ${newZone.name} Se ha añadido correctamente!`,
@@ -635,7 +646,7 @@ router.get("/deleteMonster", async (req, res) => {
         headerTitle: "Todo correcto!",
         message: `El monstruo con el id ${monsterId} y nombre ${monsterName} ha sido eliminado correctamente!`,
         destinationLink: `./details?id=${zoneId}`,
-        destination: "Volver a la Zona",
+        destination: "Zona",
       });
     }
   }
@@ -662,7 +673,8 @@ router.get("/formMonster", async (req, res) => {
 
   renderMonsterForm(res, zone, monster);
 });
-// /
+
+// /newMonster
 router.post(
   "/newMonster",
   upload.single("formDetailsMonsterImage"),
@@ -679,14 +691,14 @@ router.post(
         headerTitle: "Todo correcto!",
         message: `El monstruo con el nombre ${monster.name} ha sido añadido correctamente!`,
         destinationLink: `./details?id=${id}`,
-        destination: "Volver a la Zona",
+        destination: "Zona",
       });
     } else {
       res.render("generalReturn.html", {
         headerTitle: "Error",
         message: `Error : ${errorMessage}`,
         destinationLink: `./details?id=${id}`,
-        destination: "Volver a la Zona",
+        destination: "Zona",
       });
     }
   },
@@ -705,7 +717,12 @@ router.get("/formMonster", async (req, res) => {
   );
 
   if (!monster) {
-    return res.status(404).send("Monster not found");
+    res.render("generalReturn.html", {
+        headerTitle: "Error",
+        message: "El monstruo no existe!",
+        destinationLink: "/details?id=" + req.query.zoneId,
+        destination: "details",
+      });
   }
 
   renderMonsterForm(res, zone, monster);
@@ -725,14 +742,18 @@ router.post(
 
     let newMonster = buildMonster(req, oldImage);
 
-    let errorMessage = await verifyMonsterValues(newMonster, zoneId, oldMonster.name);
+    let errorMessage = await verifyMonsterValues(
+      newMonster,
+      zoneId,
+      oldMonster.name,
+    );
 
     if (errorMessage === "") {
       await database.updateMonster(zoneId, monsterId, newMonster);
 
       res.render("generalReturn.html", {
         headerTitle: "Todo correcto!",
-        message: `El monstruo de id ${monsterId} fue modificado correctamente!`,
+        message: `El monstruo con el id ${monsterId} se ha atualizado correctamente`,
         destinationLink: "/details?id=" + req.query.zoneId,
         destination: "details",
       });
@@ -809,6 +830,7 @@ router.post(
         newZone.monsters = [];
 
         for (let monster of zone.monsters) {
+          monster.habitat = newZone.name;
           newZone.monsters.push(monster);
         }
 
@@ -871,7 +893,7 @@ router.get("/search", async (req, res) => {
 router.get("/showDifficulty", async (req, res) => {
   let difficulty = Number(req.query.difficulty);
 
-  let filter = { difficulty: difficulty }
+  let filter = { difficulty: difficulty };
   let zones = await database.getZonesWithFilter(filter);
 
   res.render("index.html", {
@@ -906,7 +928,7 @@ router.get("/showRank", async (req, res) => {
   }
   let rank = getRank(req.query.rank);
 
-  let filter = { [`ranks.${rank}`] :true};
+  let filter = { [`ranks.${rank}`]: true };
   let zones = await database.getZonesWithFilter(filter);
 
   res.render("index.html", {
@@ -931,7 +953,7 @@ router.get("/showRank", async (req, res) => {
 router.get("/showTemperature", async (req, res) => {
   let temperature = Number(req.query.temperature);
 
-  let filter = { temperature: temperature }
+  let filter = { temperature: temperature };
   let zones = await database.getZonesWithFilter(filter);
 
   res.render("index.html", {

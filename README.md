@@ -185,4 +185,29 @@
          3. monsterForm.html
          4. details.html
          
-          
+   - Joao Ortega
+      - Aportaciones:
+         
+         1. Adaptacion de los primeros renders para redireccionar a los html anteriores -- bc31cda ,  ab831b3 .
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/bc31cda662de8e28c97022fafab40a9adc97bca3
+            
+         2.	Creacion de la funcion addMonster para nuevos elemnentos de entidades secundarias -- 6e9e8e8 .
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/tree/6e9e8e8b031b506b2e5307904e6bf5e53b6008ae
+           	
+         3.	Creacion de editMonster para editar los elementos de las entidades secundarias -- 62631b1
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/tree/62631b18f2d76e1b119a1ac5646749337e846911
+    
+         4. Creación de las funciones para hacer consulta de los elementos de entidades principales mediante atributos especificos -- 8d0e6dd
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/tree/8d0e6dd29e35758331be3c131fbe676bec368b14
+       
+         5. Ajustes y correcciones en las funciones implementadas para cumplir los requisistos de la practica(reutilizar codigo y formularios) -- 8a1d329
+         link: https://github.com/CodeURJC-FW-2026-27/webapp13/tree/8a1d32985ec7e2b46b9024836ac74fb01565c851
+         
+      - Ficheros en los que mas he participado:
+         1. router.js
+         2. database.js
+         3. monsterForm.html
+         4. details.html
+         5. index.html      
+         
+         
