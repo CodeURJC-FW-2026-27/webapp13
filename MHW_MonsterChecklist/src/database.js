@@ -99,11 +99,6 @@ export async function updateMonster(zoneId, monsterId, newMonster) {
 }
 
 
-
-export async function findDifficultyZone(difficulty) {
-  return await zones.find({ difficulty: difficulty }).toArray() ;
-} 
-
 export async function getZonesPage(page, pageSize) {
   return await zones
     .find()

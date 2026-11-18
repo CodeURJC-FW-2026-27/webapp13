@@ -231,7 +231,7 @@ function renderMonsterForm(res, zone, monster = null) {
       [
         ["Bird Wyvern", "Bird-Wyvern"],
         ["Brute Wyvern", "Brute-Wyvern"],
-        ["Fanged Beast", "Fanged-Beast"],
+        ["Fanged Wyvern", "Fanged-Wyvern"],
         ["Fanged", "Fanged"],
         ["Wyvern", "Wyvern"],
         ["Flying Wyvern", "Flying-Wyvern"],
