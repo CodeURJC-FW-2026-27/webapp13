@@ -14,7 +14,7 @@ export const UPLOADS_FOLDER = "./uploads"; //Where to save the uploaded data (ph
 
 
 export async function addZone(newZone) {
-  return await zones.insertOne(zone);
+  return await zones.insertOne(newZone);
 }
 
 export async function addZones(newZones) {
@@ -120,9 +120,14 @@ export async function searchZonesByName(nameInput, page, pageSize) {
     .limit(pageSize)
     .toArray();
 }
+
 export async function countZonesByName(nameInput) {
   const filter = { $text: { $search: nameInput } };
   return await zones.countDocuments(filter);
+}
+
+export async function getZonesWithFilter(filter){
+  return await zones.find(filter).toArray();
 }
 
 export async function getZoneNames() {
@@ -143,7 +148,7 @@ export async function getMonsterNames(zoneId) {
   const zone = await getZone(zoneId);
   let monsterNames =[];
 
-  for (monster of zone.monsters)
+  for (let monster of zone.monsters)
     monsterNames.push(monster.name)
 
   return (monsterNames);

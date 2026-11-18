@@ -76,7 +76,6 @@ async function verifyZoneValues(zone, oldName) {
 }
 
 function buildMonster(req, newImage) {
-
   let name = req.body.name.toString();
   let difficulty = parseInt(req.body.difficulty);
 
@@ -84,31 +83,31 @@ function buildMonster(req, newImage) {
   let ranks = [0, 1, 2].map((rank) => selectedRanks?.includes(String(rank)));
   // function to map the ranks (ranks is an array that has the values 0,1,or 2, but they can not be, f.e. [1,3], [3])
 
-  let species= req.body.species;
-  let elements= [req.body.element];
-  let effects= [req.body.effects];
-  let weaknesses= [req.body.weakness];
-  let resistances= [req.body.resistances];
-  let habitat= req.body.habitat;
-  let minSize= parseFloat(req.body.minSize);
-  let maxSize= parseFloat(req.body.maxSize);
-  let information= req.body.information.toString();
+  let species = req.body.species;
+  let elements = [req.body.element];
+  let effects = [req.body.effects];
+  let weaknesses = [req.body.weakness];
+  let resistances = [req.body.resistances];
+  let habitat = req.body.habitat;
+  let minSize = parseFloat(req.body.minSize);
+  let maxSize = parseFloat(req.body.maxSize);
+  let information = req.body.information.toString();
 
-  let newMonster={
-    name:name,
-    difficulty:difficulty,
+  let newMonster = {
+    name: name,
+    difficulty: difficulty,
     ranks: ranks,
-    image:newImage,
-    species:species,
-    elements:elements,
-    effects:effects,
-    weaknesses:weaknesses,
-    resistances:resistances,
-    habitat:habitat,
-    minSize:minSize,
-    maxSize:maxSize,
-    information:information,
-  }
+    image: newImage,
+    species: species,
+    elements: elements,
+    effects: effects,
+    weaknesses: weaknesses,
+    resistances: resistances,
+    habitat: habitat,
+    minSize: minSize,
+    maxSize: maxSize,
+    information: information,
+  };
 
   return newMonster;
 }
@@ -119,6 +118,7 @@ async function verifyMonsterValues(monster, zoneId, oldName = null) {
     return "La primera letra del nombre tiene que estar en mayuscula!";
 
   const monsterNames = await database.getMonsterNames(zoneId);
+
   if (monsterNames.includes(monster.name) && monster.name !== oldName)
     return "El nombre tiene que ser unico!";
 
@@ -132,7 +132,8 @@ async function verifyMonsterValues(monster, zoneId, oldName = null) {
   if (!monster.weaknesses[0]) return "La debilidad es obligatoria!";
   if (!monster.resistances[0]) return "La resistencia es obligatoria!";
   if (!monster.habitat) return "El hábitat es obligatorio!";
-  if (Number.isNaN(monster.minSize) || Number.isNaN(monster.maxSize)) //isNan - verifify if they are not numbers (NAN) so i can return an error
+  if (Number.isNaN(monster.minSize) || Number.isNaN(monster.maxSize))
+    //isNan - verifify if they are not numbers (NAN) so i can return an error
     return "El tamaño minimo y maximo son obligatorios!";
   if (monster.minSize > monster.maxSize)
     return "El tamaño minimo no puede ser mayor que el maximo!";
@@ -142,10 +143,12 @@ async function verifyMonsterValues(monster, zoneId, oldName = null) {
 
 //function to render the zone form in edit mode or new mode depending if the zone parameter is or isn't null (it's a default parameter)
 function renderZoneForm(res, zone = null) {
-  const isEdit = zone !== null;// verify and ocnvert zone to chech if its null (==)
+  const isEdit = zone !== null; // verify and ocnvert zone to chech if its null (==)
 
   res.render("zoneForm.html", {
-    headerTitle: isEdit? "Actualizar Zona": "Formulario para añadir Zonas de caza",
+    headerTitle: isEdit
+      ? "Actualizar Zona"
+      : "Formulario para añadir Zonas de caza",
 
     isEdit, // if it's a new zone or it's to edit a zone
     zone, // when it's a new zone, this is null: {{zone.name}} doenst return anything
@@ -184,7 +187,7 @@ function renderZoneForm(res, zone = null) {
       ],
       (v) => zone?.temperature === v,
       "formIndexTemperature",
-    ),// same
+    ), // same
   });
 }
 
@@ -328,7 +331,6 @@ router.get("/", async (req, res) => {
     hasPrevious: currentPage > 1,
     hasNext: currentPage < totalPages,
   });
-
 });
 
 // /image
@@ -557,7 +559,7 @@ router.get("/formMonster", async (req, res) => {
 
   renderMonsterForm(res, zone, monster);
 });
-// /  
+// /
 router.post(
   "/newMonster",
   upload.single("formDetailsMonsterImage"),
@@ -620,7 +622,7 @@ router.post(
 
     let newMonster = buildMonster(req, oldImage);
 
-    let errorMessage = await verifyMonsterValues(newMonster, zoneId);
+    let errorMessage = await verifyMonsterValues(newMonster, zoneId, oldMonster.name);
 
     if (errorMessage === "") {
       await database.updateMonster(zoneId, monsterId, newMonster);
@@ -703,10 +705,9 @@ router.post(
       if (errorMessage === "") {
         newZone.monsters = [];
 
-        zone.monsters.forEach((monster) => {
-          monster.habitat = newZone.name;
+        for (let monster of zone.monsters) {
           newZone.monsters.push(monster);
-        });
+        }
 
         await database.updateZone(zoneId, newZone);
 
@@ -750,7 +751,7 @@ router.get("/search", async (req, res) => {
     headerTitle: "Bestiario Monster Hunter",
     zones,
     searchTerm,
-    pageUrl:`/search?zoneName=${encodeURIComponent(searchTerm)}&page=`,
+    pageUrl: `/search?zoneName=${encodeURIComponent(searchTerm)}&page=`,
     pages: Array.from({ length: totalPages }, (_, i) => ({
       number: i + 1,
       isCurrent: i + 1 === currentPage,
@@ -762,16 +763,13 @@ router.get("/search", async (req, res) => {
     hasPrevious: currentPage > 1,
     hasNext: currentPage < totalPages,
   });
-  
 });
 
+router.get("/showDifficulty", async (req, res) => {
+  let difficulty = Number(req.query.difficulty);
 
-router.get("/showDifficulty",async (req,res) => {
-let difficulty= Number(req.query.difficulty);
-console.log(difficulty);
-console.log(typeof difficulty);
-let zones = await database.findDifficultyZone(difficulty);
-console.log(zones);
+  let filter = { difficulty: difficulty }
+  let zones = await database.getZonesWithFilter(filter);
 
   res.render("index.html", {
     headerTitle: "Bestiario Monster Hunter",
@@ -790,20 +788,24 @@ console.log(zones);
   });
   */
   });
-
-
-})
+});
 
 router.get("/showRank", async (req, res) => {
   function getRank(r) {
     switch (r) {
-      case "LR": return 0;
-      case "HR": return 1;
-      case "MR": return 2;
+      case "LR":
+        return 0;
+      case "HR":
+        return 1;
+      case "MR":
+        return 2;
     }
-  };
-  let rank = (getRank(req.query.rank));
-  let zones = await database.findRankZone(rank);
+  }
+  let rank = getRank(req.query.rank);
+
+  let filter = { [`ranks.${rank}`] :true};
+  let zones = await database.getZonesWithFilter(filter);
+
   res.render("index.html", {
     headerTitle: "Bestiario Monster Hunter",
     zones,
@@ -821,13 +823,13 @@ router.get("/showRank", async (req, res) => {
   });
   */
   });
-
-
-})
+});
 
 router.get("/showTemperature", async (req, res) => {
   let temperature = Number(req.query.temperature);
-  let zones = await database.findTemperatureZone(temperature);
+
+  let filter = { temperature: temperature }
+  let zones = await database.getZonesWithFilter(filter);
 
   res.render("index.html", {
     headerTitle: "Bestiario Monster Hunter",
@@ -846,4 +848,4 @@ router.get("/showTemperature", async (req, res) => {
   });
   */
   });
-})
+});
