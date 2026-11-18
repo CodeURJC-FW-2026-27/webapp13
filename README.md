@@ -145,13 +145,47 @@
             https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/css/form.css
             https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/css/index.css
 
+## Practica 2
+   ### Instrucciones de ejecucion
+   Requisitos: Ultima version de Node.js ("^24.22.21") instalar mongoDB con version 7.9.0
+   Descargar Zip y descomprimir, ir a la carperta descomprimida, abrir terminal en la carpeta, escribir npm install para bajar la carpeta "node_modules", ejecutar aplicacion web con  npm start o npm run watch.
+   ### Descripcion de ficheros
+   - Carpeta MHW_MonsterChecklist: Contiene la aplicacion web con todas las carpetas necesarias para ejecutarla
+   - Carpeta data: Contiene las plantillas para cargar la aplicacion con datos de prueba estos son los ficheros templateMosmntersMHW.json y templateZonesMHW.json y una carpeta images en la que se almacenan las imagenes de prueba
+   - Carpeta public: contiene archivos archivos estaticos  
+   - Carpeta src: Contiene el codigo del backend app.js se encarga de ejecutar la aplicacion web con node y mustache, database.js se encarga de realizar las operaciones con la base de datos de mongoDB
+   el fichero load_data.js carga los datos de prueba(plantillas.json de la carpeta data) en la base de datos de mongo al iniciarse la aplicacion, router.js gestiona las acciones desencadendas por el usuario como pueden ser crear, borrar, editar, mostrar informacion para que la visualice el usuario
+   - Carpeta views: contiene los archivos html para la generacion de vistas y que se mostraran al usuario entre ellos se encuentra la pagina principal (index.html), plantillas de formularios (zoneForm.html y monsterForm.hmtl)
+   ### Video demostrativo(en youtube)
+
+   ### Participación de miembros
+   - Carlos
+      - Descripcion: Inicializar entorno para poder trabajar con node, crear boton de editar, creacion de barra de navegacion y paginacion, form de editar monstruos:
+         1. web structure update to work with node
+         -- 90aae5b
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/90aae5b64194ce68784ece93c12fd65b67bed982
 
 
+         2. Delete monster Button finished
+         -- 989cc97
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/989cc975e793f2ca45f38cc1a5d47ac08ea9c03f
 
+         3. Pagination finished, small changes in details -> formMonsters some constraints -- d627132
+            link:https://github.com/CodeURJC-FW-2026-27/webapp13/commit/d627132b0d2776b795f122b3670068f8b0c468ed
 
-            ## PRACTICA 2
+         4. Search Bar finished-- 95a69f3
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/95a69f3b5fcbf0304326fd132b2145c855943248
 
-            - Joao Ortega
+         5. Add zone update functionality and related views -- 1a186d6
+            link: https://github.com/CodeURJC-FW-2026-27/webapp13/commit/1a186d6201c2bbf435756a3500aa5c32e8d9eaaf
+
+      - Ficheros en los que más he participado:
+         1. router.js https://github.com/CodeURJC-FW-2026-27/webapp13/blob/main/MHW_MonsterChecklist/details.html
+         2. databse.js 
+         3. monsterForm.html
+         4. details.html
+         
+   - Joao Ortega
       - Aportaciones:
          
          1. Adaptacion de los primeros renders para redireccionar a los html anteriores -- bc31cda ,  ab831b3 .
@@ -175,5 +209,34 @@
          3. monsterForm.html
          4. details.html
          5. index.html      
+
+
+           - Nicolas
+
+      - Commits mas importantes:
+         1. Creacion de los datos iniciales para cargar los datos del JSON
+         https://github.com/CodeURJC-FW-2026-27/webapp13/tree/9e4558a045d5a08714ad7c2d478b2f4b245cb75d
+        
+
+         2. Ajustes de formularios para enviar los datos
+        https://github.com/CodeURJC-FW-2026-27/webapp13/tree/095634c6c74beeebfd88f1d293aa42913f6cca87
+        
+
+         3. reajuste de funciones y uso de Mustache para evitar repeticion de codigo
+         https://github.com/CodeURJC-FW-2026-27/webapp13/tree/e6893377c3468b8a29236c49c2a4524d5176a2bd
+
+         4. creacion y correccion de updateZones
          
+
+         5. Ajuste de todos elementos en conjunto
+          https://github.com/CodeURJC-FW-2026-27/webapp13/tree/9d3e2feaf69991d7db9c3e18e2a9fc58c4b0447e 
+
+      - Fichero en los que mas he participado
+         - Ficheros en los que mas he participado:
+         1. router.js
+         2. database.js
+         3. load_data.js
+         4. details.html
+         5. index.html
+         6. generalReturn.html    
          
