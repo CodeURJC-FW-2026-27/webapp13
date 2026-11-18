@@ -56,6 +56,14 @@ export async function findDifficulltyZone(difficulty) {
   return await zones.find({ difficulty: difficulty }).toArray() ;
 }
 
+export async function findRankZone(rank) {
+  return await zones.find({ [`ranks.${rank}`] : true }).toArray() ;
+}
+
+export async function findTemperatureZone(temperature) {
+  return await zones.find({ temperature: temperature }).toArray() ;
+}
+
 export async function getMonster(zoneId, monsterId) {
   let zone = await zones.findOne({ _id: new ObjectId(zoneId) });
 
