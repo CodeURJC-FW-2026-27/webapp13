@@ -49,7 +49,9 @@
               </table>
             </div>
             <p class="card-text">{{description}}</p>
-            <a class="btn btn-primary" href="/formMonster?zoneId={{zone._id}}">Nueva criatura</a>
+            <a class="btn btn-primary" href="#detailsFormDiv"
+              >Nueva criatura</a
+            >
             <a class="btn btn-primary" href="/deleteZone?id={{_id}}">Borrar</a>
             <a class="btn btn-primary" href="/updateZoneForm?id={{_id}}"
               >Editar</a
@@ -89,11 +91,7 @@
                 </tr>
                 <tr>
                   <td>Elemento</td>
-                  <td>
-                    {{#elements}}
-                      {{elements}}
-                    {{/elements}}
-                    </td>
+                  <td>{{#elements}} {{elements}} {{/elements}}</td>
                 </tr>
                 <tr>
                   <td>Efectos inflingidos</td>
@@ -101,19 +99,11 @@
                 </tr>
                 <tr>
                   <td>Debilidad</td>
-                  <td>
-                    {{#weaknesses}}
-                      {{weaknesses}}
-                    {{/weaknesses}}                    
-                  </td>
+                  <td>{{#weaknesses}} {{weaknesses}} {{/weaknesses}}</td>
                 </tr>
                 <tr>
                   <td>Resistencia</td>
-                  <td>
-                    {{#resistances}}
-                      {{resistances}}
-                    {{/resistances}}                      
-                  </td>
+                  <td>{{#resistances}} {{resistances}} {{/resistances}}</td>
                 </tr>
                 <tr>
                   <td>Habitat</td>
@@ -131,7 +121,11 @@
               href="/deleteMonster?zoneId={{zone._id}}&monsterId={{_id}}"
               >Borrar</a
             >
-            <a class="btn btn-primary" href="/formMonster?zoneId={{zone._id}}&monsterId={{_id}}">Editar</a>
+            <a
+              class="btn btn-primary"
+              href="/formMonster?zoneId={{zone._id}}&monsterId={{_id}}"
+              >Editar</a
+            >
           </div>
         </div>
         {{/monsters}} {{^monsters}}
@@ -139,6 +133,8 @@
         {{/monsters}}
       </div>
 
+      
+        {{>monsterForm}}
       
     </div>
 

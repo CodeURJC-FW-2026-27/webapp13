@@ -79,7 +79,7 @@ function buildMonster(req, newImage) {
   let name = req.body.name.toString();
   let difficulty = parseInt(req.body.difficulty);
 
-  let selectedRanks = req.body.formIndexRanks;
+  let selectedRanks = req.body.ranks;
   let ranks = [0, 1, 2].map((rank) => selectedRanks?.includes(String(rank)));
   // function to map the ranks (ranks is an array that has the values 0,1,or 2, but they can not be, f.e. [1,3], [3])
 
@@ -194,7 +194,7 @@ function renderZoneForm(res, zone = null) {
 function renderMonsterForm(res, zone, monster = null) {
   const isEdit = monster !== null;
 
-  res.render("monsterForm.html", {
+  res.render("pageTemplate.html", {
     headerTitle: isEdit ? "Editar monstruo" : "Añadir monstruo",
     zone,
     monster,
@@ -415,6 +415,109 @@ router.get("/details", async (req, res) => {
         if (this.maxSize) return this.maxSize.toString();
         else return "N/A";
       },
+
+      formAction: false,
+      submitLabel: "Crear",
+      cancelLink: `./`,
+      imageRequired: true,
+
+      difficultyOptions: makeChoices(
+      [
+        [1, "⭐"],
+        [2, "⭐⭐"],
+        [3, "⭐⭐⭐"],
+        [4, "⭐⭐⭐⭐"],
+        [5, "⭐⭐⭐⭐⭐"],
+      ],
+      () => false,
+      "formIndexDifficultyButton",
+    ),
+    rankOptions: makeChoices(
+      [
+        [0, "Low Rank"],
+        [1, "High Rank"],
+        [2, "Master Rank"],
+      ],
+      () => false,
+      "formIndexRank",
+    ), // same, need boolean values
+
+    temperatureOptions: makeChoices(
+      [
+        [0, "Frostbite"],
+        [1, "Temperate climate"],
+        [2, "Scorching"],
+      ],
+      () => false,
+      "formIndexTemperature",
+    ), // same
+    speciesOptions: makeOptions(
+      [
+        ["Bird Wyvern", "Bird-Wyvern"],
+        ["Brute Wyvern", "Brute-Wyvern"],
+        ["Fanged Wyvern", "Fanged-Wyvern"],
+        ["Fanged", "Fanged"],
+        ["Wyvern", "Wyvern"],
+        ["Flying Wyvern", "Flying-Wyvern"],
+        ["Piscine Wyvern", "Piscine-Wyvern"],
+        ["Elder Dragon", "Elder Dragon"],
+      ],
+      null,
+    ),
+
+    elementOptions: makeOptions(
+      [
+        ["Fire", "Fire"],
+        ["Water", "Water"],
+        ["Thunder", "Thunder"],
+        ["Ice", "Ice"],
+        ["Dragon", "Dragon"],
+        ["None", "None"],
+      ],
+      null,
+    ),
+
+    effectOptions: makeOptions(
+      [
+        ["Poison", "Poison"],
+        ["Stun", "Stun"],
+        ["Paralysis", "Paralysis"],
+        ["Sleep", "Sleep"],
+        ["Blastblight", "Blastblight"],
+        ["Bleeding", "Bleeding"],
+        ["Waterblight", "Waterblight"],
+        ["Fireblight", "Fireblight"],
+        ["Thunderblight", "Thunderblight"],
+        ["Iceblight", "Iceblight"],
+        ["None", "None"],
+      ],
+      null,
+    ),
+
+    weaknessOptions: makeOptions(
+      [
+        ["Fire", "Fire"],
+        ["Water", "Water"],
+        ["Thunder", "Thunder"],
+        ["Ice", "Ice"],
+        ["Dragon", "Dragon"],
+        ["None", "None"],
+      ],
+      null,
+    ),
+
+    resistanceOptions: makeOptions(
+      [
+        ["Fire", "Fire"],
+        ["Water", "Water"],
+        ["Thunder", "Thunder"],
+        ["Ice", "Ice"],
+        ["Dragon", "Dragon"],
+        ["None", "None"],
+      ],
+      null,
+      
+    ),
     });
   }
 });
