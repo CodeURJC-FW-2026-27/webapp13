@@ -56,6 +56,15 @@ export async function updateZone(zoneId, updateZone) {
 }
 
 
+export async function findRankZone(rank) {
+  return await zones.find({ [`ranks.${rank}`] : true }).toArray() ;
+}
+
+export async function findTemperatureZone(temperature) {
+  return await zones.find({ temperature: temperature }).toArray() ;
+}
+
+
 
 export async function addMonster(zoneId, monster) {
   monster._id = new ObjectId();
