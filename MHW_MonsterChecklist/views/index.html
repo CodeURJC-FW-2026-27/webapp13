@@ -101,6 +101,7 @@
                     aria-label="Enter search term..."
                     aria-describedby="button-search"
                     name="zoneName"
+                    value="{{searchTerm}}"
                   />
                   <button
                     class="btn btn-primary"
@@ -120,7 +121,7 @@
           <div class="card text-center">
             <div class="card-header">Nueva Zona</div>
             <div class="card-body">
-              <a class="btn btn-primary" href="/form_Index">Crear Zona</a>
+              <a class="btn btn-primary" href="/form_index">Crear Zona</a>
             </div>
           </div>
         </div>
@@ -159,15 +160,15 @@
         <ul class="pagination justify-content-center">
           {{#hasPrevious}}
           <li class="page-item">
-            <a class="page-link" href="/?page={{previousPage}}">Anterior</a>
+            <a class="page-link" href="{{pageUrl}}{{previousPage}}">Anterior</a>
           </li>
           {{/hasPrevious}} {{#pages}}
           <li class="page-item {{#isCurrent}}active{{/isCurrent}}">
-            <a class="page-link" href="/?page={{number}}">{{number}}</a>
+            <a class="page-link" href="{{pageUrl}}{{number}}">{{number}}</a>
           </li>
           {{/pages}} {{#hasNext}}
           <li class="page-item">
-            <a class="page-link" href="/?page={{nextPage}}">Siguiente</a>
+            <a class="page-link" href="{{pageUrl}}{{nextPage}}">Siguiente</a>
           </li>
           {{/hasNext}}
         </ul>

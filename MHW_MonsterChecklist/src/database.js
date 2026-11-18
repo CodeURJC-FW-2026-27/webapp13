@@ -116,9 +116,19 @@ export async function getZonesCount() {
   return await zones.countDocuments();
 } // get how many zones they are
 
-export async function searchZonesByName(nameInput) {
-  return await zones.find({ $text: { $search: nameInput } }).toArray();
-} // get the zones by name
+export async function searchZonesByName(nameInput, page, pageSize) {
+ const filter = { $text: { $search: nameInput } };
+
+  return await zones
+    .find(filter)
+    .skip((page - 1) * pageSize)
+    .limit(pageSize)
+    .toArray();
+}
+export async function countZonesByName(nameInput) {
+  const filter = { $text: { $search: nameInput } };
+  return await zones.countDocuments(filter);
+}
 
 export async function getZoneNames() {
   //from MongoDB documentation - https://www.mongodb.com/es/docs/drivers/node/current/crud/query/project/#single-field

@@ -42,27 +42,27 @@
 
           <div class="row row-cols-lg-5 row-cols-md-2 row-cols-1" style="width: fit-content">
             <div class="formContainerItem col">
-              <input type="radio" name="formDetailsDificultadButton" value="0" id="formDetailsDificultadButton1" {{#monster.isDiff1}}checked{{/monster.isDiff1}} />
+              <input type="radio" name="difficulty" value="1" id="formDetailsDificultadButton1" {{#monster.isDiff1}}checked{{/monster.isDiff1}} />
               <label for="formDetailsDificultadButton1">⭐</label>
             </div>
 
             <div class="formContainerItem col">
-              <input type="radio" name="formDetailsDificultadButton" value="1" id="formDetailsDificultadButton2" {{#monster.isDiff2}}checked{{/monster.isDiff2}} />
+              <input type="radio" name="difficulty" value="2" id="formDetailsDificultadButton2" {{#monster.isDiff2}}checked{{/monster.isDiff2}} />
               <label for="formDetailsDificultadButton2">⭐⭐</label>
             </div>
 
             <div class="formContainerItem col">
-              <input type="radio" name="formDetailsDificultadButton" value="2" id="formDetailsDificultadButton3" {{#monster.isDiff3}}checked{{/monster.isDiff3}}/>
+              <input type="radio" name="difficulty" value="3" id="formDetailsDificultadButton3" {{#monster.isDiff3}}checked{{/monster.isDiff3}}/>
               <label for="formDetailsDificultadButton3">⭐⭐⭐</label>
             </div>
 
             <div class="formContainerItem col">
-              <input type="radio" name="formDetailsDificultadButton" value="3" id="formDetailsDificultadButton4" {{#monster.isDiff4}}checked{{/monster.isDiff4}}/>
+              <input type="radio" name="difficulty" value="4" id="formDetailsDificultadButton4" {{#monster.isDiff4}}checked{{/monster.isDiff4}}/>
               <label for="formDetailsDificultadButton4">⭐⭐⭐⭐</label>
             </div>
 
             <div class="formContainerItem col">
-              <input type="radio" name="formDetailsDificultadButton" value="4" id="formDetailsDificultadButton5" {{#monster.isDiff5}}checked{{/monster.isDiff5}}/>
+              <input type="radio" name="difficulty" value="5" id="formDetailsDificultadButton5" {{#monster.isDiff5}}checked{{/monster.isDiff5}}/>
               <label for="formDetailsDificultadButton5">⭐⭐⭐⭐⭐</label>
             </div>
           </div>
@@ -74,19 +74,19 @@
           <p class="formButtonLabel">Categorias</p>
 
           <div class="formContainerItem">
-            <input type="checkbox" id="formDetailsCategorias1" name="formDetailsCategorias1" 
+            <input type="checkbox" id="formDetailsCategorias1" name="ranks" 
             value="0" {{#monster.ranks.0}}checked{{/monster.ranks.0}}/>
             <label for="formDetailsCategorias1">Low Rank</label>
           </div>
 
           <div class="formContainerItem">
-            <input type="checkbox" id="formDetailsCategorias2" name="formDetailsCategorias2" 
+            <input type="checkbox" id="formDetailsCategorias2" name="ranks" 
             value="1" {{#monster.ranks.1}}checked{{/monster.ranks.1}}/>
             <label for="formDetailsCategorias2">High Rank</label>
           </div>
 
           <div class="formContainerItem">
-            <input type="checkbox" id="formDetailsCategorias3" name="formDetailsCategorias3" 
+            <input type="checkbox" id="formDetailsCategorias3" name="ranks" 
             value="2" {{#monster.ranks.2}}checked{{/monster.ranks.2}}/>
             <label for="formDetailsCategorias3">Master Rank</label>
           </div>
@@ -179,7 +179,7 @@
         <div class="form-group formDiv">
           <label for="formMonsterDescription" class="formButtonLabel">Informacion</label>
           <textarea name="information" class="form-control" id="formMonsterDescription" required
-            minlength="10">{{monster.information}}</textarea>
+            minlength="10" maxlength="50">{{monster.information}}</textarea>
         </div>
 
         <div class="formButtonLabel formDiv">

@@ -188,6 +188,114 @@ function renderZoneForm(res, zone = null) {
   });
 }
 
+function renderMonsterForm(res, zone, monster = null) {
+  const isEdit = monster !== null;
+
+  res.render("monsterForm.html", {
+    headerTitle: isEdit ? "Editar monstruo" : "Añadir monstruo",
+    zone,
+    monster,
+    isEdit,
+
+    formAction: isEdit
+      ? `/updateMonster?zoneId=${zone._id}&monsterId=${monster._id}`
+      : `/newMonster?id=${zone._id}`,
+
+    submitLabel: isEdit ? "Actualizar" : "Crear",
+    cancelLink: `/details?id=${zone._id}`,
+    imageRequired: !isEdit,
+
+    difficultyOptions: makeChoices(
+      [
+        [1, "⭐"],
+        [2, "⭐⭐"],
+        [3, "⭐⭐⭐"],
+        [4, "⭐⭐⭐⭐"],
+        [5, "⭐⭐⭐⭐⭐"],
+      ],
+      (value) => monster?.difficulty === value,
+      "monsterDifficulty",
+    ),
+
+    rankOptions: makeChoices(
+      [
+        [0, "Low Rank"],
+        [1, "High Rank"],
+        [2, "Master Rank"],
+      ],
+      (value) => monster?.ranks?.[value] === true,
+      "monsterRank",
+    ),
+
+    speciesOptions: makeOptions(
+      [
+        ["Bird Wyvern", "Bird-Wyvern"],
+        ["Brute Wyvern", "Brute-Wyvern"],
+        ["Fanged Beast", "Fanged-Beast"],
+        ["Fanged", "Fanged"],
+        ["Wyvern", "Wyvern"],
+        ["Flying Wyvern", "Flying-Wyvern"],
+        ["Piscine Wyvern", "Piscine-Wyvern"],
+        ["Elder Dragon", "Elder Dragon"],
+      ],
+      monster?.species,
+    ),
+
+    elementOptions: makeOptions(
+      [
+        ["Fire", "Fire"],
+        ["Water", "Water"],
+        ["Thunder", "Thunder"],
+        ["Ice", "Ice"],
+        ["Dragon", "Dragon"],
+        ["None", "None"],
+      ],
+      monster?.elements?.[0],
+    ),
+
+    effectOptions: makeOptions(
+      [
+        ["Poison", "Poison"],
+        ["Stun", "Stun"],
+        ["Paralysis", "Paralysis"],
+        ["Sleep", "Sleep"],
+        ["Blastblight", "Blastblight"],
+        ["Bleeding", "Bleeding"],
+        ["Waterblight", "Waterblight"],
+        ["Fireblight", "Fireblight"],
+        ["Thunderblight", "Thunderblight"],
+        ["Iceblight", "Iceblight"],
+        ["None", "None"],
+      ],
+      monster?.effects?.[0],
+    ),
+
+    weaknessOptions: makeOptions(
+      [
+        ["Fire", "Fire"],
+        ["Water", "Water"],
+        ["Thunder", "Thunder"],
+        ["Ice", "Ice"],
+        ["Dragon", "Dragon"],
+        ["None", "None"],
+      ],
+      monster?.weaknesses?.[0],
+    ),
+
+    resistanceOptions: makeOptions(
+      [
+        ["Fire", "Fire"],
+        ["Water", "Water"],
+        ["Thunder", "Thunder"],
+        ["Ice", "Ice"],
+        ["Dragon", "Dragon"],
+        ["None", "None"],
+      ],
+      monster?.resistances?.[0],
+    ),
+  });
+}
+
 // / (root)
 router.get("/", async (req, res) => {
   //number of Zones shown per page
@@ -208,6 +316,7 @@ router.get("/", async (req, res) => {
   res.render("index.html", {
     headerTitle: "Bestiario Monster Hunter",
     zones,
+    pageUrl: "/?page=",
     pages: Array.from({ length: totalPages }, (_, i) => ({
       number: i + 1,
       isCurrent: i + 1 === currentPage,
@@ -335,7 +444,7 @@ router.post("/newZone", upload.single("formIndexImage"), async (req, res) => {
 
   let errorMessage = await verifyZoneValues(newZone);
 
-  if (errorMessage == "") {
+  if (errorMessage === "") {
     await database.addZone(newZone);
 
     res.render("generalReturn.html", {
@@ -427,18 +536,39 @@ router.get("/deleteMonster", async (req, res) => {
   }
 });
 
-// /newMonster
+// Call to render the Monsters Form 1st step to the creation or edit of Monsters
+router.get("/formMonster", async (req, res) => {
+  const zone = await database.getZone(req.query.zoneId);
+
+  if (!zone) {
+    return res.status(404).send("Zone not found");
+  }
+  if (!req.query.monsterId) {
+    return renderMonsterForm(res, zone);
+  }
+
+  const monster = zone.monsters.find(
+    (item) => item._id.toString() === req.query.monsterId,
+  );
+
+  if (!monster) {
+    return res.status(404).send("Monster not found");
+  }
+
+  renderMonsterForm(res, zone, monster);
+});
+// /  
 router.post(
   "/newMonster",
   upload.single("formDetailsMonsterImage"),
   async (req, res) => {
     let id = req.query.id;
     let monster = buildMonster(req, req.file.filename);
+    //monster.habitat=req.query.zoneName
+    let errorMessage = await verifyMonsterValues(monster, id);
 
-    errorMessage = await verifyMonsterValues(monster, id);
-
-    if (errorMessage != "") {
-      database.addMonster(id, monster);
+    if (errorMessage === "") {
+      await database.addMonster(id, monster);
 
       res.render("generalReturn.html", {
         headerTitle: "Todo correcto!",
@@ -457,110 +587,24 @@ router.post(
   },
 );
 
-// /editMonster
-router.get("/editMonster", async (req, res) => {
-  let zoneId = req.query.zoneId;
-  let zone = await database.getZone(req.query.zoneId);
+// /formMonster
+router.get("/formMonster", async (req, res) => {
+  const zone = await database.getZone(req.query.zoneId);
 
-  if (zone === null) {
-    res.render("generalReturn.html", {
-      headerTitle: "Error",
-      message: `La zona con el id ${zoneId} no existe`,
-      destinationLink: "/",
-      destination: "Home",
-    });
-  } else {
-    let monster = zone.monsters.find(
-      (m) => m._id.toString() === req.query.monsterId,
-    );
-
-    //Check which difficulty radio button is True
-    monster.isDiff1 = monster.difficulty === 1;
-    monster.isDiff2 = monster.difficulty === 2;
-    monster.isDiff3 = monster.difficulty === 3;
-    monster.isDiff4 = monster.difficulty === 4;
-    monster.isDiff5 = monster.difficulty === 5;
-
-    if (monster === null) {
-      res.render("generalReturn.html", {
-        headerTitle: "Error",
-        message: `El monstruo con el id ${monsterId} no existe`,
-        destinationLink: "/",
-        destination: "Home",
-      });
-    } else {
-      res.render("editMonster.html", {
-        zone,
-        monster,
-        speciesOptions: makeOptions(
-          [
-            ["Bird Wyvern", "Bird-Wyvern"],
-            ["Brute Wyvern", "Brute-Wyvern"],
-            ["Fanged Beast", "Fanged-Beast"],
-            ["Fanged", "Fanged"],
-            ["Wyvern", "Wyvern"],
-            ["Flying Wyvern", "Flying-Wyvern"],
-            ["Piscine Wyvern", "Piscine-Wyvern"],
-            ["Elder Dragon", "Elder Dragon"],
-          ],
-          monster.species,
-        ),
-
-        elementOptions: makeOptions(
-          [
-            ["Fire", "Fire"],
-            ["Water", "Water"],
-            ["Thunder", "Thunder"],
-            ["Ice", "Ice"],
-            ["Dragon", "Dragon"],
-            ["None", "None"],
-          ],
-          monster.elements[0],
-        ),
-        effectOptions: makeOptions(
-          [
-            ["Poison", "Poison"],
-            ["Stun", "Stun"],
-            ["Paralysis", "Paralysis"],
-            ["Sleep", "Sleep"],
-            ["Blastblight", "Blastblight"],
-            ["Bleeding", "Bleeding"],
-            ["Waterblight", "Waterblight"],
-            ["Fireblight", "Fireblight"],
-            ["Thunderblight", "Thunderblight"],
-            ["Iceblight", "Iceblight"],
-            ["None", "None"],
-          ],
-          monster.effects[0],
-        ),
-        weaknessOptions: makeOptions(
-          [
-            ["Fire", "Fire"],
-            ["Water", "Water"],
-            ["Thunder", "Thunder"],
-            ["Ice", "Ice"],
-            ["Dragon", "Dragon"],
-            ["None", "None"],
-          ],
-          monster.weaknesses[0],
-        ),
-
-        resistanceOptions: makeOptions(
-          [
-            ["Fire", "Fire"],
-            ["Water", "Water"],
-            ["Thunder", "Thunder"],
-            ["Ice", "Ice"],
-            ["Dragon", "Dragon"],
-            ["None", "None"],
-          ],
-          monster.resistances[0],
-        ),
-      });
-    }
+  if (!zone) {
+    return res.status(404).send("Zone not found");
   }
-});
 
+  const monster = zone.monsters.find(
+    (item) => item._id.toString() === req.query.monsterId,
+  );
+
+  if (!monster) {
+    return res.status(404).send("Monster not found");
+  }
+
+  renderMonsterForm(res, zone, monster);
+});
 // /updateMonster
 router.post(
   "/updateMonster",
@@ -576,9 +620,9 @@ router.post(
 
     let newMonster = buildMonster(req, oldImage);
 
-    let errorMessage = await verifyMonsterValues(newMonster, zoneId, oldMonster.name);
+    let errorMessage = await verifyMonsterValues(newMonster, zoneId);
 
-    if (errorMessage != "") {
+    if (errorMessage === "") {
       await database.updateMonster(zoneId, monsterId, newMonster);
 
       res.render("generalReturn.html", {
@@ -656,7 +700,7 @@ router.post(
 
       let errorMessage = await verifyZoneValues(newZone, zone.name);
 
-      if (errorMessage == "") {
+      if (errorMessage === "") {
         newZone.monsters = [];
 
         zone.monsters.forEach((monster) => {
@@ -686,14 +730,27 @@ router.post(
 
 // /search
 router.get("/search", async (req, res) => {
-  let nameInput = req.query.zoneName;
+  const pageSize = 6;
+  const searchTerm = (req.query.zoneName ?? "").trim();
 
-  let zones = nameInput ? await database.searchZonesByName(nameInput) : [];
+  const totalZones = searchTerm
+    ? await database.countZonesByName(searchTerm)
+    : 0;
+
+  const totalPages = Math.ceil(totalZones / pageSize);
+
+  let currentPage = Number.parseInt(req.query.page, 10) || 1;
+  currentPage = Math.max(1, Math.min(currentPage, totalPages || 1));
+
+  const zones = searchTerm
+    ? await database.searchZonesByName(searchTerm, currentPage, pageSize)
+    : [];
 
   res.render("index.html", {
     headerTitle: "Bestiario Monster Hunter",
     zones,
-    /*
+    searchTerm,
+    pageUrl:`/search?zoneName=${encodeURIComponent(searchTerm)}&page=`,
     pages: Array.from({ length: totalPages }, (_, i) => ({
       number: i + 1,
       isCurrent: i + 1 === currentPage,
@@ -705,12 +762,9 @@ router.get("/search", async (req, res) => {
     hasPrevious: currentPage > 1,
     hasNext: currentPage < totalPages,
   });
-  */
-  });
-
-
-
+  
 });
+
 
 router.get("/showDifficulty",async (req,res) => {
 let difficulty= Number(req.query.difficulty);
