@@ -560,7 +560,7 @@ router.post(
 
     let newMonster = buildMonster(req, oldImage);
 
-    errorMessage = await verifyMonsterValues(newMonster, zoneId);
+    let errorMessage = await verifyMonsterValues(newMonster, zoneId, oldMonster.name);
 
     if (errorMessage != "") {
       await database.updateMonster(zoneId, monsterId, newMonster);
