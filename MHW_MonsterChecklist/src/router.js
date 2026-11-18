@@ -690,4 +690,35 @@ router.get("/search", async (req, res) => {
   });
   */
   });
+
+
+
 });
+
+router.get("/showDifficulty",async (req,res) => {
+let difficulty= Number(req.query.difficulty);
+console.log(difficulty);
+console.log(typeof difficulty);
+let zones = await database.findDifficulltyZone(difficulty);
+console.log(zones);
+
+res.render("index.html", {
+    headerTitle: "Bestiario Monster Hunter",
+    zones,
+    /*
+    pages: Array.from({ length: totalPages }, (_, i) => ({
+      number: i + 1,
+      isCurrent: i + 1 === currentPage,
+    })),
+    currentPage,
+    hasPages: totalPages > 1,
+    previousPage: currentPage - 1,
+    nextPage: currentPage + 1,
+    hasPrevious: currentPage > 1,
+    hasNext: currentPage < totalPages,
+  });
+  */
+  });
+
+
+})
