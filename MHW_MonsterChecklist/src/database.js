@@ -12,7 +12,6 @@ export const zones = db.collection("Zones"); //Document with the Zones (named "z
 await zones.createIndex({ name: "text" }); //Creates an index (to get the names faster)
 export const UPLOADS_FOLDER = "./uploads"; //Where to save the uploaded data (photos)
 
-
 export async function addZone(newZone) {
   return await zones.insertOne(newZone);
 }
@@ -25,7 +24,8 @@ export async function deleteZone(zoneId) {
   return await zones.findOneAndDelete({ _id: new ObjectId(zoneId) });
 }
 
-export async function deleteZones() { // delete all the saved zones
+export async function deleteZones() {
+  // delete all the saved zones
   return await zones.deleteMany();
 }
 
@@ -55,16 +55,13 @@ export async function updateZone(zoneId, updateZone) {
   );
 }
 
-
 export async function findRankZone(rank) {
-  return await zones.find({ [`ranks.${rank}`] : true }).toArray() ;
+  return await zones.find({ [`ranks.${rank}`]: true }).toArray();
 }
 
 export async function findTemperatureZone(temperature) {
-  return await zones.find({ temperature: temperature }).toArray() ;
+  return await zones.find({ temperature: temperature }).toArray();
 }
-
-
 
 export async function addMonster(zoneId, monster) {
   monster._id = new ObjectId();
@@ -84,7 +81,7 @@ export async function deleteMonster(zoneId, updateMonsters) {
 export async function getMonster(zoneId, monsterId) {
   let zone = await zones.findOne({ _id: new ObjectId(zoneId) });
 
-  let monster = zone.monsters.find((m) => m._id.toString() === monsterId); 
+  let monster = zone.monsters.find((m) => m._id.toString() === monsterId);
   //arrrow function to verify if i found the monster using the id
 
   return monster;
@@ -97,7 +94,6 @@ export async function updateMonster(zoneId, monsterId, newMonster) {
     { $set: { "monsters.$": newMonster } },
   );
 }
-
 
 export async function getZonesPage(page, pageSize) {
   return await zones
@@ -112,7 +108,7 @@ export async function getZonesCount() {
 } // get how many zones they are
 
 export async function searchZonesByName(nameInput, page, pageSize) {
- const filter = { $text: { $search: nameInput } };
+  const filter = { $text: { $search: nameInput } };
 
   return await zones
     .find(filter)
@@ -126,7 +122,7 @@ export async function countZonesByName(nameInput) {
   return await zones.countDocuments(filter);
 }
 
-export async function getZonesWithFilter(filter){
+export async function getZonesWithFilter(filter) {
   return await zones.find(filter).toArray();
 }
 
@@ -146,10 +142,13 @@ export async function getZoneNames() {
 
 export async function getMonsterNames(zoneId) {
   const zone = await getZone(zoneId);
-  let monsterNames =[];
+  let monsterNames = [];
 
-  for (let monster of zone.monsters)
-    monsterNames.push(monster.name)
+  if (zone.monsters) {
+    for (let monster of zone.monsters) monsterNames.push(monster.name);
 
-  return (monsterNames);
+    return monsterNames;
+  }
+
+  return;
 }

@@ -62,7 +62,7 @@ async function verifyZoneValues(zone, oldName) {
   //Verify if the name is unique in the database
   let currentNames = await database.getZoneNames();
 
-  if (currentNames.includes(zone.name) && zone.name != oldName) {
+  if (currentNames && (currentNames.includes(zone.name) && zone.name != oldName)) {
     return "El nombre tiene que ser unico!";
   }
 
@@ -129,7 +129,7 @@ async function verifyMonsterValues(monster, zoneId, oldName = null) {
 
   const monsterNames = await database.getMonsterNames(zoneId);
 
-  if (monsterNames.includes(monster.name) && monster.name !== oldName)
+  if (monsterNames &&(monsterNames.includes(monster.name) && monster.name !== oldName))
     return "El nombre tiene que ser unico!";
 
   if (!monster.difficulty || monster.difficulty < 1 || monster.difficulty > 5)
