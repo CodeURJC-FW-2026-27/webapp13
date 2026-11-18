@@ -418,8 +418,8 @@ router.post(
   async (req, res) => {
     let id = req.query.id;
     let monster = buildMonster(req, req.file.filename);
-
-    errorMessage = await verifyMonsterValues(monster, id);
+    //monster.habitat=req.query.zoneName
+    let errorMessage = await verifyMonsterValues(monster, id);
 
     if (errorMessage != "") {
       database.addMonster(id, monster);
@@ -560,9 +560,9 @@ router.post(
 
     let newMonster = buildMonster(req, oldImage);
 
-    errorMessage = await verifyMonsterValues(newMonster, zoneId);
+    let errorMessage = await verifyMonsterValues(newMonster, zoneId);
 
-    if (errorMessage != "") {
+    if (errorMessage === "") {
       await database.updateMonster(zoneId, monsterId, newMonster);
 
       res.render("generalReturn.html", {
