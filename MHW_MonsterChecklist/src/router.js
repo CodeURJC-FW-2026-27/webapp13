@@ -416,7 +416,7 @@ router.get("/details", async (req, res) => {
         else return "N/A";
       },
 
-      formAction: false,
+      formAction: `/newMonster?id=${zone._id}`,
       submitLabel: "Crear",
       cancelLink: `./`,
       imageRequired: true,
