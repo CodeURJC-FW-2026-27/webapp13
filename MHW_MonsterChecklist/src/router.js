@@ -448,12 +448,12 @@ router.post("/newZone", upload.single("formIndexImage"), async (req, res) => {
 
   if (errorMessage === "") {
     await database.addZone(newZone);
-
+    console.log(newZone._id)
     res.render("generalReturn.html", {
       headerTitle: "Todo correcto!",
       message: `La zona ${newZone.name} Se ha añadido correctamente!`,
-      destinationLink: "/",
-      destination: "Home",
+      destinationLink: `/details?id=${newZone._id}`,
+      destination: "Ver Zona",
     });
   } else {
     res.render("generalReturn.html", {
