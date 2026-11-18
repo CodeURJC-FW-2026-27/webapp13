@@ -53,7 +53,7 @@ export async function deleteMonster(id, updateMonsters) {
 }
 
 export async function findDifficulltyZone(difficulty) {
-  return await zones.findOne({ difficulty: difficulty });
+  return await zones.find({ difficulty: difficulty }).toArray() ;
 }
 
 export async function getMonster(zoneId, monsterId) {
