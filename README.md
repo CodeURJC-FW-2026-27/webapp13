@@ -209,5 +209,34 @@
          3. monsterForm.html
          4. details.html
          5. index.html      
+
+
+           - Nicolas
+
+      - Commits mas importantes:
+         1. Creacion de los datos iniciales para cargar los datos del JSON
+         https://github.com/CodeURJC-FW-2026-27/webapp13/tree/9e4558a045d5a08714ad7c2d478b2f4b245cb75d
+        
+
+         2. Ajustes de formularios para enviar los datos
+        https://github.com/CodeURJC-FW-2026-27/webapp13/tree/095634c6c74beeebfd88f1d293aa42913f6cca87
+        
+
+         3. reajuste de funciones y uso de Mustache para evitar repeticion de codigo
+         https://github.com/CodeURJC-FW-2026-27/webapp13/tree/e6893377c3468b8a29236c49c2a4524d5176a2bd
+
+         4. creacion y correccion de updateZones
          
+
+         5. Ajuste de todos elementos en conjunto
+          https://github.com/CodeURJC-FW-2026-27/webapp13/tree/9d3e2feaf69991d7db9c3e18e2a9fc58c4b0447e 
+
+      - Fichero en los que mas he participado
+         - Ficheros en los que mas he participado:
+         1. router.js
+         2. database.js
+         3. load_data.js
+         4. details.html
+         5. index.html
+         6. generalReturn.html    
          
