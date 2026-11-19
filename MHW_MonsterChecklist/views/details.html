@@ -15,131 +15,140 @@
     <link href="/css/form.css" rel="stylesheet" />
   </head>
   <body>
-    <!-- Responsive navbar-->
-    <!-- Page header with logo and tagline using Mustache Partials-->
-    {{>header}}
+    <div class="container-fluid mainContainer px-0">
+      <!-- Page header with logo and tagline using Mustache Partials-->
+      {{>header}}
 
-    <!-- Page content-->
-    <div class="container">
-      <div class="row">
-        <!-- habitat principal-->
-        {{#zone}}
-        <div class="card mb-4">
-          <img class="card-img-top" src="/image?filename={{image}}" alt="..." />
-          <div class="card-body">
-            <h2 class="card-title">{{name}}</h2>
-            <div class="atributes">
-              <table class="table">
-                <tr>
-                  <td>Dificultad</td>
-                  <td>{{getDifficulty}}</td>
-                </tr>
-                <tr>
-                  <td>Categoria</td>
-                  <td>{{getRanks}}</td>
-                </tr>
-                <tr>
-                  <td>Entorno</td>
-                  <td>{{zone.enviroment}}</td>
-                </tr>
-                <tr>
-                  <td>Temperatura</td>
-                  <td>{{getTemperature}}</td>
-                </tr>
-              </table>
+      <!-- Page content-->
+      <div class="container">
+        <div class="row">
+          <!-- habitat principal-->
+          {{#zone}}
+          <div class="card mb-4">
+            <img
+              class="card-img-top"
+              src="/image?filename={{image}}"
+              alt="..."
+            />
+            <div class="card-body">
+              <h2 class="card-title">{{name}}</h2>
+              <div class="atributes">
+                <table class="table">
+                  <tr>
+                    <td>Dificultad</td>
+                    <td>{{getDifficulty}}</td>
+                  </tr>
+                  <tr>
+                    <td>Categoria</td>
+                    <td>{{getRanks}}</td>
+                  </tr>
+                  <tr>
+                    <td>Entorno</td>
+                    <td>{{zone.enviroment}}</td>
+                  </tr>
+                  <tr>
+                    <td>Temperatura</td>
+                    <td>{{getTemperature}}</td>
+                  </tr>
+                </table>
+              </div>
+              <p class="card-text">{{description}}</p>
+              <a class="btn btn-primary" href="#detailsFormDiv"
+                >Nueva criatura</a
+              >
+              <a class="btn btn-primary" href="/deleteZone?id={{_id}}"
+                >Borrar</a
+              >
+              <a class="btn btn-primary" href="/updateZoneForm?id={{_id}}"
+                >Editar</a
+              >
+              <a class="btn btn-primary" href="./"
+                >Volver a la pagina principal</a
+              >
             </div>
-            <p class="card-text">{{description}}</p>
-            <a class="btn btn-primary" href="#detailsFormDiv"
-              >Nueva criatura</a
-            >
-            <a class="btn btn-primary" href="/deleteZone?id={{_id}}">Borrar</a>
-            <a class="btn btn-primary" href="/updateZoneForm?id={{_id}}"
-              >Editar</a
-            >
-            <a class="btn btn-primary" href="./"
-              >Volver a la pagina principal</a
-            >
           </div>
         </div>
-      </div>
-      {{/zone}}
-      <!-- Nested row for Creaturess-->
+        {{/zone}}
+        <!-- Nested row for Creaturess-->
 
-      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
-        <!-- Creatures-->
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
+          <!-- Creatures-->
 
-        {{#monsters}}
-        <div class="card">
-          <img class="card-img-top" src="/image?filename={{image}}" alt="..." />
-          <!-- PONER IMAGER-->
-          <div class="card-body">
-            <h2 class="card-title h4">{{name}}</h2>
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td>Dificultad</td>
-                  <td>{{getDifficulty}}</td>
-                </tr>
-                <tr>
-                  <td>Categorias</td>
+          {{#monsters}}
+          <div class="card">
+            <img
+              class="card-img-top"
+              src="/image?filename={{image}}"
+              alt="..."
+            />
+            <!-- PONER IMAGER-->
+            <div class="card-body">
+              <h2 class="card-title h4">{{name}}</h2>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>Dificultad</td>
+                    <td>{{getDifficulty}}</td>
+                  </tr>
+                  <tr>
+                    <td>Categorias</td>
 
-                  <td>{{getRanks}}</td>
-                </tr>
-                <tr>
-                  <td>Especie</td>
-                  <td>{{species}}</td>
-                </tr>
-                <tr>
-                  <td>Elemento</td>
-                  <td>{{#elements}} {{elements}} {{/elements}}</td>
-                </tr>
-                <tr>
-                  <td>Efectos inflingidos</td>
-                  <td>{{effects}}</td>
-                </tr>
-                <tr>
-                  <td>Debilidad</td>
-                  <td>{{#weaknesses}} {{weaknesses}} {{/weaknesses}}</td>
-                </tr>
-                <tr>
-                  <td>Resistencia</td>
-                  <td>{{#resistances}} {{resistances}} {{/resistances}}</td>
-                </tr>
-                <tr>
-                  <td>Habitat</td>
-                  <td>{{habitat}}</td>
-                </tr>
-                <tr>
-                  <td>Tamaño(en cm)</td>
-                  <td>{{getMinSize}} - {{getMaxSize}}</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="card-text">{{information}}</p>
-            <a
-              class="btn btn-primary"
-              href="/deleteMonster?zoneId={{zone._id}}&monsterId={{_id}}"
-              >Borrar</a
-            >
-            <a
-              class="btn btn-primary"
-              href="/formMonster?zoneId={{zone._id}}&monsterId={{_id}}"
-              >Editar</a
-            >
+                    <td>{{getRanks}}</td>
+                  </tr>
+                  <tr>
+                    <td>Especie</td>
+                    <td>{{species}}</td>
+                  </tr>
+                  <tr>
+                    <td>Elemento</td>
+                    <td>{{#elements}} {{elements}} {{/elements}}</td>
+                  </tr>
+                  <tr>
+                    <td>Efectos inflingidos</td>
+                    <td>{{effects}}</td>
+                  </tr>
+                  <tr>
+                    <td>Debilidad</td>
+                    <td>{{#weaknesses}} {{weaknesses}} {{/weaknesses}}</td>
+                  </tr>
+                  <tr>
+                    <td>Resistencia</td>
+                    <td>{{#resistances}} {{resistances}} {{/resistances}}</td>
+                  </tr>
+                  <tr>
+                    <td>Habitat</td>
+                    <td>{{habitat}}</td>
+                  </tr>
+                  <tr>
+                    <td>Tamaño(en cm)</td>
+                    <td>{{getMinSize}} - {{getMaxSize}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="card-text">{{information}}</p>
+              <a
+                class="btn btn-primary"
+                href="/deleteMonster?zoneId={{zone._id}}&monsterId={{_id}}"
+                >Borrar</a
+              >
+              <a
+                class="btn btn-primary"
+                href="/formMonster?zoneId={{zone._id}}&monsterId={{_id}}"
+                >Editar</a
+              >
+            </div>
           </div>
+          {{/monsters}} {{^monsters}}
+          <p>No monsters found.</p>
+          {{/monsters}}
         </div>
-        {{/monsters}} {{^monsters}}
-        <p>No monsters found.</p>
-        {{/monsters}}
-      </div>
 
-      
         {{>monsterForm}}
-      
-    </div>
+      </div>
 
-    <!-- Footer-->
-    {{>footer}}
+      <!-- Footer-->
+      {{>footer}}
+    </div>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

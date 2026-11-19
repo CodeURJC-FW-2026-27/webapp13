@@ -55,14 +55,6 @@ export async function updateZone(zoneId, updateZone) {
   );
 }
 
-export async function findRankZone(rank) {
-  return await zones.find({ [`ranks.${rank}`]: true }).toArray();
-}
-
-export async function findTemperatureZone(temperature) {
-  return await zones.find({ temperature: temperature }).toArray();
-}
-
 export async function addMonster(zoneId, monster) {
   monster._id = new ObjectId();
   return await zones.updateOne(
@@ -140,6 +132,7 @@ export async function getZoneNames() {
   return names;
 }
 
+//usar proyeccion para obtener solo los nombres de los monstruos de una zona
 export async function getMonsterNames(zoneId) {
   const zone = await getZone(zoneId);
   let monsterNames = [];
